@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line
 import type { Request, Response } from 'express';
 import { parse } from 'url';
 import type { TableListItem, TableListParams } from './data.d';
@@ -45,7 +45,7 @@ function getRule(req: Request, res: Response, u: string) {
     ((current as number) - 1) * (pageSize as number),
     (current as number) * (pageSize as number),
   );
-  const sorter = JSON.parse(params.sorter as any);
+  const sorter = JSON.parse(params.sorter || ('{}' as any));
   if (sorter) {
     dataSource = dataSource.sort((prev, next) => {
       let sortNumber = 0;
