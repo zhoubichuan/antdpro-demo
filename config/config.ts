@@ -5,6 +5,8 @@ import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
+  base: '/antdpro-demo/',
+  publicPath: '/antdpro-demo/',
   hash: true,
   antd: {},
   dva: {

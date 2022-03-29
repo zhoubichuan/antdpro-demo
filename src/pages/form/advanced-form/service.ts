@@ -1,7 +1,7 @@
 import { request } from 'umi';
 
 export async function fakeSubmitForm(params: any) {
-  return request('/api/advancedForm', {
+  return request(window.antdprourl + '/api/advancedForm', {
     method: 'POST',
     data: params,
   });

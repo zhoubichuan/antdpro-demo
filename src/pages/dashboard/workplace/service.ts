@@ -2,17 +2,17 @@ import { request } from 'umi';
 import type { CurrentUser, NoticeType, ActivitiesType, AnalysisData } from './data';
 
 export async function queryProjectNotice(): Promise<{ data: NoticeType[] }> {
-  return request('/api/project/notice');
+  return request(window.antdprourl + '/api/project/notice');
 }
 
 export async function queryActivities(): Promise<{ data: ActivitiesType[] }> {
-  return request('/api/activities');
+  return request(window.antdprourl + '/api/activities');
 }
 
 export async function fakeChartData(): Promise<{ data: AnalysisData }> {
-  return request('/api/fake_workplace_chart_data');
+  return request(window.antdprourl + '/api/fake_workplace_chart_data');
 }
 
 export async function queryCurrent(): Promise<{ data: CurrentUser }> {
-  return request('/api/currentUser');
+  return request(window.antdprourl + '/api/currentUser');
 }
