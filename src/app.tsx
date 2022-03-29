@@ -34,6 +34,7 @@ export async function getInitialState(): Promise<{
     }
     return undefined;
   };
+
   // 如果是登录页面，不执行
   if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
@@ -99,6 +100,34 @@ export const request: RequestConfig = {
     }
     throw error;
   },
+  requestInterceptors: [
+    (url, options) => {
+      let headers = {};
+      // history.location.pathname !== loginPath ||
+      if (!url.includes('user/login')) {
+        headers = {
+          ...options.headers,
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        };
+      }
+      return { url, options: { ...options, headers } };
+    },
+  ],
+  responseInterceptors: [
+    async (response) => {
+      const res = await response.clone().json(); //这里是关键，获取所有接口请求成功之后的数据
+      console.log(res);
+      if (res?.result) {
+        const { sacpresult, sucess } = res.result;
+        if (sucess) {
+          return sacpresult;
+        } else {
+          console.error(res.result.sacpinfo || 'Error');
+        }
+      }
+      return response;
+    },
+  ],
 };
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
