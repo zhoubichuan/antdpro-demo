@@ -1,7 +1,7 @@
 import { request } from 'umi';
 
 export interface StateType {
-  status?: 'ok' | 'error';
+  status?: 'success' | 'error';
   currentAuthority?: 'user' | 'guest' | 'admin';
 }
 

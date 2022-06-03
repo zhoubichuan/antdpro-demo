@@ -71,7 +71,7 @@ const Register: FC = () => {
   const getPasswordStatus = () => {
     const value = form.getFieldValue('password');
     if (value && value.length > 9) {
-      return 'ok';
+      return 'success';
     }
     if (value && value.length > 5) {
       return 'pass';
@@ -82,7 +82,7 @@ const Register: FC = () => {
   const { loading: submitting, run: register } = useRequest<{ data: StateType }>(fakeRegister, {
     manual: true,
     onSuccess: (data, params) => {
-      if (data.status === 'ok') {
+      if (data.status === 'success') {
         message.success('注册成功！');
         history.push({
           pathname: '/user/register-result',

@@ -3,7 +3,7 @@ import type { Effect, Reducer } from 'umi';
 import { fakeRegister } from './service';
 
 export type StateType = {
-  status?: 'ok' | 'error';
+  status?: 'success' | 'error';
   currentAuthority?: 'user' | 'guest' | 'admin';
 };
 

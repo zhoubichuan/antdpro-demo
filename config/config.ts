@@ -78,6 +78,7 @@ export default defineConfig({
         },
         {
           name: 'monitor',
+          menuRender: false,
           icon: 'smile',
           path: '/dashboard/monitor',
           component: './dashboard/monitor',

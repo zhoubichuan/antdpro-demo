@@ -119,7 +119,7 @@ export default {
     await waitTime(2000);
     if (password === 'ant.design' && username === 'admin') {
       res.send({
-        status: 'ok',
+        status: 'success',
         type,
         currentAuthority: 'admin',
       });
@@ -128,7 +128,7 @@ export default {
     }
     if (password === 'ant.design' && username === 'user') {
       res.send({
-        status: 'ok',
+        status: 'success',
         type,
         currentAuthority: 'user',
       });
@@ -137,7 +137,7 @@ export default {
     }
     if (type === 'mobile') {
       res.send({
-        status: 'ok',
+        status: 'success',
         type,
         currentAuthority: 'admin',
       });
@@ -157,7 +157,7 @@ export default {
     res.send({ data: {}, success: true });
   },
   'POST /api/register': (req: Request, res: Response) => {
-    res.send({ status: 'ok', currentAuthority: 'user', success: true });
+    res.send({ status: 'success', currentAuthority: 'user', success: true });
   },
   'GET /api/500': (req: Request, res: Response) => {
     res.status(500).send({

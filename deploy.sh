@@ -1,6 +1,6 @@
 # 1.发布到master分支
-git add -A
-git commit -m '🐛 fix(compiler): master'
+git add .
+git commit -m '🐛 fix(compiler): master' --no-verify
 git remote add gitee https://gitee.com/zhoubichuan/antdpro-demo.git
 git pull gitee master
 git push gitee master
@@ -13,7 +13,7 @@ cd dist
 git init
 git checkout --orphan gh-pages
 git add .
-git commit -m '🐛 fix(compiler): gh-pages'
+git commit -m '🐛 fix(compiler): gh-pages' --no-verify
 git remote add gitee https://gitee.com/zhoubichuan/antdpro-demo.git
 git push -f gitee gh-pages
 
@@ -21,8 +21,8 @@ git push -f gitee gh-pages
 cd -
 
 # # 1.发布到master分支
-git add -A
-git commit -m '🐛 fix(compiler): master'
+git add .
+git commit -m '🐛 fix(compiler): master' --no-verify
 git remote add github https://github.com/zhoubichuan/antdpro-demo.git
 git pull github master
 git push github master
@@ -37,7 +37,7 @@ cd dist
 git init
 git checkout --orphan gh-pages
 git add .
-git commit -m '🐛 fix(compiler): gh-pages'
+git commit -m '🐛 fix(compiler): gh-pages' --no-verify
 git remote add github https://github.com/zhoubichuan/antdpro-demo.git
 git push -f github gh-pages
 
