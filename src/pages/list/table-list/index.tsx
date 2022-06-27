@@ -266,9 +266,21 @@ const TableList: React.FC = () => {
             },
           ]}
           width="md"
+          label="name"
           name="name"
         />
-        <ProFormTextArea width="md" name="desc" />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="owner"
+          width="md"
+          name="owner"
+        />
+        <ProFormTextArea width="md" name="desc" label="desc" />
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {

@@ -32,7 +32,7 @@ export async function rule(
 export async function updateRule(options?: { [key: string]: any }) {
   return request<TableListItem>(window.antdprourl + '/api/rule', {
     method: 'PUT',
-    ...(options || {}),
+    data:{...(options || {})},
   });
 }
 
@@ -40,7 +40,7 @@ export async function updateRule(options?: { [key: string]: any }) {
 export async function addRule(options?: { [key: string]: any }) {
   return request<TableListItem>(window.antdprourl + '/api/rule', {
     method: 'POST',
-    ...(options || {}),
+    data:{...(options || {})},
   });
 }
 
@@ -48,6 +48,6 @@ export async function addRule(options?: { [key: string]: any }) {
 export async function removeRule(options?: { [key: string]: any }) {
   return request<Record<string, any>>(window.antdprourl + '/api/rule', {
     method: 'DELETE',
-    ...(options || {}),
+    data:{...(options || {})},
   });
 }
