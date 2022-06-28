@@ -9,6 +9,7 @@ _roadhog-api-doc
 # production
 /dist
 /.vscode
+/antdpro-demo
 
 # misc
 .DS_Store
@@ -36,5 +37,3 @@ functions/*
 screenshot
 .firebase
 .eslintcache
-
-build

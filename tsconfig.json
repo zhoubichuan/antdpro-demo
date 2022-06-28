@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "outDir": "build/antdpro-demo",
     "module": "esnext",
     "target": "esnext",
     "lib": ["esnext", "dom"],
@@ -37,5 +37,5 @@
     "jest.config.js",
     "mock/*"
   ],
-  "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest"]
+  "exclude": ["node_modules", "build", "antdpro-demo", "scripts", "src/.umi/*", "webpack", "jest"]
 }

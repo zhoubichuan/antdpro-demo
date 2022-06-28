@@ -2,7 +2,7 @@
 package.json
 .umi
 .umi-production
-/dist
+/antdpro-demo
 .dockerignore
 .DS_Store
 .eslintignore
