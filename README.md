@@ -1,5 +1,6 @@
 # antdpro-demo
-**介绍：**antdpro-demo是antdpro示例项目，后端配置antdpro-express，主要是完成一个全栈项目，前端部分以官方antdpro页面逻辑为主，接口全部改用真实接口
+
+**介绍：**antdpro-demo 是 antdpro 示例项目，后端配置 antdpro-express，主要是完成一个全栈项目，前端部分以官方 antdpro 页面逻辑为主，接口全部改用真实接口
 
 - 安装依赖
 
