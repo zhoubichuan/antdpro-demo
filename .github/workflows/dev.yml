@@ -13,8 +13,7 @@ jobs:
         with:
           node-version: "16.5.0"
       - name: Install npm dependencies
-        run: npm install yarn -g
-        run: yarn install
+        run: npm install -g cnpm --registry=https://registry.npm.taobao.org && cnpm install
       - name: Run build task
         run: npm run build
       - name: copy file  via ssh key
