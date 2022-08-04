@@ -12,13 +12,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "16.5.0"
-      - name: yarn
+      - name: 安装yarn
         run: yarn
-      - name: install
+      - name: 安装依赖
         run: yarn install 
-      - name: build
+      - name: 打包
         run: yarn build
-      - name: copy file  via ssh key
+      - name: 将打包项目传送到服务器
         uses: appleboy/scp-action@master
         with:
           source: "antdpro-demo/*"
