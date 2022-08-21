@@ -93,8 +93,8 @@ const TableList: React.FC = () => {
 
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
+      title: '任务编号',
+      dataIndex: 'code',
       tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
         return (
@@ -110,20 +110,46 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '作业信息',
+      dataIndex: 'work',
       valueType: 'textarea',
     },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: '作业面积',
+      dataIndex: 'area',
       sorter: true,
       hideInForm: true,
       renderText: (val: string) => `${val}万`,
     },
     {
-      title: '状态',
-      dataIndex: 'status',
+      title: '作业里程',
+      dataIndex: 'mileage',
+      sorter: true,
+      hideInForm: true,
+      renderText: (val: string) => `${val}万`,
+    },
+    {
+      title: '结束时间',
+      sorter: true,
+      dataIndex: 'time',
+      valueType: 'dateTime',
+      renderFormItem: (item, { defaultRender, ...rest }, form) => {
+        const status = form.getFieldValue('status');
+
+        if (`${status}` === '0') {
+          return false;
+        }
+
+        if (`${status}` === '3') {
+          return <Input {...rest} placeholder="请输入异常原因！" />;
+        }
+
+        return defaultRender(item);
+      },
+    },
+    {
+      title: '作业状态',
+      dataIndex: 'workStatus',
       hideInForm: true,
       valueEnum: {
         0: {
@@ -145,22 +171,26 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: '上次调度时间',
-      sorter: true,
-      dataIndex: 'updatedAt',
-      valueType: 'dateTime',
-      renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue('status');
-
-        if (`${status}` === '0') {
-          return false;
-        }
-
-        if (`${status}` === '3') {
-          return <Input {...rest} placeholder="请输入异常原因！" />;
-        }
-
-        return defaultRender(item);
+      title: '评估状态',
+      dataIndex: 'assessStatus',
+      hideInForm: true,
+      valueEnum: {
+        0: {
+          text: '关闭',
+          status: 'Default',
+        },
+        1: {
+          text: '运行中',
+          status: 'Processing',
+        },
+        2: {
+          text: '已上线',
+          status: 'Success',
+        },
+        3: {
+          text: '异常',
+          status: 'Error',
+        },
       },
     },
     {
@@ -266,8 +296,8 @@ const TableList: React.FC = () => {
             },
           ]}
           width="md"
-          label="name"
-          name="name"
+          label="任务编号"
+          name="code"
         />
         <ProFormText
           rules={[
@@ -276,11 +306,76 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="owner"
+          label="作业信息"
           width="md"
-          name="owner"
+          name="work"
         />
-        <ProFormTextArea width="md" name="desc" label="desc" />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="作业面积"
+          width="md"
+          name="area"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="作业里程"
+          width="md"
+          name="mileage"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="结束时间"
+          width="md"
+          name="time"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="作业状态"
+          width="md"
+          name="workStatus"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="评估状态"
+          width="md"
+          name="assessStatus"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="操作"
+          width="md"
+          name="option"
+        />
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {

@@ -93,8 +93,8 @@ const TableList: React.FC = () => {
 
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
+      title: '编号',
+      dataIndex: 'code',
       tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
         return (
@@ -110,58 +110,36 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '故障设备',
+      dataIndex: 'device',
       valueType: 'textarea',
     },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: '故障内容',
+      dataIndex: 'content',
       sorter: true,
       hideInForm: true,
       renderText: (val: string) => `${val}万`,
     },
     {
-      title: '状态',
-      dataIndex: 'status',
+      title: '故障类型',
+      dataIndex: 'type',
       hideInForm: true,
-      valueEnum: {
-        0: {
-          text: '关闭',
-          status: 'Default',
-        },
-        1: {
-          text: '运行中',
-          status: 'Processing',
-        },
-        2: {
-          text: '已上线',
-          status: 'Success',
-        },
-        3: {
-          text: '异常',
-          status: 'Error',
-        },
-      },
     },
     {
-      title: '上次调度时间',
+      title: '故障等级',
       sorter: true,
-      dataIndex: 'updatedAt',
-      valueType: 'dateTime',
-      renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue('status');
-
-        if (`${status}` === '0') {
-          return false;
-        }
-
-        if (`${status}` === '3') {
-          return <Input {...rest} placeholder="请输入异常原因！" />;
-        }
-
-        return defaultRender(item);
-      },
+      dataIndex: 'grade',
+    },
+    {
+      title: '发生时间',
+      dataIndex: 'time',
+      hideInForm: true,
+    },
+    {
+      title: '处理状态',
+      sorter: true,
+      dataIndex: 'status',
     },
     {
       title: '操作',
@@ -266,8 +244,8 @@ const TableList: React.FC = () => {
             },
           ]}
           width="md"
-          label="name"
-          name="name"
+          label="编号"
+          name="code"
         />
         <ProFormText
           rules={[
@@ -276,11 +254,76 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="owner"
+          label="故障设备"
           width="md"
-          name="owner"
+          name="device"
         />
-        <ProFormTextArea width="md" name="desc" label="desc" />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="故障内容"
+          width="md"
+          name="content"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="故障类型"
+          width="md"
+          name="type"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="故障等级"
+          width="md"
+          name="grade"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="发生时间"
+          width="md"
+          name="time"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="处理状态"
+          width="md"
+          name="status"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="操作"
+          width="md"
+          name="option"
+        />
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {

@@ -158,6 +158,36 @@ export default defineConfig({
           component: './list/table-list',
         },
         {
+          name: 'table-list1',
+          icon: 'smile',
+          path: '/list/table-list1',
+          component: './list/table-list1',
+        },
+        {
+          name: 'table-list2',
+          icon: 'smile',
+          path: '/list/table-list2',
+          component: './list/table-list2',
+        },
+        {
+          name: 'table-list3',
+          icon: 'smile',
+          path: '/list/table-list3',
+          component: './list/table-list3',
+        },
+        {
+          name: 'table-list4',
+          icon: 'smile',
+          path: '/list/table-list4',
+          component: './list/table-list4',
+        },
+        {
+          name: 'table-list5',
+          icon: 'smile',
+          path: '/list/table-list5',
+          component: './list/table-list5',
+        },
+        {
           name: 'basic-list',
           icon: 'smile',
           path: '/list/basic-list',

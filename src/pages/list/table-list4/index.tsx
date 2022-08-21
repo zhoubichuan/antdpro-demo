@@ -93,8 +93,8 @@ const TableList: React.FC = () => {
 
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
+      title: '编号',
+      dataIndex: 'code',
       tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
         return (
@@ -110,58 +110,36 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '围栏名称',
+      dataIndex: 'name',
       valueType: 'textarea',
     },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: '报警类型',
+      dataIndex: 'type',
       sorter: true,
       hideInForm: true,
       renderText: (val: string) => `${val}万`,
     },
     {
+      title: '约束农机',
+      dataIndex: 'machine',
+      hideInForm: true,
+    },
+    {
+      title: '约束时间',
+      sorter: true,
+      dataIndex: 'time',
+    },
+    {
       title: '状态',
       dataIndex: 'status',
       hideInForm: true,
-      valueEnum: {
-        0: {
-          text: '关闭',
-          status: 'Default',
-        },
-        1: {
-          text: '运行中',
-          status: 'Processing',
-        },
-        2: {
-          text: '已上线',
-          status: 'Success',
-        },
-        3: {
-          text: '异常',
-          status: 'Error',
-        },
-      },
     },
     {
-      title: '上次调度时间',
+      title: '备注',
       sorter: true,
-      dataIndex: 'updatedAt',
-      valueType: 'dateTime',
-      renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue('status');
-
-        if (`${status}` === '0') {
-          return false;
-        }
-
-        if (`${status}` === '3') {
-          return <Input {...rest} placeholder="请输入异常原因！" />;
-        }
-
-        return defaultRender(item);
-      },
+      dataIndex: 'remark',
     },
     {
       title: '操作',
@@ -266,7 +244,18 @@ const TableList: React.FC = () => {
             },
           ]}
           width="md"
-          label="name"
+          label="编号"
+          name="code"
+        />
+       <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="围栏名称"
+          width="md"
           name="name"
         />
         <ProFormText
@@ -276,11 +265,65 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="owner"
+          label="报警类型"
           width="md"
-          name="owner"
+          name="type"
         />
-        <ProFormTextArea width="md" name="desc" label="desc" />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="约束农机"
+          width="md"
+          name="machine"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="约束时间"
+          width="md"
+          name="time"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="状态"
+          width="md"
+          name="status"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="备注"
+          width="md"
+          name="remark"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="操作"
+          width="md"
+          name="option"
+        />
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {
