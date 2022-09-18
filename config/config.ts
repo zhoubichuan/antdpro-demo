@@ -188,6 +188,12 @@ export default defineConfig({
           component: './list/table-list5',
         },
         {
+          name: 'table-list6',
+          icon: 'smile',
+          path: '/list/table-list6',
+          component: './list/table-list6',
+        },
+        {
           name: 'basic-list',
           icon: 'smile',
           path: '/list/basic-list',
