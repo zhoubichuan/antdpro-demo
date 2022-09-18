@@ -206,7 +206,7 @@ const TableList: React.FC = () => {
         </FooterToolbar>
       )}
       <ModalForm
-        title="新建规则"
+        title="新建标签"
         width="400px"
         visible={createModalVisible}
         onVisibleChange={handleModalVisible}
@@ -249,7 +249,7 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="农机类型"
+          label="类型"
           width="md"
           name="type"
         />
@@ -260,53 +260,9 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="可监控工矿字段数量"
+          label="数据"
           width="md"
-          name="count"
-        />
-        <ProFormText
-          rules={[
-            {
-              required: true,
-              message: '规则名称为必填项',
-            },
-          ]}
-          label="设置阈值数量"
-          width="md"
-          name="number"
-        />
-        <ProFormText
-          rules={[
-            {
-              required: true,
-              message: '规则名称为必填项',
-            },
-          ]}
-          label="状态"
-          width="md"
-          name="status"
-        />
-        <ProFormText
-          rules={[
-            {
-              required: true,
-              message: '规则名称为必填项',
-            },
-          ]}
-          label="备注"
-          width="md"
-          name="remark"
-        />
-        <ProFormText
-          rules={[
-            {
-              required: true,
-              message: '规则名称为必填项',
-            },
-          ]}
-          label="操作"
-          width="md"
-          name="option"
+          name="value"
         />
       </ModalForm>
       <UpdateForm
