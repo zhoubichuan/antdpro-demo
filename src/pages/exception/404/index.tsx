@@ -8,10 +8,10 @@ export default () => (
     style={{
       background: 'none',
     }}
-    subTitle="Sorry, the page you visited does not exist."
+    subTitle="抱歉，您访问的页面不存在"
     extra={
       <Link to="/">
-        <Button type="primary">Back Home</Button>
+        <Button type="primary">返回首页</Button>
       </Link>
     }
   />

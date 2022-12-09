@@ -62,6 +62,7 @@ export default defineConfig({
           component: './user/register',
         },
         {
+          menuRender: false,
           component: '404',
         },
       ],
@@ -79,7 +80,7 @@ export default defineConfig({
         },
         {
           name: 'monitor',
-          menuRender: false,
+          // menuRender: false,
           icon: 'smile',
           path: '/dashboard/monitor',
           component: './dashboard/monitor',
@@ -158,37 +159,37 @@ export default defineConfig({
           component: './list/table-list',
         },
         {
-          name: 'table-list1',
+          name: '查询表格样式一',
           icon: 'smile',
           path: '/list/table-list1',
           component: './list/table-list1',
         },
         {
-          name: 'table-list2',
+          name: '查询表格样式一',
           icon: 'smile',
           path: '/list/table-list2',
           component: './list/table-list2',
         },
         {
-          name: 'table-list3',
+          name: '查询表格样式二',
           icon: 'smile',
           path: '/list/table-list3',
           component: './list/table-list3',
         },
         {
-          name: 'table-list4',
+          name: '查询表格样式三',
           icon: 'smile',
           path: '/list/table-list4',
           component: './list/table-list4',
         },
         {
-          name: 'table-list5',
+          name: '查询表格样式四',
           icon: 'smile',
           path: '/list/table-list5',
           component: './list/table-list5',
         },
         {
-          name: 'table-list6',
+          name: '查询表格样式五',
           icon: 'smile',
           path: '/list/table-list6',
           component: './list/table-list6',
@@ -257,12 +258,6 @@ export default defineConfig({
           component: './exception/403',
         },
         {
-          name: '404',
-          icon: 'smile',
-          path: '/exception/404',
-          component: './exception/404',
-        },
-        {
           name: '500',
           icon: 'smile',
           path: '/exception/500',
@@ -319,6 +314,7 @@ export default defineConfig({
       redirect: '/dashboard/analysis',
     },
     {
+      menuRender: false,
       component: '404',
     },
   ],

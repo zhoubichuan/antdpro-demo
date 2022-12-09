@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-form';
+import { ModalForm, ProFormText } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import type { FormValueType } from './components/UpdateForm';
@@ -220,9 +220,10 @@ const TableList: React.FC = () => {
         headerTitle="查询表格"
         actionRef={actionRef}
         rowKey="key"
-        search={{
-          labelWidth: 120,
+        pagination={{
+          showQuickJumper: true,
         }}
+        search={false}
         toolBarRender={() => [
           <Button
             type="primary"

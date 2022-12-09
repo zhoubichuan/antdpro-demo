@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import type { Request, Response } from 'express';
 import type { BasicListItemDataType } from './data.d';
 
@@ -105,7 +104,7 @@ function fakeList(count: number): BasicListItemDataType[] {
 let sourceData: BasicListItemDataType[] = [];
 
 function getFakeList(req: Request, res: Response) {
-  const params = req.query as any
+  const params = req.query as any;
 
   const count = Number(params.count) * 1 || 20;
 
