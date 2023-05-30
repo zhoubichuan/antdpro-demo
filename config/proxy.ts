@@ -9,7 +9,7 @@
 export default {
   dev: {
     '/api/': {
-      target: 'http://localhost:7001/',
+      target: 'http://zhoubichuan.com/antdpro-express/api',
       changeOrigin: true,
       pathRewrite: { '^': '' },
     },
