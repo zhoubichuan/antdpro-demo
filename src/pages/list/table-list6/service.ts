@@ -19,7 +19,7 @@ export async function rule(
     /** 列表的内容总数 */
     total?: number;
     success?: boolean;
-  }>(window.antdprourl + '/api/tags', {
+  }>('/api/tags', {
     method: 'GET',
     params: {
       ...params,
@@ -30,24 +30,24 @@ export async function rule(
 
 /** 新建规则 PUT /api/tags */
 export async function updateRule(options?: { [key: string]: any }) {
-  return request<TableListItem>(window.antdprourl + '/api/tags', {
+  return request<TableListItem>('/api/tags', {
     method: 'PUT',
-    data:{...(options || {})},
+    data: { ...(options || {}) },
   });
 }
 
 /** 新建规则 POST /api/tags */
 export async function addRule(options?: { [key: string]: any }) {
-  return request<TableListItem>(window.antdprourl + '/api/tags', {
+  return request<TableListItem>('/api/tags', {
     method: 'POST',
-    data:{...(options || {})},
+    data: { ...(options || {}) },
   });
 }
 
 /** 删除规则 DELETE /api/tags */
 export async function removeRule(options?: { [key: string]: any }) {
-  return request<Record<string, any>>(window.antdprourl + '/api/tags', {
+  return request<Record<string, any>>('/api/tags', {
     method: 'DELETE',
-    data:{...(options || {})},
+    data: { ...(options || {}) },
   });
 }

@@ -19,7 +19,7 @@ export async function rule(
     /** 列表的内容总数 */
     total?: number;
     success?: boolean;
-  }>(window.antdprourl + '/api/rule4', {
+  }>('/api/rule4', {
     method: 'GET',
     params: {
       ...params,
@@ -30,24 +30,24 @@ export async function rule(
 
 /** 新建规则 PUT /api/rule4 */
 export async function updateRule(options?: { [key: string]: any }) {
-  return request<TableListItem>(window.antdprourl + '/api/rule4', {
+  return request<TableListItem>('/api/rule4', {
     method: 'PUT',
-    data:{...(options || {})},
+    data: { ...(options || {}) },
   });
 }
 
 /** 新建规则 POST /api/rule4 */
 export async function addRule(options?: { [key: string]: any }) {
-  return request<TableListItem>(window.antdprourl + '/api/rule4', {
+  return request<TableListItem>('/api/rule4', {
     method: 'POST',
-    data:{...(options || {})},
+    data: { ...(options || {}) },
   });
 }
 
 /** 删除规则 DELETE /api/rule4 */
 export async function removeRule(options?: { [key: string]: any }) {
-  return request<Record<string, any>>(window.antdprourl + '/api/rule4', {
+  return request<Record<string, any>>('/api/rule4', {
     method: 'DELETE',
-    data:{...(options || {})},
+    data: { ...(options || {}) },
   });
 }

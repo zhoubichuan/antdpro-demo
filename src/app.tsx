@@ -11,7 +11,6 @@ import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
-window.antdprourl = localStorage.antdprourl || '/antdpro-express'; // eslint-disable-line
 /** 获取用户信息比较慢的时候会展示一个 loading */
 export const initialStateConfig = {
   loading: <PageLoading />,
@@ -110,7 +109,10 @@ export const request: RequestConfig = {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
         };
       }
-      return { url, options: { ...options, headers } };
+      return {
+        url: (localStorage.antdprourl || '/antdpro-express') + url,
+        options: { ...options, headers },
+      };
     },
   ],
   responseInterceptors: [

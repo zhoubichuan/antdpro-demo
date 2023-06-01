@@ -7,5 +7,5 @@ export async function queryBasicProfile(): Promise<{
     basicGoods: BasicGood[];
   };
 }> {
-  return request(window.antdprourl + '/api/profile/basic');
+  return request('/api/profile/basic');
 }

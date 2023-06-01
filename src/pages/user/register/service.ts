@@ -15,7 +15,7 @@ export interface UserRegisterParams {
 }
 
 export async function fakeRegister(params: UserRegisterParams) {
-  return request(window.antdprourl + '/api/register', {
+  return request('/api/register', {
     method: 'POST',
     data: params,
   });

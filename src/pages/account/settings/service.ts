@@ -2,11 +2,11 @@ import { request } from 'umi';
 import type { CurrentUser, GeographicItemType } from './data';
 
 export async function queryCurrent(): Promise<{ data: CurrentUser }> {
-  return request(window.antdprourl + '/api/accountSettingCurrentUser');
+  return request('/api/accountSettingCurrentUser');
 }
 
 export async function queryProvince(): Promise<{ data: GeographicItemType[] }> {
-  return request(window.antdprourl + '/api/geographic/province');
+  return request('/api/geographic/province');
 }
 
 export async function queryCity(province: string): Promise<{ data: GeographicItemType[] }> {
@@ -14,5 +14,5 @@ export async function queryCity(province: string): Promise<{ data: GeographicIte
 }
 
 export async function query() {
-  return request(window.antdprourl + '/api/users');
+  return request('/api/users');
 }
