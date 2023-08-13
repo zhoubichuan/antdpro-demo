@@ -242,25 +242,6 @@ export default defineConfig({
       ],
     },
     {
-      name: 'exception',
-      icon: 'warning',
-      path: '/exception',
-      routes: [
-        {
-          name: '403',
-          icon: 'smile',
-          path: '/exception/403',
-          component: './exception/403',
-        },
-        {
-          name: '500',
-          icon: 'smile',
-          path: '/exception/500',
-          component: './exception/500',
-        },
-      ],
-    },
-    {
       name: 'account',
       icon: 'user',
       path: '/account',

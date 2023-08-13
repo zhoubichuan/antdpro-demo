@@ -93,6 +93,11 @@ const TableList: React.FC = () => {
 
   const columns: ProColumns<TableListItem>[] = [
     {
+      title: '类别',
+      dataIndex: 'desc',
+      valueType: 'textarea',
+    },
+    {
       title: '规则名称',
       dataIndex: 'name',
       tip: '规则名称是唯一的 key',
@@ -108,11 +113,6 @@ const TableList: React.FC = () => {
           </a>
         );
       },
-    },
-    {
-      title: '描述',
-      dataIndex: 'desc',
-      valueType: 'textarea',
     },
     {
       title: '服务调用次数',
@@ -145,7 +145,7 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: '上次调度时间',
+      title: '更新时间',
       sorter: true,
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
@@ -187,7 +187,7 @@ const TableList: React.FC = () => {
   return (
     <PageContainer>
       <ProTable<TableListItem, TableListPagination>
-        headerTitle="查询表格"
+        headerTitle="数据项分类"
         actionRef={actionRef}
         rowKey="key"
         search={{
