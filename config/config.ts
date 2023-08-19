@@ -1,9 +1,9 @@
-// https://umijs.org/config/
 import { defineConfig } from 'umi';
 import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 const { REACT_APP_ENV } = process.env;
+console.log('REACT_APP_ENV', [REACT_APP_ENV || 'dev']);
 export default defineConfig({
   base: '/antdpro-demo/',
   publicPath: '/antdpro-demo/',

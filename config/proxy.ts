@@ -1,23 +1,23 @@
 export default {
   dev: {
     '/api/': {
-      target: 'http://zhoubichuan.com/antdpro-express/api',
+      target: '/',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      pathRewrite: { '^/': '/' },
     },
   },
   sit: {
     '/api/': {
-      target: 'https://preview.pro.ant.design',
+      target: 'http://zhoubichuan.com/antdpro-express',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      pathRewrite: { '^/': '/' },
     },
   },
   uat: {
     '/api/': {
-      target: 'your pre url',
+      target: 'http://zhoubichuan.com/antdpro-express',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      pathRewrite: { '^/': '/' },
     },
   },
 };

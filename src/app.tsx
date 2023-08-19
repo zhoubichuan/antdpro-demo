@@ -110,7 +110,7 @@ export const request: RequestConfig = {
         };
       }
       return {
-        url: (localStorage.antdprourl || '/antdpro-express') + url,
+        url: (localStorage.antdprourl || '') + url,
         options: { ...options, headers },
       };
     },

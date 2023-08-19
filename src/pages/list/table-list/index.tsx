@@ -8,14 +8,8 @@ import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import type { FormValueType } from './components/UpdateForm';
-import UpdateForm from './components/UpdateForm';
 import { rule, addRule, updateRule, removeRule } from './service';
 import type { TableListItem, TableListPagination } from './data';
-/**
- * 添加节点
- *
- * @param fields
- */
 
 const handleAdd = async (fields: TableListItem) => {
   const hide = message.loading('正在添加');
@@ -31,11 +25,6 @@ const handleAdd = async (fields: TableListItem) => {
     return false;
   }
 };
-/**
- * 更新节点
- *
- * @param fields
- */
 
 const handleUpdate = async (fields: FormValueType) => {
   const hide = message.loading('正在配置');
@@ -55,11 +44,6 @@ const handleUpdate = async (fields: FormValueType) => {
     return false;
   }
 };
-/**
- * 删除节点
- *
- * @param selectedRows
- */
 
 const handleRemove = async (selectedRows: TableListItem[]) => {
   const hide = message.loading('正在删除');
@@ -80,17 +64,12 @@ const handleRemove = async (selectedRows: TableListItem[]) => {
 };
 
 const TableList: React.FC = () => {
-  /** 新建窗口的弹窗 */
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
-  /** 分布更新窗口的弹窗 */
-
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const actionRef = useRef<ActionType>();
   const [currentRow, setCurrentRow] = useState<TableListItem>();
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
-  /** 国际化配置 */
-
   const columns: ProColumns<TableListItem>[] = [
     {
       title: '类别',
@@ -159,7 +138,6 @@ const TableList: React.FC = () => {
         if (`${status}` === '3') {
           return <Input {...rest} placeholder="请输入异常原因！" />;
         }
-
         return defaultRender(item);
       },
     },
@@ -175,11 +153,9 @@ const TableList: React.FC = () => {
             setCurrentRow(record);
           }}
         >
-          配置
+          修改
         </a>,
-        <a key="subscribeAlert" href="https://procomponents.ant.design/">
-          订阅警报
-        </a>,
+        <a key="subscribeAlert">删除</a>,
       ],
     },
   ];
@@ -194,6 +170,24 @@ const TableList: React.FC = () => {
           labelWidth: 120,
         }}
         toolBarRender={() => [
+          <Button
+            type="primary"
+            key="primary"
+            onClick={() => {
+              alert('批量删除');
+            }}
+          >
+            <PlusOutlined /> 批量删除
+          </Button>,
+          <Button
+            type="primary"
+            key="primary"
+            onClick={() => {
+              alert('导入');
+            }}
+          >
+            <PlusOutlined /> 导入
+          </Button>,
           <Button
             type="primary"
             key="primary"
@@ -282,27 +276,48 @@ const TableList: React.FC = () => {
         />
         <ProFormTextArea width="md" name="desc" label="desc" />
       </ModalForm>
-      <UpdateForm
-        onSubmit={async (value) => {
+      <ModalForm
+        title="修改规则"
+        width="400px"
+        visible={updateModalVisible}
+        onVisibleChange={handleUpdateModalVisible}
+        onFinish={async (value) => {
           const success = await handleUpdate(value);
 
           if (success) {
             handleUpdateModalVisible(false);
             setCurrentRow(undefined);
-
             if (actionRef.current) {
               actionRef.current.reload();
             }
           }
         }}
-        onCancel={() => {
-          handleUpdateModalVisible(false);
-          setCurrentRow(undefined);
-        }}
-        updateModalVisible={updateModalVisible}
-        values={currentRow || {}}
-      />
-
+        initialValues={currentRow}
+      >
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          width="md"
+          label="name"
+          name="name"
+        />
+        <ProFormText
+          rules={[
+            {
+              required: true,
+              message: '规则名称为必填项',
+            },
+          ]}
+          label="owner"
+          width="md"
+          name="owner"
+        />
+        <ProFormTextArea width="md" name="desc" label="desc" />
+      </ModalForm>
       <Drawer
         width={600}
         visible={showDetail}
