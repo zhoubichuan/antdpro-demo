@@ -77,7 +77,7 @@ const TableList: React.FC = () => {
       valueType: 'textarea',
     },
     {
-      title: '规则名称',
+      title: '名称',
       dataIndex: 'name',
       tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
@@ -94,7 +94,7 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: '服务调用次数',
+      title: '次数',
       dataIndex: 'callNo',
       sorter: true,
       hideInForm: true,
@@ -240,6 +240,7 @@ const TableList: React.FC = () => {
       <ModalForm
         title="新建规则"
         width="400px"
+        layout={'horizontal'}
         visible={createModalVisible}
         onVisibleChange={handleModalVisible}
         onFinish={async (value) => {
@@ -260,7 +261,7 @@ const TableList: React.FC = () => {
             },
           ]}
           width="md"
-          label="name"
+          label="名称"
           name="name"
         />
         <ProFormText
@@ -274,14 +275,16 @@ const TableList: React.FC = () => {
           width="md"
           name="owner"
         />
-        <ProFormTextArea width="md" name="desc" label="desc" />
+        <ProFormTextArea width="md" name="desc" label="类别" />
       </ModalForm>
       <ModalForm
         title="修改规则"
         width="400px"
+        layout={'horizontal'}
         visible={updateModalVisible}
         onVisibleChange={handleUpdateModalVisible}
         onFinish={async (value) => {
+          console.log(value, 'values');
           const success = await handleUpdate(value);
 
           if (success) {
@@ -302,7 +305,7 @@ const TableList: React.FC = () => {
             },
           ]}
           width="md"
-          label="name"
+          label="名称"
           name="name"
         />
         <ProFormText
@@ -316,7 +319,7 @@ const TableList: React.FC = () => {
           width="md"
           name="owner"
         />
-        <ProFormTextArea width="md" name="desc" label="desc" />
+        <ProFormTextArea width="md" name="desc" label="类别" />
       </ModalForm>
       <Drawer
         width={600}
