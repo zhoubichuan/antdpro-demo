@@ -14,8 +14,8 @@ export default () => {
       copyright={`2020 ${defaultMessage}`}
       links={[
         {
-          key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
+          key: '数据管理系统',
+          title: '数据管理系统',
           href: 'https://pro.ant.design',
           blankTarget: true,
         },
@@ -23,12 +23,6 @@ export default () => {
           key: 'github',
           title: <GithubOutlined />,
           href: 'https://github.com/ant-design/ant-design-pro',
-          blankTarget: true,
-        },
-        {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
           blankTarget: true,
         },
       ]}

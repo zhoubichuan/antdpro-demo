@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Ant Design Pro",
+    "title": "数据管理系统",
     "version": "1.0.0"
   },
   "servers": [

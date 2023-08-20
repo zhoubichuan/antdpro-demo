@@ -97,7 +97,7 @@ const Login: React.FC = () => {
           <div className={styles.header}>
             <Link to="/">
               <img alt="logo" className={styles.logo} src="/antdpro-demo/logo.svg" />
-              <span className={styles.title}>Ant Design</span>
+              <span className={styles.title}>数据管理系统</span>
             </Link>
           </div>
           <div className={styles.desc}>
@@ -109,6 +109,8 @@ const Login: React.FC = () => {
           <ProForm
             initialValues={{
               autoLogin: true,
+              username: 'admin',
+              password: 'ant.design',
             }}
             submitter={{
               searchConfig: {
