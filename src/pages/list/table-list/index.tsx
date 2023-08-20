@@ -68,7 +68,7 @@ const TableList: React.FC = () => {
   const columns: ProColumns<TableListItem>[] = [
     {
       title: '类别',
-      dataIndex: 'desc',
+      dataIndex: 'type',
       valueType: 'textarea',
     },
     {
@@ -86,6 +86,11 @@ const TableList: React.FC = () => {
           </a>
         );
       },
+    },
+    {
+      title: '值',
+      dataIndex: 'value',
+      valueType: 'textarea',
     },
     {
       title: '更新时间',
@@ -235,11 +240,11 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="owner"
+          label="值"
           width="md"
-          name="owner"
+          name="value"
         />
-        <ProFormTextArea width="md" name="desc" label="类别" />
+        <ProFormTextArea width="md" name="type" label="类别" />
       </ModalForm>
       <ModalForm
         title="修改规则"
@@ -278,11 +283,11 @@ const TableList: React.FC = () => {
               message: '规则名称为必填项',
             },
           ]}
-          label="owner"
+          label="值"
           width="md"
-          name="owner"
+          name="value"
         />
-        <ProFormTextArea width="md" name="desc" label="类别" />
+        <ProFormTextArea width="md" name="type" label="类别" />
       </ModalForm>
       <Drawer
         width={600}
