@@ -7,7 +7,6 @@ import ProTable from '@ant-design/pro-table';
 import { ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import type { FormValueType } from './components/UpdateForm';
 import { rule, addRule, updateRule, removeRule } from './service';
 import type { TableListItem, TableListPagination } from './data';
 
@@ -21,26 +20,22 @@ const handleAdd = async (fields: TableListItem) => {
     return true;
   } catch (error) {
     hide();
-    message.error('添加失败请重试！');
+    message.error('添加失败！');
     return false;
   }
 };
 
-const handleUpdate = async (fields: FormValueType) => {
+const handleUpdate = async (fields: TableListItem) => {
   const hide = message.loading('正在配置');
 
   try {
-    await updateRule({
-      name: fields.name,
-      desc: fields.desc,
-      key: fields.key,
-    });
+    await updateRule({ ...fields });
     hide();
-    message.success('配置成功');
+    message.success('修改成功');
     return true;
   } catch (error) {
     hide();
-    message.error('配置失败请重试！');
+    message.error('修改失败！');
     return false;
   }
 };
@@ -79,7 +74,6 @@ const TableList: React.FC = () => {
     {
       title: '名称',
       dataIndex: 'name',
-      tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
         return (
           <a
@@ -91,36 +85,6 @@ const TableList: React.FC = () => {
             {dom}
           </a>
         );
-      },
-    },
-    {
-      title: '次数',
-      dataIndex: 'callNo',
-      sorter: true,
-      hideInForm: true,
-      renderText: (val: string) => `${val}万`,
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      hideInForm: true,
-      valueEnum: {
-        0: {
-          text: '关闭',
-          status: 'Default',
-        },
-        1: {
-          text: '运行中',
-          status: 'Processing',
-        },
-        2: {
-          text: '已上线',
-          status: 'Success',
-        },
-        3: {
-          text: '异常',
-          status: 'Error',
-        },
       },
     },
     {
@@ -284,8 +248,7 @@ const TableList: React.FC = () => {
         visible={updateModalVisible}
         onVisibleChange={handleUpdateModalVisible}
         onFinish={async (value) => {
-          console.log(value, 'values');
-          const success = await handleUpdate(value);
+          const success = await handleUpdate(value as TableListItem);
 
           if (success) {
             handleUpdateModalVisible(false);
