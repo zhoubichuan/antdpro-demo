@@ -1,9 +1,9 @@
 export default {
   dev: {
     '/api/': {
-      target: '/',
+      target: 'http://localhost:7001',
       changeOrigin: true,
-      pathRewrite: { '^/': '/' },
+      pathRewrite: { '': '' },
     },
   },
   sit: {

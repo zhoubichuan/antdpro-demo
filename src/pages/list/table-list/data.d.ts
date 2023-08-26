@@ -1,16 +1,10 @@
 export type TableListItem = {
-  key: number;
-  disabled?: boolean;
-  href: string;
-  avatar: string;
-  name: string;
-  owner: string;
-  desc: string;
-  callNo: number;
-  status: string;
+  id: string;
   updatedAt: Date;
   createdAt: Date;
-  progress: number;
+  type: string;
+  name: string;
+  value: string;
 };
 
 export type TableListPagination = {
