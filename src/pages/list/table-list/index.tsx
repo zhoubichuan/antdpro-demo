@@ -125,6 +125,9 @@ const TableList: React.FC = () => {
           key="subscribeAlert"
           onClick={() => {
             handleRemove([record] as TableListItem[]);
+            if (actionRef.current) {
+              actionRef.current.reload();
+            }
           }}
         >
           删除
@@ -148,6 +151,9 @@ const TableList: React.FC = () => {
             key="primary"
             onClick={() => {
               handleRemove(selectedRowsState);
+              if (actionRef.current) {
+                actionRef.current.reload();
+              }
             }}
           >
             <PlusOutlined /> 批量删除
@@ -179,34 +185,6 @@ const TableList: React.FC = () => {
           },
         }}
       />
-      {selectedRowsState?.length > 0 && (
-        <FooterToolbar
-          extra={
-            <div>
-              已选择{' '}
-              <a
-                style={{
-                  fontWeight: 600,
-                }}
-              >
-                {selectedRowsState.length}
-              </a>{' '}
-              项 &nbsp;&nbsp;
-            </div>
-          }
-        >
-          <Button
-            onClick={async () => {
-              await handleRemove(selectedRowsState);
-              setSelectedRows([]);
-              actionRef.current?.reloadAndRest?.();
-            }}
-          >
-            批量删除
-          </Button>
-          <Button type="primary">批量审批</Button>
-        </FooterToolbar>
-      )}
       {createModalVisible && (
         <ModalForm
           title="新建规则"
