@@ -190,6 +190,12 @@ export default defineConfig({
           component: './list/table-list6',
         },
         {
+          name: 'ip地址',
+          icon: 'smile',
+          path: '/list/table-list7',
+          component: './list/table-list7',
+        },
+        {
           name: 'basic-list',
           icon: 'smile',
           path: '/list/basic-list',
