@@ -3,8 +3,10 @@ export type TableListItem = {
   updatedAt: Date;
   createdAt: Date;
   type: string;
-  name: string;
+  ip: string;
   value: string;
+  latitude: string;
+  longitude: string;
 };
 
 export type TableListPagination = {

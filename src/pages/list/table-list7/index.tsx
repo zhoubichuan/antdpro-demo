@@ -64,7 +64,7 @@ const TableList: React.FC = () => {
 
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: 'id',
+      title: '编号',
       dataIndex: 'id',
       render: (dom, entity) => {
         return (
@@ -80,20 +80,28 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: 'ip',
+      title: 'ip号码',
       dataIndex: 'ip',
     },
     {
-      title: 'network',
+      title: '网络',
       dataIndex: 'network',
     },
     {
-      title: 'version',
+      title: '版本',
       dataIndex: 'version',
     },
     {
-      title: 'city',
+      title: '城市',
       dataIndex: 'city',
+    },
+    {
+      title: '经度',
+      dataIndex: 'latitude',
+    },
+    {
+      title: '纬度',
+      dataIndex: 'longitude',
     },
     {
       title: '更新时间',
@@ -213,7 +221,7 @@ const TableList: React.FC = () => {
                 message: '规则名称为必填项',
               },
             ]}
-            label="ip"
+            label="ip号码"
             width="md"
             name="ip"
           />
@@ -225,7 +233,7 @@ const TableList: React.FC = () => {
               },
             ]}
             width="md"
-            label="network"
+            label="网络"
             name="network"
           />
           <ProFormText
@@ -235,7 +243,7 @@ const TableList: React.FC = () => {
                 message: '规则名称为必填项',
               },
             ]}
-            label="city"
+            label="城市"
             width="md"
             name="city"
           />
@@ -268,7 +276,7 @@ const TableList: React.FC = () => {
               },
             ]}
             disabled
-            label="id"
+            label="编号"
             width="md"
             name="id"
           />
@@ -279,7 +287,7 @@ const TableList: React.FC = () => {
                 message: '规则名称为必填项',
               },
             ]}
-            label="ip"
+            label="ip号码"
             width="md"
             name="ip"
           />
@@ -291,7 +299,7 @@ const TableList: React.FC = () => {
               },
             ]}
             width="md"
-            label="network"
+            label="网络"
             name="network"
           />
           <ProFormText
@@ -301,7 +309,7 @@ const TableList: React.FC = () => {
                 message: '规则名称为必填项',
               },
             ]}
-            label="city"
+            label="城市"
             width="md"
             name="city"
           />
@@ -317,15 +325,15 @@ const TableList: React.FC = () => {
           }}
           closable={false}
         >
-          {currentRow?.name && (
+          {currentRow?.ip && (
             <ProDescriptions<TableListItem>
               column={2}
-              title={currentRow?.name}
+              title={currentRow?.ip}
               request={async () => ({
                 data: currentRow || {},
               })}
               params={{
-                id: currentRow?.name,
+                id: currentRow?.ip,
               }}
               columns={columns as ProDescriptionsItemProps<TableListItem>[]}
             />
