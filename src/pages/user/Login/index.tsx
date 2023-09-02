@@ -98,7 +98,9 @@ const Login: React.FC = () => {
             <Link to="/">
               <img
                 alt="logo"
-                onClick={() => (localStorage.antdprourl = '//zhoubichuan.com/antdpro-express')}
+                onClick={() =>
+                  (localStorage.antdprourl = 'https://zhoubichuan.com/antdpro-express')
+                }
                 className={styles.logo}
                 src="/antdpro-demo/logo.svg"
               />

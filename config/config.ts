@@ -148,7 +148,7 @@ export default defineConfig({
           ],
         },
         {
-          name: 'table-list',
+          name: '数据分类',
           icon: 'smile',
           path: '/list/table-list',
           component: './list/table-list',
