@@ -6,7 +6,7 @@ export default () => {
   const intl = useIntl();
   const defaultMessage = intl.formatMessage({
     id: 'app.copyright.produced',
-    defaultMessage: '蚂蚁集团体验技术部出品',
+    defaultMessage: '周必川二次开发',
   });
 
   return (
@@ -16,13 +16,13 @@ export default () => {
         {
           key: '数据管理系统',
           title: '数据管理系统',
-          href: 'https://pro.ant.design',
+          href: 'https://zhoubichuan.com/antdpro-demo/dashboard/analysis',
           blankTarget: true,
         },
         {
           key: 'github',
           title: <GithubOutlined />,
-          href: 'https://github.com/ant-design/ant-design-pro',
+          href: 'https://github.com/zhoubichuan',
           blankTarget: true,
         },
       ]}
