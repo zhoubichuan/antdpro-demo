@@ -9,6 +9,7 @@ import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import { rule, addRule, updateRule, removeRule } from './service';
 import type { TableListItem, TableListPagination } from './data';
+import { useParams } from 'react-router';
 
 const handleAdd = async (fields: TableListItem) => {
   const hide = message.loading('正在添加');
@@ -61,7 +62,8 @@ const TableList: React.FC = () => {
   const actionRef = useRef<ActionType>();
   const [currentRow, setCurrentRow] = useState<TableListItem>();
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
-
+  const params: any = useParams();
+  const templateData: any = require('./' + params.id + '.json');
   const columns: ProColumns<TableListItem>[] = [
     {
       title: '编号',
@@ -79,30 +81,7 @@ const TableList: React.FC = () => {
         );
       },
     },
-    {
-      title: 'ip号码',
-      dataIndex: 'ip',
-    },
-    {
-      title: '网络',
-      dataIndex: 'network',
-    },
-    {
-      title: '版本',
-      dataIndex: 'version',
-    },
-    {
-      title: '城市',
-      dataIndex: 'city',
-    },
-    {
-      title: '经度',
-      dataIndex: 'latitude',
-    },
-    {
-      title: '纬度',
-      dataIndex: 'longitude',
-    },
+    ...templateData,
     {
       title: '更新时间',
       sorter: true,
@@ -214,39 +193,9 @@ const TableList: React.FC = () => {
             }
           }}
         >
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            label="ip号码"
-            width="md"
-            name="ip"
-          />
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            width="md"
-            label="网络"
-            name="network"
-          />
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            label="城市"
-            width="md"
-            name="city"
-          />
+          {templateData.map((item: any) => (
+            <ProFormText {...item.create} label={item.dataIndex} name={item.title} />
+          ))}
         </ModalForm>
       )}
       {updateModalVisible && (
@@ -268,51 +217,9 @@ const TableList: React.FC = () => {
           }}
           initialValues={currentRow}
         >
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            disabled
-            label="编号"
-            width="md"
-            name="id"
-          />
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            label="ip号码"
-            width="md"
-            name="ip"
-          />
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            width="md"
-            label="网络"
-            name="network"
-          />
-          <ProFormText
-            rules={[
-              {
-                required: true,
-                message: '规则名称为必填项',
-              },
-            ]}
-            label="城市"
-            width="md"
-            name="city"
-          />
+          {templateData.map((item: any) => (
+            <ProFormText {...item.edit} label={item.dataIndex} name={item.title} />
+          ))}
         </ModalForm>
       )}
       {showDetail && (
