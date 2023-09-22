@@ -15,7 +15,7 @@ import { queryProvince, queryCity } from '../service';
 import styles from './BaseView.less';
 
 const validatorPhone = (rule: any, value: string, callback: (message?: string) => void) => {
-  const values = value.split('-');
+  const values = value?.split('-');
   if (!values[0]) {
     callback('Please input your area code!');
   }
@@ -81,7 +81,7 @@ const BaseView: React.FC = () => {
               }}
               initialValues={{
                 ...currentUser,
-                phone: currentUser?.phone.split('-'),
+                phone: currentUser?.phone?.split('-'),
               }}
               hideRequiredMark
             >

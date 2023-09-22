@@ -1,0 +1,152 @@
+[
+  {
+    "title": "ip号码",
+    "dataIndex": "ip",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "网络",
+    "dataIndex": "network",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "版本",
+    "dataIndex": "version",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "城市",
+    "dataIndex": "city",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "经度",
+    "dataIndex": "latitude",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "纬度",
+    "dataIndex": "longitude",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  }
+]

@@ -192,8 +192,8 @@ export default defineConfig({
         {
           name: '字段列表',
           icon: 'smile',
-          path: '/list/table-list7/:id',
-          component: './list/table-list7',
+          path: '/list/list/:id',
+          component: './list/list',
         },
         {
           name: 'basic-list',

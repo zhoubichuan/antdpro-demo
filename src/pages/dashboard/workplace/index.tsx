@@ -83,7 +83,7 @@ const Workplace: FC = () => {
   const { data } = useRequest(fakeChartData);
 
   const renderActivities = (item: ActivitiesType) => {
-    const events = item.template.split(/@\{([^{}]*)\}/gi).map((key) => {
+    const events = item.template?.split(/@\{([^{}]*)\}/gi).map((key) => {
       if (item[key]) {
         return (
           <a href={item[key].link} key={item[key].name}>
