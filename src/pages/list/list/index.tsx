@@ -1,16 +1,23 @@
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
 import { Button, message, Input, Drawer } from 'antd';
 import React, { useState, useRef } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { ModalForm, ProFormText } from '@ant-design/pro-form';
+import {
+  ModalForm,
+  ProFormText,
+  ProFormTextArea,
+  ProFormSwitch,
+  ProFormSelect,
+  ProFormRadio,
+} from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import { rule, addRule, updateRule, removeRule } from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
-import { history, Link } from 'umi';
+import { history } from 'umi';
 
 const handleAdd = async (fields: TableListItem) => {
   const hide = message.loading('正在添加');
@@ -85,7 +92,7 @@ const TableList: React.FC = () => {
         );
       },
     },
-    ...templateData,
+    ...templateData.filter((item: any) => item.table),
     {
       title: '更新时间',
       sorter: true,
@@ -146,7 +153,6 @@ const TableList: React.FC = () => {
         {
           tab: '列表1',
           key: '1',
-          closable: false,
         },
         {
           tab: '列表2',
@@ -180,7 +186,6 @@ const TableList: React.FC = () => {
     >
       <ProTable<TableListItem, TableListPagination>
         style={{ height: '100%' }}
-        headerTitle="数据项分类"
         actionRef={actionRef}
         rowKey="id"
         search={{
@@ -243,9 +248,29 @@ const TableList: React.FC = () => {
             }
           }}
         >
-          {templateData.map((item: any) => (
-            <ProFormText {...item.create} label={item.title} name={item.dataIndex} />
-          ))}
+          {templateData.map((item: any) => {
+            let form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
+            switch (item.create ? item.create.type || '' : '') {
+              case 'input':
+                form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'textArea':
+                form = (
+                  <ProFormTextArea {...item.create} label={item.title} name={item.dataIndex} />
+                );
+                break;
+              case 'select':
+                form = <ProFormSelect {...item.create} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'radio':
+                form = <ProFormRadio {...item.create} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'switch':
+                form = <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />;
+                break;
+            }
+            return form;
+          })}
         </ModalForm>
       )}
       {updateModalVisible && (
@@ -267,36 +292,54 @@ const TableList: React.FC = () => {
           }}
           initialValues={currentRow}
         >
-          {templateData.map((item: any) => (
-            <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />
-          ))}
+          {templateData.map((item: any) => {
+            let form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
+            switch (item.edit ? item.edit.type || '' : '') {
+              case 'input':
+                form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'textArea':
+                form = <ProFormTextArea {...item.edit} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'select':
+                form = <ProFormSelect {...item.edit} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'radio':
+                form = <ProFormRadio {...item.edit} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'switch':
+                form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
+                break;
+            }
+            return form;
+          })}
         </ModalForm>
       )}
-      {showDetail && (
-        <Drawer
-          width={600}
-          visible={showDetail}
-          onClose={() => {
-            setCurrentRow(undefined);
-            setShowDetail(false);
-          }}
-          closable={false}
-        >
-          {currentRow?.ip && (
-            <ProDescriptions<TableListItem>
-              column={2}
-              title={currentRow?.ip}
-              request={async () => ({
-                data: currentRow || {},
-              })}
-              params={{
-                id: currentRow?.ip,
-              }}
-              columns={columns as ProDescriptionsItemProps<TableListItem>[]}
-            />
-          )}
-        </Drawer>
-      )}
+      <Drawer
+        destroyOnClose
+        closeIcon={<CloseOutlined />}
+        width={600}
+        open={showDetail}
+        onClose={() => {
+          setCurrentRow(undefined);
+          setShowDetail(false);
+        }}
+        closable={false}
+      >
+        {currentRow?.id && (
+          <ProDescriptions<TableListItem>
+            column={2}
+            title={currentRow?.id}
+            request={async () => ({
+              data: currentRow || {},
+            })}
+            params={{
+              id: currentRow?.id,
+            }}
+            columns={columns as ProDescriptionsItemProps<TableListItem>[]}
+          />
+        )}
+      </Drawer>
     </PageContainer>
   );
 };
