@@ -178,7 +178,7 @@ const TableList: React.FC = () => {
       />
       {createModalVisible && (
         <ModalForm
-          title="新建规则"
+          title="新增"
           width="400px"
           layout={'horizontal'}
           visible={createModalVisible}
@@ -194,13 +194,13 @@ const TableList: React.FC = () => {
           }}
         >
           {templateData.map((item: any) => (
-            <ProFormText {...item.create} label={item.dataIndex} name={item.title} />
+            <ProFormText {...item.create} label={item.title} name={item.dataIndex} />
           ))}
         </ModalForm>
       )}
       {updateModalVisible && (
         <ModalForm
-          title="修改规则"
+          title="编辑"
           width="400px"
           layout={'horizontal'}
           visible={updateModalVisible}
@@ -218,7 +218,7 @@ const TableList: React.FC = () => {
           initialValues={currentRow}
         >
           {templateData.map((item: any) => (
-            <ProFormText {...item.edit} label={item.dataIndex} name={item.title} />
+            <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />
           ))}
         </ModalForm>
       )}
