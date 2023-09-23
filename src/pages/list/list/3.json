@@ -1,7 +1,7 @@
 [
   {
-    "title": "ip号码",
-    "dataIndex": "ip",
+    "title": "编号",
+    "dataIndex": "code",
     "search": true,
     "table": true,
     "create": {
@@ -25,8 +25,8 @@
     "view": true
   },
   {
-    "title": "网络",
-    "dataIndex": "network",
+    "title": "故障设备",
+    "dataIndex": "device",
     "search": true,
     "table": true,
     "create": {
@@ -50,8 +50,8 @@
     "view": true
   },
   {
-    "title": "版本",
-    "dataIndex": "version",
+    "title": "故障内容",
+    "dataIndex": "content",
     "search": true,
     "table": true,
     "create": {
@@ -75,8 +75,8 @@
     "view": true
   },
   {
-    "title": "城市",
-    "dataIndex": "city",
+    "title": "故障类型",
+    "dataIndex": "type",
     "search": true,
     "table": true,
     "create": {
@@ -100,8 +100,8 @@
     "view": true
   },
   {
-    "title": "经度",
-    "dataIndex": "latitude",
+    "title": "故障等级",
+    "dataIndex": "grade",
     "search": true,
     "table": true,
     "create": {
@@ -125,8 +125,33 @@
     "view": true
   },
   {
-    "title": "纬度",
-    "dataIndex": "longitude",
+    "title": "发生时间",
+    "dataIndex": "time",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "处理状态",
+    "dataIndex": "status",
     "search": true,
     "table": true,
     "create": {
