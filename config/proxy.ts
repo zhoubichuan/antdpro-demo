@@ -3,7 +3,7 @@ export default {
     '/api/': {
       target: '//localhost:7001',
       changeOrigin: true,
-      pathRewrite: { '': '' },
+      pathRewrite: { '^/': '/' },
     },
   },
   sit: {

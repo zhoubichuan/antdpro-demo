@@ -1,5 +1,23 @@
 [
   {
+    "title": "编号",
+    "dataIndex": "id",
+    "search": false,
+    "table": false,
+    "create": false,
+    "edit": {
+      "disabled": true,
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
     "title": "名称",
     "dataIndex": "name",
     "search": true,

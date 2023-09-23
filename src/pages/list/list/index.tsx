@@ -248,29 +248,35 @@ const TableList: React.FC = () => {
             }
           }}
         >
-          {templateData.map((item: any) => {
-            let form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
-            switch (item.create ? item.create.type || '' : '') {
-              case 'input':
-                form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'textArea':
-                form = (
-                  <ProFormTextArea {...item.create} label={item.title} name={item.dataIndex} />
-                );
-                break;
-              case 'select':
-                form = <ProFormSelect {...item.create} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'radio':
-                form = <ProFormRadio {...item.create} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'switch':
-                form = <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />;
-                break;
-            }
-            return form;
-          })}
+          {templateData
+            .filter((item: any) => item.create)
+            .map((item: any) => {
+              let form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
+              switch (item.create ? item.create.type || '' : '') {
+                case 'input':
+                  form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
+                  break;
+                case 'textArea':
+                  form = (
+                    <ProFormTextArea {...item.create} label={item.title} name={item.dataIndex} />
+                  );
+                  break;
+                case 'select':
+                  form = (
+                    <ProFormSelect {...item.create} label={item.title} name={item.dataIndex} />
+                  );
+                  break;
+                case 'radio':
+                  form = <ProFormRadio {...item.create} label={item.title} name={item.dataIndex} />;
+                  break;
+                case 'switch':
+                  form = (
+                    <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />
+                  );
+                  break;
+              }
+              return form;
+            })}
         </ModalForm>
       )}
       {updateModalVisible && (
@@ -292,27 +298,31 @@ const TableList: React.FC = () => {
           }}
           initialValues={currentRow}
         >
-          {templateData.map((item: any) => {
-            let form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
-            switch (item.edit ? item.edit.type || '' : '') {
-              case 'input':
-                form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'textArea':
-                form = <ProFormTextArea {...item.edit} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'select':
-                form = <ProFormSelect {...item.edit} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'radio':
-                form = <ProFormRadio {...item.edit} label={item.title} name={item.dataIndex} />;
-                break;
-              case 'switch':
-                form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
-                break;
-            }
-            return form;
-          })}
+          {templateData
+            .filter((item: any) => item.edit)
+            .map((item: any) => {
+              let form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
+              switch (item.edit ? item.edit.type || '' : '') {
+                case 'input':
+                  form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
+                  break;
+                case 'textArea':
+                  form = (
+                    <ProFormTextArea {...item.edit} label={item.title} name={item.dataIndex} />
+                  );
+                  break;
+                case 'select':
+                  form = <ProFormSelect {...item.edit} label={item.title} name={item.dataIndex} />;
+                  break;
+                case 'radio':
+                  form = <ProFormRadio {...item.edit} label={item.title} name={item.dataIndex} />;
+                  break;
+                case 'switch':
+                  form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
+                  break;
+              }
+              return form;
+            })}
         </ModalForm>
       )}
       <Drawer

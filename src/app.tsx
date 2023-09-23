@@ -110,7 +110,7 @@ export const request: RequestConfig = {
         };
       }
       return {
-        url: (localStorage.antdprourl || '') + url,
+        url: (localStorage.antdprourl || 'http://localhost:7001') + url,
         options: { ...options, headers },
       };
     },
