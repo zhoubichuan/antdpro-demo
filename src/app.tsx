@@ -135,12 +135,16 @@ export const request: RequestConfig = {
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
+    siderWidth: 250,
+    isChildrenLayout: true,
+    openKeys: false,
+    collapsedButtonRender: false,
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
     waterMarkProps: {
       content: initialState?.currentUser?.name,
     },
-    footerRender: () => <Footer />,
+    footerRender: () => (location.href.includes('dashboard/analysis') ? <Footer /> : []),
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login

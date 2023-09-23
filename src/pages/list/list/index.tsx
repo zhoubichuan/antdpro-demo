@@ -10,6 +10,7 @@ import ProDescriptions from '@ant-design/pro-descriptions';
 import { rule, addRule, updateRule, removeRule } from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
+import { history, Link } from 'umi';
 
 const handleAdd = async (fields: TableListItem) => {
   const hide = message.loading('正在添加');
@@ -25,7 +26,7 @@ const handleAdd = async (fields: TableListItem) => {
   }
 };
 
-const handleUpdate = async (fields: TableListItem) => {
+const handleEdit = async (fields: TableListItem) => {
   const hide = message.loading('正在配置');
   try {
     await updateRule({ ...fields });
@@ -39,7 +40,7 @@ const handleUpdate = async (fields: TableListItem) => {
   }
 };
 
-const handleRemove = async (selectedRows: TableListItem[]) => {
+const handleDelete = async (selectedRows: TableListItem[]) => {
   const hide = message.loading('正在删除');
   if (!selectedRows) return true;
   try {
@@ -54,6 +55,9 @@ const handleRemove = async (selectedRows: TableListItem[]) => {
     message.error('删除失败，请重试');
     return false;
   }
+};
+const handleOnTabChange = (key: string) => {
+  history.push('/list/list/' + key);
 };
 const TableList: React.FC = () => {
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
@@ -115,7 +119,7 @@ const TableList: React.FC = () => {
         <a
           key="subscribeAlert"
           onClick={() => {
-            handleRemove([record] as TableListItem[]);
+            handleDelete([record] as TableListItem[]);
             if (actionRef.current) {
               actionRef.current.reload();
             }
@@ -128,8 +132,54 @@ const TableList: React.FC = () => {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer
+      style={{
+        height: `calc(100vh - 208px)`,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      onTabChange={handleOnTabChange}
+      header={{
+        title: false,
+      }}
+      tabList={[
+        {
+          tab: '列表1',
+          key: '1',
+          closable: false,
+        },
+        {
+          tab: '列表2',
+          key: '2',
+        },
+        {
+          tab: '列表3',
+          key: '3',
+        },
+        {
+          tab: '列表4',
+          key: '4',
+        },
+        {
+          tab: '列表5',
+          key: '5',
+        },
+        {
+          tab: '列表6',
+          key: '6',
+        },
+        {
+          tab: '列表7',
+          key: '7',
+        },
+        {
+          tab: '列表8',
+          key: '8',
+        },
+      ]}
+    >
       <ProTable<TableListItem, TableListPagination>
+        style={{ height: '100%' }}
         headerTitle="数据项分类"
         actionRef={actionRef}
         rowKey="id"
@@ -141,7 +191,7 @@ const TableList: React.FC = () => {
             type="primary"
             key="primary"
             onClick={() => {
-              handleRemove(selectedRowsState);
+              handleDelete(selectedRowsState);
               if (actionRef.current) {
                 actionRef.current.reload();
               }
@@ -206,7 +256,7 @@ const TableList: React.FC = () => {
           visible={updateModalVisible}
           onVisibleChange={handleUpdateModalVisible}
           onFinish={async (value) => {
-            const success = await handleUpdate(value as TableListItem);
+            const success = await handleEdit(value as TableListItem);
             if (success) {
               handleUpdateModalVisible(false);
               setCurrentRow(undefined);
