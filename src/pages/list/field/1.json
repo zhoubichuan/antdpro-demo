@@ -1,0 +1,152 @@
+[
+  {
+    "title": "任务编号",
+    "dataIndex": "code",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "作业信息",
+    "dataIndex": "work",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "作业面积",
+    "dataIndex": "area",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "作业里程",
+    "dataIndex": "mileage",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "结束时间",
+    "dataIndex": "time",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "作业状态",
+    "dataIndex": "workStatus",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  }
+]

@@ -147,29 +147,43 @@
         component: './list/table-list4',
       },
       {
-        name: '查询表格样式四',
+        name: '模板列表',
         icon: 'smile',
-        path: '/list/table-list5',
-        component: './list/table-list5',
-      },
-      {
-        name: '查询表格样式五',
-        icon: 'smile',
-        path: '/list/table-list6',
-        component: './list/table-list6',
-      },
-      {
-        name: '字段列表',
-        icon: 'smile',
-        path: '/list/list',
-        redirect: '/list/list/1',
+        path: '/list/template',
+        redirect: '/list/template/1',
       },
       {
         name: '',
         icon: 'smile',
-        path: '/list/list/:id',
+        path: '/list/template/:id',
         menuRender: false, // 不渲染菜单
-        component: './list/list',
+        component: './list/template',
+      },
+      {
+        name: '数据列表',
+        icon: 'smile',
+        path: '/list/data',
+        redirect: '/list/data/1',
+      },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/data/:id',
+        menuRender: false, // 不渲染菜单
+        component: './list/data',
+      },
+      {
+        name: '字段列表',
+        icon: 'smile',
+        path: '/list/field',
+        redirect: '/list/field/1',
+      },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/field/:id',
+        menuRender: false, // 不渲染菜单
+        component: './list/field',
       },
       {
         name: 'basic-list',

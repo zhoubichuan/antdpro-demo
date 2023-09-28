@@ -1,0 +1,177 @@
+[
+  {
+    "title": "编号",
+    "dataIndex": "code",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "围栏名称",
+    "dataIndex": "name",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "报警类型",
+    "dataIndex": "type",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "约束农机",
+    "dataIndex": "machine",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "约束时间",
+    "dataIndex": "time",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "状态",
+    "dataIndex": "status",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "备注",
+    "dataIndex": "remark",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  }
+]
