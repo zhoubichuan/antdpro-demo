@@ -117,12 +117,6 @@
         ],
       },
       {
-        name: '数据分类',
-        icon: 'smile',
-        path: '/list/table-list',
-        component: './list/table-list',
-      },
-      {
         name: '查询表格样式一',
         icon: 'smile',
         path: '/list/table-list1',
@@ -184,6 +178,19 @@
         path: '/list/field/:id',
         menuRender: false, // 不渲染菜单
         component: './list/field',
+      },
+      {
+        name: '类型列表',
+        icon: 'smile',
+        path: '/list/type',
+        redirect: '/list/type/1',
+      },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/type/:id',
+        menuRender: false, // 不渲染菜单
+        component: './list/type',
       },
       {
         name: 'basic-list',

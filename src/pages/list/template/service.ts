@@ -13,7 +13,7 @@ export async function rule(
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/rule' + location.href.slice(-1), {
+  }>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'GET',
     params: {
       ...params,
@@ -23,21 +23,21 @@ export async function rule(
 }
 
 export async function updateRule(options?: { [key: string]: any }) {
-  return request<TableListItem>('/api/rule' + location.href.slice(-1), {
+  return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'PUT',
     data: { ...(options || {}) },
   });
 }
 
 export async function addRule(options?: { [key: string]: any }) {
-  return request<TableListItem>('/api/rule' + location.href.slice(-1), {
+  return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'POST',
     data: { ...(options || {}) },
   });
 }
 
 export async function removeRule(options?: { [key: string]: any }) {
-  return request<Record<string, any>>('/api/rule' + location.href.slice(-1), {
+  return request<Record<string, any>>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'DELETE',
     data: { ...(options || {}) },
   });

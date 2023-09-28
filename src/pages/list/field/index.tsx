@@ -65,12 +65,15 @@ const handleDelete = async (selectedRows: TableListItem[]) => {
 };
 
 const TableList: React.FC = () => {
+  const path: String = location.pathname.replace('/antdpro-demo', '');
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const actionRef = useRef<ActionType>();
   const [currentRow, setCurrentRow] = useState<TableListItem>();
-  const [tabActiveKey, setTabActiveKey] = useState<any>(location.href.slice(-1));
+  const [tabActiveKey, setTabActiveKey] = useState<any>(
+    path.split('/')[path.split('/').length - 1],
+  );
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const params: any = useParams();
   const templateData: any = require('./' + params.id + '.json');
@@ -79,7 +82,7 @@ const TableList: React.FC = () => {
     if (actionRef.current) {
       actionRef.current.reload();
     }
-    history.push('/list/field/' + key);
+    history.push(path.slice(0, -1) + key);
   };
   const columns: ProColumns<TableListItem>[] = [
     {

@@ -1,0 +1,177 @@
+[
+  {
+    "title": "编号",
+    "dataIndex": "code",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "报警设备",
+    "dataIndex": "device",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "报警内容",
+    "dataIndex": "content",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "关联任务",
+    "dataIndex": "task",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "报警次数",
+    "dataIndex": "count",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "报警开始时间",
+    "dataIndex": "time",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "报警类型",
+    "dataIndex": "type",
+    "search": true,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  }
+]
