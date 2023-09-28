@@ -63,18 +63,24 @@ const handleDelete = async (selectedRows: TableListItem[]) => {
     return false;
   }
 };
-const handleOnTabChange = (key: string) => {
-  history.push('/list/list/' + key);
-};
+
 const TableList: React.FC = () => {
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const actionRef = useRef<ActionType>();
   const [currentRow, setCurrentRow] = useState<TableListItem>();
+  const [tabActiveKey, setTabActiveKey] = useState<any>(location.href.slice(-1));
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const params: any = useParams();
   const templateData: any = require('./' + params.id + '.json');
+  const handleOnTabChange = (key: string) => {
+    setTabActiveKey(key);
+    if (actionRef.current) {
+      actionRef.current.reload();
+    }
+    history.push('/list/data/' + key);
+  };
   const columns: ProColumns<TableListItem>[] = [
     {
       title: '编号',
@@ -183,6 +189,7 @@ const TableList: React.FC = () => {
           key: '8',
         },
       ]}
+      tabActiveKey={tabActiveKey}
     >
       <ProTable<TableListItem, TableListPagination>
         style={{ height: '100%' }}
