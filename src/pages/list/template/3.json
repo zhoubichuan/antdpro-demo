@@ -2,7 +2,7 @@
   {
     "title": "编号",
     "dataIndex": "code",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -27,7 +27,7 @@
   {
     "title": "故障设备",
     "dataIndex": "device",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -52,7 +52,7 @@
   {
     "title": "故障内容",
     "dataIndex": "content",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -77,7 +77,7 @@
   {
     "title": "故障类型",
     "dataIndex": "type",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -102,7 +102,7 @@
   {
     "title": "故障等级",
     "dataIndex": "grade",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -127,7 +127,7 @@
   {
     "title": "发生时间",
     "dataIndex": "time",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -152,7 +152,7 @@
   {
     "title": "处理状态",
     "dataIndex": "status",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [

@@ -2,7 +2,7 @@
   {
     "title": "编号",
     "dataIndex": "id",
-    "search": false,
+    "hideInSearch": true,
     "table": false,
     "create": false,
     "edit": {
@@ -20,7 +20,7 @@
   {
     "title": "阶段",
     "dataIndex": "step",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -45,7 +45,7 @@
   {
     "title": "名称",
     "dataIndex": "name",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -70,7 +70,7 @@
   {
     "title": "描述",
     "dataIndex": "descript",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -99,7 +99,7 @@
   {
     "title": "详情",
     "dataIndex": "detail",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -128,7 +128,7 @@
   {
     "title": "图片",
     "dataIndex": "images",
-    "search": true,
+    "hideInSearch": true,
     "table": {
       "type": "image"
     },

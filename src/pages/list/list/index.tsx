@@ -89,6 +89,7 @@ const TableList: React.FC = () => {
     {
       title: '编号',
       dataIndex: 'id',
+      hideInSearch: true,
       render: (dom, entity) => {
         return (
           <a
@@ -367,7 +368,7 @@ const TableList: React.FC = () => {
       <Drawer
         destroyOnClose
         closeIcon={<CloseOutlined />}
-        width={600}
+        width={'80%'}
         open={showDetail}
         onClose={() => {
           setCurrentRow(undefined);

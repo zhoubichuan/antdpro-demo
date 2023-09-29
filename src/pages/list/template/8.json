@@ -2,7 +2,7 @@
   {
     "title": "编号",
     "dataIndex": "id",
-    "search": false,
+    "hideInSearch": true,
     "table": false,
     "create": false,
     "edit": {
@@ -20,7 +20,7 @@
   {
     "title": "名称",
     "dataIndex": "name",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -45,7 +45,7 @@
   {
     "title": "开始时间",
     "dataIndex": "time",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -65,7 +65,7 @@
   {
     "title": "详情",
     "dataIndex": "detail",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "ellipsis": {
       "showTitle": false
@@ -95,7 +95,7 @@
   {
     "title": "城市",
     "dataIndex": "city",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -120,7 +120,7 @@
   {
     "title": "经度",
     "dataIndex": "latitude",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
@@ -145,7 +145,7 @@
   {
     "title": "纬度",
     "dataIndex": "longitude",
-    "search": true,
+    "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
