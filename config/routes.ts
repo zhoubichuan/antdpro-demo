@@ -151,7 +151,7 @@
         icon: 'smile',
         path: '/list/template/:id',
         menuRender: false, // 不渲染菜单
-        component: './list/template',
+        component: './list/list',
       },
       {
         name: '数据列表',
@@ -164,7 +164,7 @@
         icon: 'smile',
         path: '/list/data/:id',
         menuRender: false, // 不渲染菜单
-        component: './list/data',
+        component: './list/list',
       },
       {
         name: '字段列表',
@@ -177,7 +177,7 @@
         icon: 'smile',
         path: '/list/field/:id',
         menuRender: false, // 不渲染菜单
-        component: './list/field',
+        component: './list/list',
       },
       {
         name: '类型列表',
@@ -190,7 +190,7 @@
         icon: 'smile',
         path: '/list/type/:id',
         menuRender: false, // 不渲染菜单
-        component: './list/type',
+        component: './list/list',
       },
       {
         name: 'basic-list',

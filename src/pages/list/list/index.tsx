@@ -12,7 +12,6 @@ import {
   ProFormSelect,
   ProFormRadio,
   ProFormUploadButton,
-  ProForm,
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
@@ -78,7 +77,7 @@ const TableList: React.FC = () => {
   );
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const params: any = useParams();
-  const templateData: any = require('./' + params.id + '.json');
+  const templateData: any = require(`../${path.split('/')[2]}/${params.id}.json`);
   const handleOnTabChange = (key: string) => {
     setTabActiveKey(key);
     if (actionRef.current) {

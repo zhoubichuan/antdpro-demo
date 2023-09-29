@@ -11,7 +11,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -20,7 +20,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
@@ -36,7 +36,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -45,7 +45,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
@@ -61,7 +61,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -70,7 +70,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
@@ -86,7 +86,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -95,7 +95,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
@@ -111,7 +111,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -120,7 +120,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
@@ -136,7 +136,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -145,7 +145,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
@@ -161,7 +161,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -170,7 +170,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   }
