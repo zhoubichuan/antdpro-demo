@@ -1,7 +1,25 @@
 [
   {
-    "title": "任务编号",
-    "dataIndex": "code",
+    "title": "编号",
+    "dataIndex": "id",
+    "search": false,
+    "table": false,
+    "create": false,
+    "edit": {
+      "disabled": true,
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "width": "md"
+    },
+    "view": true
+  },
+  {
+    "title": "类型",
+    "dataIndex": "type",
     "search": true,
     "table": true,
     "create": {
@@ -25,8 +43,8 @@
     "view": true
   },
   {
-    "title": "作业信息",
-    "dataIndex": "work",
+    "title": "名称",
+    "dataIndex": "name",
     "search": true,
     "table": true,
     "create": {
@@ -50,83 +68,8 @@
     "view": true
   },
   {
-    "title": "作业面积",
-    "dataIndex": "area",
-    "search": true,
-    "table": true,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
-    "view": true
-  },
-  {
-    "title": "作业里程",
-    "dataIndex": "mileage",
-    "search": true,
-    "table": true,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
-    "view": true
-  },
-  {
-    "title": "结束时间",
-    "dataIndex": "time",
-    "search": true,
-    "table": true,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
-    "view": true
-  },
-  {
-    "title": "作业状态",
-    "dataIndex": "workStatus",
+    "title": "值",
+    "dataIndex": "value",
     "search": true,
     "table": true,
     "create": {
