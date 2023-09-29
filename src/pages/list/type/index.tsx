@@ -11,6 +11,8 @@ import {
   ProFormSwitch,
   ProFormSelect,
   ProFormRadio,
+  ProFormUploadButton,
+  ProForm,
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
@@ -101,7 +103,17 @@ const TableList: React.FC = () => {
         );
       },
     },
-    ...templateData.filter((item: any) => item.table),
+    ...templateData
+      .filter((item: any) => item.table)
+      .map((item: any) => ({
+        ...item,
+        render: (dom: any, entity: any) => {
+          if (item.table.type === 'image') {
+            return <img height={100} src={dom[0]} alt=""></img>;
+          }
+          return <span> {dom}</span>;
+        },
+      })),
     {
       title: '更新时间',
       sorter: true,
@@ -244,7 +256,7 @@ const TableList: React.FC = () => {
       {createModalVisible && (
         <ModalForm
           title="新增"
-          width="400px"
+          width="800px"
           layout={'horizontal'}
           visible={createModalVisible}
           onVisibleChange={handleModalVisible}
@@ -268,7 +280,12 @@ const TableList: React.FC = () => {
                   break;
                 case 'textArea':
                   form = (
-                    <ProFormTextArea {...item.create} label={item.title} name={item.dataIndex} />
+                    <ProFormTextArea
+                      {...item.create}
+                      label={item.title}
+                      name={item.dataIndex}
+                      colProps={{ span: 24 }}
+                    />
                   );
                   break;
                 case 'select':
@@ -283,6 +300,14 @@ const TableList: React.FC = () => {
                   form = (
                     <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />
                   );
+                case 'image':
+                  form = (
+                    <ProFormUploadButton
+                      {...item.create}
+                      label={item.title}
+                      name={item.dataIndex}
+                    />
+                  );
                   break;
               }
               return form;
@@ -292,7 +317,7 @@ const TableList: React.FC = () => {
       {updateModalVisible && (
         <ModalForm
           title="编辑"
-          width="400px"
+          width="800px"
           layout={'horizontal'}
           visible={updateModalVisible}
           onVisibleChange={handleUpdateModalVisible}
@@ -329,6 +354,11 @@ const TableList: React.FC = () => {
                   break;
                 case 'switch':
                   form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
+                  break;
+                case 'image':
+                  form = (
+                    <ProFormUploadButton {...item.edit} label={item.title} name={item.dataIndex} />
+                  );
                   break;
               }
               return form;

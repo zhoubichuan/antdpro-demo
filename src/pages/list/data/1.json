@@ -1,32 +1,25 @@
 [
   {
-    "title": "任务编号",
-    "dataIndex": "code",
-    "search": true,
-    "table": true,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "规则名称为必填项"
-        }
-      ],
-      "width": "md"
-    },
+    "title": "编号",
+    "dataIndex": "id",
+    "search": false,
+    "table": false,
+    "create": false,
     "edit": {
+      "disabled": true,
       "rules": [
         {
           "required": true,
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
   {
-    "title": "作业信息",
-    "dataIndex": "work",
+    "title": "阶段",
+    "dataIndex": "step",
     "search": true,
     "table": true,
     "create": {
@@ -36,7 +29,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -45,13 +38,13 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
   {
-    "title": "作业面积",
-    "dataIndex": "area",
+    "title": "名称",
+    "dataIndex": "name",
     "search": true,
     "table": true,
     "create": {
@@ -61,7 +54,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -70,13 +63,13 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "view": true
   },
   {
-    "title": "作业里程",
-    "dataIndex": "mileage",
+    "title": "描述",
+    "dataIndex": "descript",
     "search": true,
     "table": true,
     "create": {
@@ -86,7 +79,8 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 },
+      "type": "textArea"
     },
     "edit": {
       "rules": [
@@ -95,13 +89,16 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 },
+      "type": "textArea"
     },
-    "view": true
+    "view": {
+      "type": "textArea"
+    }
   },
   {
-    "title": "结束时间",
-    "dataIndex": "time",
+    "title": "详情",
+    "dataIndex": "detail",
     "search": true,
     "table": true,
     "create": {
@@ -111,7 +108,8 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 },
+      "type": "textArea"
     },
     "edit": {
       "rules": [
@@ -120,15 +118,20 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 },
+      "type": "textArea"
     },
-    "view": true
+    "view": {
+      "type": "textArea"
+    }
   },
   {
-    "title": "作业状态",
-    "dataIndex": "workStatus",
+    "title": "图片",
+    "dataIndex": "images",
     "search": true,
-    "table": true,
+    "table": {
+      "type": "image"
+    },
     "create": {
       "rules": [
         {
@@ -136,7 +139,7 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 }
     },
     "edit": {
       "rules": [
@@ -145,8 +148,11 @@
           "message": "规则名称为必填项"
         }
       ],
-      "width": "md"
+      "colProps": { "span": 24 },
+      "type": "image"
     },
-    "view": true
+    "view": {
+      "type": "image"
+    }
   }
 ]
