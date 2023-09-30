@@ -15,7 +15,7 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": false
   },
   {
     "title": "阶段",
@@ -129,25 +129,15 @@
     "title": "图片",
     "dataIndex": "images",
     "hideInSearch": true,
+    "hideInTable": false,
     "table": {
       "type": "image"
     },
     "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
+      "colProps": { "span": 24 },
+      "type": "image"
     },
     "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
       "colProps": { "span": 24 },
       "type": "image"
     },

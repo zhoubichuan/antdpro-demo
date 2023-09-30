@@ -149,33 +149,15 @@ const TableList: React.FC = () => {
         );
       },
     },
-    ...templateData
-      .filter((item: any) => !item.hideInTable)
-      .map((item: any) => ({
-        ...item,
-        render: (dom: any, entity: any) => {
-          if (item.table.type === 'image') {
-            return <img height={100} src={dom[0]?.thumbUrl}></img>;
-          }
-          return <span> {dom}</span>;
-        },
-      })),
-    {
-      title: '更新时间',
-      sorter: true,
-      dataIndex: 'updatedAt',
-      valueType: 'dateTime',
-      renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue('status');
-        if (`${status}` === '0') {
-          return false;
+    ...templateData.map((item: any) => ({
+      ...item,
+      render: (dom: any, entity: any) => {
+        if (!item.hideInTable && item.table && item.table.type === 'image') {
+          return <img height={100} src={dom[0]?.thumbUrl}></img>;
         }
-        if (`${status}` === '3') {
-          return <Input {...rest} placeholder="请输入异常原因！" />;
-        }
-        return defaultRender(item);
+        return <span> {dom}</span>;
       },
-    },
+    })),
     {
       title: '操作',
       dataIndex: 'option',
