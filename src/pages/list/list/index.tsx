@@ -109,7 +109,7 @@ const TableList: React.FC = () => {
         ...item,
         render: (dom: any, entity: any) => {
           if (item.table.type === 'image') {
-            return <img height={100} src={dom[0]} alt=""></img>;
+            return <img height={100} src={dom[0]?.thumbUrl}></img>;
           }
           return <span> {dom}</span>;
         },

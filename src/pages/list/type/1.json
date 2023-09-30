@@ -19,6 +19,31 @@
   },
   {
     "title": "类型",
+    "dataIndex": "typeName",
+    "hideInSearch": false,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "类型编号",
     "dataIndex": "type",
     "hideInSearch": false,
     "table": true,
@@ -68,7 +93,7 @@
     "view": true
   },
   {
-    "title": "值",
+    "title": "名称编号",
     "dataIndex": "value",
     "hideInSearch": false,
     "table": true,
@@ -91,5 +116,35 @@
       "colProps": { "span": 24 }
     },
     "view": true
+  },
+  {
+    "title": "图片",
+    "dataIndex": "images",
+    "hideInSearch": true,
+    "table": {
+      "type": "image"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "规则名称为必填项"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "image"
+    },
+    "view": {
+      "type": "image"
+    }
   }
 ]
