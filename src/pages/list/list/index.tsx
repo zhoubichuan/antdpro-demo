@@ -20,6 +20,7 @@ import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
 import { Upload, Tooltip } from 'antd';
+const XLSX = require('xlsx');
 const handleExport = async (fields: TableListItem[]) => {
   const hide = message.loading('正在添加');
   try {
@@ -33,7 +34,6 @@ const handleExport = async (fields: TableListItem[]) => {
     return false;
   }
 };
-const XLSX = require('xlsx');
 const uploadprops = {
   // 这里我们只接受excel2007以后版本的文件，accept就是指定文件选择框的文件类型
   accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -272,7 +272,14 @@ const TableList: React.FC = () => {
           >
             <PlusOutlined /> 批量删除
           </Button>,
-          <Upload {...uploadprops}>
+          <Upload
+            {...uploadprops}
+            onChange={() => {
+              if (actionRef.current) {
+                actionRef.current.reload();
+              }
+            }}
+          >
             <Tooltip title="">
               <Button type="primary">批量导入</Button>
             </Tooltip>
