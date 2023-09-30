@@ -3,7 +3,7 @@
     "title": "title",
     "dataIndex": "title",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -28,7 +28,7 @@
     "title": "dataIndex",
     "dataIndex": "dataIndex",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -53,7 +53,7 @@
     "title": "hideInSearch",
     "dataIndex": "hideInSearch",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -78,7 +78,7 @@
     "title": "table",
     "dataIndex": "table",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -103,7 +103,7 @@
     "title": "create",
     "dataIndex": "create",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -128,7 +128,7 @@
     "title": "edit",
     "dataIndex": "edit",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -153,7 +153,7 @@
     "title": "view",
     "dataIndex": "view",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {

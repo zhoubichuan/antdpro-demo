@@ -3,7 +3,7 @@
     "title": "编号",
     "dataIndex": "id",
     "hideInSearch": true,
-    "table": false,
+    "hideInTable": true,
     "create": false,
     "edit": {
       "disabled": true,
@@ -21,7 +21,7 @@
     "title": "类型",
     "dataIndex": "typeName",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -46,7 +46,7 @@
     "title": "类型编号",
     "dataIndex": "type",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -71,7 +71,7 @@
     "title": "名称",
     "dataIndex": "name",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -96,7 +96,7 @@
     "title": "名称编号",
     "dataIndex": "value",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -121,7 +121,7 @@
     "title": "描述",
     "dataIndex": "descript",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -150,7 +150,7 @@
     "title": "详情",
     "dataIndex": "detail",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {

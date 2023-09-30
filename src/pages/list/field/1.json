@@ -3,7 +3,7 @@
     "title": "任务编号",
     "dataIndex": "code",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -28,7 +28,7 @@
     "title": "作业信息",
     "dataIndex": "work",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -53,7 +53,7 @@
     "title": "作业面积",
     "dataIndex": "area",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -78,7 +78,7 @@
     "title": "作业里程",
     "dataIndex": "mileage",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -103,7 +103,7 @@
     "title": "结束时间",
     "dataIndex": "time",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -128,7 +128,7 @@
     "title": "作业状态",
     "dataIndex": "workStatus",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {

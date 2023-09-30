@@ -3,7 +3,7 @@
     "title": "ip号码",
     "dataIndex": "ip",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -28,7 +28,7 @@
     "title": "网络",
     "dataIndex": "network",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -53,7 +53,7 @@
     "title": "版本",
     "dataIndex": "version",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -78,7 +78,7 @@
     "title": "城市",
     "dataIndex": "city",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -103,7 +103,7 @@
     "title": "经度",
     "dataIndex": "latitude",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -128,7 +128,7 @@
     "title": "纬度",
     "dataIndex": "longitude",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {

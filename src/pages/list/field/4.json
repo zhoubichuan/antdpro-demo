@@ -3,7 +3,7 @@
     "title": "编号",
     "dataIndex": "code",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -28,7 +28,7 @@
     "title": "围栏名称",
     "dataIndex": "name",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -53,7 +53,7 @@
     "title": "报警类型",
     "dataIndex": "type",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -78,7 +78,7 @@
     "title": "约束农机",
     "dataIndex": "machine",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -103,7 +103,7 @@
     "title": "约束时间",
     "dataIndex": "time",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -128,7 +128,7 @@
     "title": "状态",
     "dataIndex": "status",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {
@@ -153,7 +153,7 @@
     "title": "备注",
     "dataIndex": "remark",
     "hideInSearch": false,
-    "table": true,
+    "hideInTable": false,
     "create": {
       "rules": [
         {

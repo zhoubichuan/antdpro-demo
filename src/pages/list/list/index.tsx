@@ -150,7 +150,7 @@ const TableList: React.FC = () => {
       },
     },
     ...templateData
-      .filter((item: any) => item.table)
+      .filter((item: any) => !item.hideInTable)
       .map((item: any) => ({
         ...item,
         render: (dom: any, entity: any) => {
@@ -215,6 +215,7 @@ const TableList: React.FC = () => {
       onTabChange={handleOnTabChange}
       header={{
         title: false,
+        ghost: true,
       }}
       tabList={[
         {
