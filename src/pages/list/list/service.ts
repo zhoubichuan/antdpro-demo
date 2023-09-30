@@ -2,7 +2,7 @@
 /* eslint-disable */
 import { request } from 'umi';
 import { TableListItem } from './data';
-export async function rule(
+export async function list(
   params: {
     current?: number;
     pageSize?: number;
@@ -22,23 +22,33 @@ export async function rule(
   });
 }
 
-export async function updateRule(options?: { [key: string]: any }) {
+export async function updateList(options?: { [key: string]: any }) {
   return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'PUT',
     data: { ...(options || {}) },
   });
 }
 
-export async function addRule(options?: { [key: string]: any }) {
+export async function addList(options?: { [key: string]: any }) {
   return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'POST',
     data: { ...(options || {}) },
   });
 }
 
-export async function removeRule(options?: { [key: string]: any }) {
+export async function removeList(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'DELETE',
     data: { ...(options || {}) },
   });
+}
+
+export async function exportList(options?: { [key: string]: any }) {
+  return request<TableListItem>(
+    '/api' + location.pathname.replace('/antdpro-demo', '') + '/export',
+    {
+      method: 'POST',
+      data: options,
+    },
+  );
 }

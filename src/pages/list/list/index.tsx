@@ -15,15 +15,61 @@ import {
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { rule, addRule, updateRule, removeRule } from './service';
+import { list, addList, updateList, removeList, exportList } from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
-
+import { Upload, Tooltip } from 'antd';
+const handleExport = async (fields: TableListItem[]) => {
+  const hide = message.loading('正在添加');
+  try {
+    await exportList(fields);
+    hide();
+    message.success('添加成功');
+    return true;
+  } catch (error) {
+    hide();
+    message.error('添加失败！');
+    return false;
+  }
+};
+const XLSX = require('xlsx');
+const uploadprops = {
+  // 这里我们只接受excel2007以后版本的文件，accept就是指定文件选择框的文件类型
+  accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  name: 'file',
+  headers: {
+    authorization: 'authorization-text',
+  },
+  showUploadList: false,
+  // 把excel的处理放在beforeUpload事件，否则要把文件上传到通过action指定的地址去后台处理
+  // 这里我们没有指定action地址，因为没有传到后台
+  beforeUpload: (file: any, fileList: any) => {
+    const rABS = true;
+    const f = fileList[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      let dataResult = e.target.result;
+      if (!rABS) dataResult = new Uint8Array(dataResult);
+      const workbook = XLSX.read(dataResult, {
+        type: rABS ? 'binary' : 'array',
+      });
+      // 假设我们的数据在第一个标签
+      const firstWorksheet = workbook.Sheets[workbook.SheetNames[0]];
+      // XLSX自带了一个工具把导入的数据转成json
+      const jsonArr = XLSX.utils.sheet_to_json(firstWorksheet, { header: 1 });
+      // 通过自定义的方法处理Json,得到Excel原始数据传给后端，后端统一处理
+      handleExport(jsonArr);
+    };
+    if (rABS) reader.readAsBinaryString(f);
+    else reader.readAsArrayBuffer(f);
+    return false;
+  },
+};
 const handleAdd = async (fields: TableListItem) => {
   const hide = message.loading('正在添加');
   try {
-    await addRule({ ...fields });
+    await addList({ ...fields });
     hide();
     message.success('添加成功');
     return true;
@@ -37,7 +83,7 @@ const handleAdd = async (fields: TableListItem) => {
 const handleEdit = async (fields: TableListItem) => {
   const hide = message.loading('正在配置');
   try {
-    await updateRule({ ...fields });
+    await updateList({ ...fields });
     hide();
     message.success('修改成功');
     return true;
@@ -52,7 +98,7 @@ const handleDelete = async (selectedRows: TableListItem[]) => {
   const hide = message.loading('正在删除');
   if (!selectedRows) return true;
   try {
-    await removeRule({
+    await removeList({
       id: selectedRows.map((row) => row.id),
     });
     hide();
@@ -226,15 +272,20 @@ const TableList: React.FC = () => {
           >
             <PlusOutlined /> 批量删除
           </Button>,
-          <Button
-            type="primary"
-            key="primary"
-            onClick={() => {
-              alert('导入');
-            }}
-          >
-            <PlusOutlined /> 导入
-          </Button>,
+          <Upload {...uploadprops}>
+            <Tooltip title="">
+              <Button type="primary">批量导入</Button>
+            </Tooltip>
+          </Upload>,
+          // <Button
+          //   type="primary"
+          //   key="primary"
+          //   onClick={() => {
+          //     alert('导入');
+          //   }}
+          // >
+          //   <PlusOutlined /> 导入
+          // </Button>,
           <Button
             type="primary"
             key="primary"
@@ -245,7 +296,7 @@ const TableList: React.FC = () => {
             <PlusOutlined /> 新建
           </Button>,
         ]}
-        request={rule}
+        request={list}
         columns={columns}
         rowSelection={{
           onChange: (_, selectedRows) => {
