@@ -10,7 +10,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -26,7 +26,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -35,7 +35,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -51,7 +51,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -75,7 +75,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -85,7 +85,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -101,7 +101,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -110,7 +110,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -126,7 +126,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -135,7 +135,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -151,7 +151,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -160,7 +160,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }

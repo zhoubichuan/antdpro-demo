@@ -1,14 +1,14 @@
 [
   {
-    "title": "任务编号",
-    "dataIndex": "code",
+    "title": "title",
+    "dataIndex": "title",
     "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -17,7 +17,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -25,15 +25,15 @@
     "view": true
   },
   {
-    "title": "作业信息",
-    "dataIndex": "work",
+    "title": "dataIndex",
+    "dataIndex": "dataIndex",
     "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -42,7 +42,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -50,15 +50,15 @@
     "view": true
   },
   {
-    "title": "作业面积",
-    "dataIndex": "area",
+    "title": "hideInSearch",
+    "dataIndex": "hideInSearch",
     "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -67,7 +67,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -75,15 +75,15 @@
     "view": true
   },
   {
-    "title": "作业里程",
-    "dataIndex": "mileage",
+    "title": "table",
+    "dataIndex": "table",
     "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -92,7 +92,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -100,15 +100,15 @@
     "view": true
   },
   {
-    "title": "结束时间",
-    "dataIndex": "time",
+    "title": "create",
+    "dataIndex": "create",
     "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -117,7 +117,7 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -125,15 +125,15 @@
     "view": true
   },
   {
-    "title": "作业状态",
-    "dataIndex": "workStatus",
+    "title": "edit",
+    "dataIndex": "edit",
     "hideInSearch": false,
     "table": true,
     "create": {
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
@@ -142,7 +142,32 @@
       "rules": [
         {
           "required": true,
-          "message": "规则名称为必填项"
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "view",
+    "dataIndex": "view",
+    "hideInSearch": false,
+    "table": true,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
         }
       ],
       "colProps": { "span": 24 }
