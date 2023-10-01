@@ -1,7 +1,25 @@
 [
   {
     "title": "编号",
-    "dataIndex": "code",
+    "dataIndex": "id",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "create": false,
+    "edit": {
+      "disabled": true,
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "类型",
+    "dataIndex": "typeName",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -25,132 +43,7 @@
     "view": true
   },
   {
-    "title": "报警设备",
-    "dataIndex": "device",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "报警内容",
-    "dataIndex": "content",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "关联任务",
-    "dataIndex": "task",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "报警次数",
-    "dataIndex": "count",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "报警开始时间",
-    "dataIndex": "time",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "报警类型",
+    "title": "类型编号",
     "dataIndex": "type",
     "hideInSearch": false,
     "hideInTable": false,
@@ -173,5 +66,166 @@
       "colProps": { "span": 24 }
     },
     "view": true
+  },
+  {
+    "title": "名称",
+    "dataIndex": "name",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "名称编号",
+    "dataIndex": "value",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "描述",
+    "dataIndex": "descript",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "textArea"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "textArea"
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "title": "详情",
+    "dataIndex": "detail",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "textArea"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "textArea"
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "title": "图片",
+    "dataIndex": "images",
+    "hideInSearch": true,
+    "table": {
+      "type": "image"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "image"
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 },
+      "type": "image"
+    },
+    "view": {
+      "type": "image"
+    }
+  },
+  {
+    "title": "子节点",
+    "dataIndex": "hasChildren",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": false
+  },
+  {
+    "title": "节点",
+    "dataIndex": "children",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "create": false,
+    "edit": false,
+    "view": false
   }
 ]

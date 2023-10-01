@@ -1,5 +1,5 @@
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
-import { Button, message, Drawer, Upload, Image } from 'antd';
+import { Button, message, Drawer, Upload, Image, Modal } from 'antd';
 import React, { useState, useRef } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
@@ -214,10 +214,18 @@ const TableList: React.FC = () => {
         <a
           key="subscribeAlert"
           onClick={() => {
-            handleDelete([record] as TableListItem[]);
-            if (actionRef.current) {
-              actionRef.current.reload();
-            }
+            Modal.confirm({
+              title: '删除数据',
+              content: '确定删除该数据吗？',
+              okText: '确认',
+              cancelText: '取消',
+              onOk: async () => {
+                await handleDelete([record] as TableListItem[]);
+                if (actionRef.current) {
+                  actionRef.current.reload();
+                }
+              },
+            });
           }}
         >
           删除
@@ -303,11 +311,22 @@ const TableList: React.FC = () => {
           <Button
             type="primary"
             key="primary"
-            onClick={() => {
-              handleDelete(selectedRowsState);
-              if (actionRef.current) {
-                actionRef.current.reload();
+            onClick={(): any => {
+              if (!selectedRowsState.length) {
+                return message.warning('请选择数据');
               }
+              Modal.confirm({
+                title: '删除数据',
+                content: '确定删除该数据吗？',
+                okText: '确认',
+                cancelText: '取消',
+                onOk: async () => {
+                  await handleDelete(selectedRowsState);
+                  if (actionRef.current) {
+                    actionRef.current.reload();
+                  }
+                },
+              });
             }}
           >
             <PlusOutlined /> 批量删除
