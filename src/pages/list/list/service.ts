@@ -2,6 +2,19 @@
 /* eslint-disable */
 import { request } from 'umi';
 import { TableListItem } from './data';
+export async function getTemplate() {
+  return request<{
+    data: TableListItem[];
+    total?: number;
+    success?: boolean;
+  }>('/api/list/template/' + location.pathname.slice(-1), {
+    method: 'GET',
+    params: {
+      current: '1',
+      pageSize: '20',
+    },
+  });
+}
 export async function list(
   params: {
     current?: number;

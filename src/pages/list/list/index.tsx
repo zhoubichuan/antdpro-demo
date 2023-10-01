@@ -1,5 +1,5 @@
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
-import { Button, message, Input, Drawer } from 'antd';
+import { Button, message, Drawer, Upload, Image } from 'antd';
 import React, { useState, useRef } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
@@ -19,7 +19,6 @@ import { list, addList, updateList, removeList, exportList } from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
-import { Upload, Tooltip } from 'antd';
 const XLSX = require('xlsx');
 const handleExport = async (fields: TableListItem[]) => {
   const hide = message.loading('正在添加');
@@ -135,7 +134,10 @@ const TableList: React.FC = () => {
     {
       title: '编号',
       dataIndex: 'id',
+      width: 100,
+      fixed: 'left',
       hideInSearch: true,
+      hideInDescriptions: true,
       render: (dom, entity) => {
         return (
           <a
@@ -151,17 +153,23 @@ const TableList: React.FC = () => {
     },
     ...templateData.map((item: any) => ({
       ...item,
-      render: (dom: any, entity: any) => {
+      render: (dom: any) => {
         if (!item.hideInTable && item.table && item.table.type === 'image') {
-          return <img height={100} src={dom[0]?.thumbUrl}></img>;
+          if (Array.isArray(dom)) {
+            return dom.map((i: any) => <Image height={100} src={i?.thumbUrl} />);
+          } else {
+            return <Image height={100} src={dom[0]?.thumbUrl} />;
+          }
         }
-        return <span> {dom}</span>;
+        return dom;
       },
     })),
     {
       title: '操作',
       dataIndex: 'option',
       valueType: 'option',
+      fixed: 'right',
+      width: 100,
       render: (_, record) => [
         <a
           key="config"
@@ -186,7 +194,22 @@ const TableList: React.FC = () => {
       ],
     },
   ];
-
+  const descriptions: ProColumns<TableListItem>[] = templateData.map((item: any) => {
+    const { width, ellipsis, ...rest } = item;
+    return {
+      ...rest,
+      render: (text: any) => {
+        if (!item.hideInTable && item.table && item.table.type === 'image') {
+          if (Array.isArray(text)) {
+            return text.map((i: any) => <Image height={300} src={i?.thumbUrl} />);
+          } else {
+            return <Image height={300} src={text[0]?.thumbUrl} />;
+          }
+        }
+        return <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>{text}</div>;
+      },
+    };
+  });
   return (
     <PageContainer
       style={{
@@ -238,9 +261,10 @@ const TableList: React.FC = () => {
       <ProTable<TableListItem, TableListPagination>
         style={{ height: '100%' }}
         actionRef={actionRef}
+        ghost={true}
         rowKey="id"
         search={{
-          labelWidth: 120,
+          labelWidth: 100,
         }}
         toolBarRender={() => [
           <Button
@@ -263,9 +287,7 @@ const TableList: React.FC = () => {
               }
             }}
           >
-            <Tooltip title="">
-              <Button type="primary">批量导入</Button>
-            </Tooltip>
+            <Button type="primary">批量导入</Button>
           </Upload>,
           // <Button
           //   type="primary"
@@ -292,6 +314,17 @@ const TableList: React.FC = () => {
           onChange: (_, selectedRows) => {
             setSelectedRows(selectedRows);
           },
+        }}
+        options={{
+          density: false,
+          fullScreen: true,
+          reload: true,
+          setting: true,
+        }}
+        pagination={{
+          showQuickJumper: true,
+          pageSizeOptions: ['10', '20', '30', '40'],
+          defaultPageSize: 10,
         }}
       />
       {createModalVisible && (
@@ -427,7 +460,7 @@ const TableList: React.FC = () => {
             params={{
               id: currentRow?.id,
             }}
-            columns={columns as ProDescriptionsItemProps<TableListItem>[]}
+            columns={descriptions as ProDescriptionsItemProps<TableListItem>[]}
           />
         )}
       </Drawer>

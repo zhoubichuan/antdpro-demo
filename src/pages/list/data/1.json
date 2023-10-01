@@ -4,6 +4,7 @@
     "dataIndex": "id",
     "hideInSearch": true,
     "hideInTable": true,
+    "hideInForm": true,
     "create": false,
     "edit": {
       "disabled": true,
@@ -22,6 +23,7 @@
     "dataIndex": "step",
     "hideInSearch": false,
     "hideInTable": false,
+    "width": 60,
     "create": {
       "rules": [
         {
@@ -72,6 +74,8 @@
     "dataIndex": "descript",
     "hideInSearch": false,
     "hideInTable": false,
+    "width": 500,
+    "ellipsis": true,
     "create": {
       "rules": [
         {
@@ -101,6 +105,8 @@
     "dataIndex": "detail",
     "hideInSearch": false,
     "hideInTable": false,
+    "width": 200,
+    "ellipsis": true,
     "create": {
       "rules": [
         {
@@ -130,6 +136,7 @@
     "dataIndex": "images",
     "hideInSearch": true,
     "hideInTable": false,
+    "width": 200,
     "table": {
       "type": "image"
     },
