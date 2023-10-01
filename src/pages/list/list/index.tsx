@@ -109,7 +109,16 @@ const handleDelete = async (selectedRows: TableListItem[]) => {
     return false;
   }
 };
-
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 3 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 21 },
+    sm: { span: 20 },
+  },
+};
 const TableList: React.FC = () => {
   const path: String = location.pathname.replace('/antdpro-demo', '');
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
@@ -134,7 +143,7 @@ const TableList: React.FC = () => {
     {
       title: '编号',
       dataIndex: 'id',
-      width: 100,
+      width: 160,
       fixed: 'left',
       hideInSearch: true,
       hideInDescriptions: true,
@@ -169,8 +178,30 @@ const TableList: React.FC = () => {
       dataIndex: 'option',
       valueType: 'option',
       fixed: 'right',
-      width: 100,
+      width: 160,
       render: (_, record) => [
+        <a
+          key="config"
+          onClick={async () => {
+            const copyParams = {};
+            templateData
+              .filter((item: any) => item.create)
+              .forEach((field: any) => {
+                if (record[field.dataIndex]) {
+                  copyParams[field.dataIndex] = record[field.dataIndex];
+                }
+              });
+            const success = await handleAdd(copyParams as TableListItem);
+            if (success) {
+              handleModalVisible(false);
+              if (actionRef.current) {
+                actionRef.current.reload();
+              }
+            }
+          }}
+        >
+          添加
+        </a>,
         <a
           key="config"
           onClick={() => {
@@ -194,22 +225,24 @@ const TableList: React.FC = () => {
       ],
     },
   ];
-  const descriptions: ProColumns<TableListItem>[] = templateData.map((item: any) => {
-    const { width, ellipsis, ...rest } = item;
-    return {
-      ...rest,
-      render: (text: any) => {
-        if (!item.hideInTable && item.table && item.table.type === 'image') {
-          if (Array.isArray(text)) {
-            return text.map((i: any) => <Image height={300} src={i?.thumbUrl} />);
-          } else {
-            return <Image height={300} src={text[0]?.thumbUrl} />;
+  const descriptions: ProColumns<TableListItem>[] = templateData
+    .filter((item: any) => item.view)
+    .map((item: any) => {
+      const { width, view, ellipsis, ...rest } = item;
+      return {
+        ...rest,
+        render: (text: any) => {
+          if (!item.hideInTable && item.view && item.view.type === 'image') {
+            if (Array.isArray(text)) {
+              return text.map((i: any) => <Image height={300} src={i?.thumbUrl} />);
+            } else {
+              return <Image height={300} src={text[0]?.thumbUrl} />;
+            }
           }
-        }
-        return <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>{text}</div>;
-      },
-    };
-  });
+          return <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>{text}</div>;
+        },
+      };
+    });
   return (
     <PageContainer
       style={{
@@ -329,6 +362,7 @@ const TableList: React.FC = () => {
       />
       {createModalVisible && (
         <ModalForm
+          {...formItemLayout}
           title="新增"
           width="800px"
           layout={'horizontal'}
@@ -377,6 +411,11 @@ const TableList: React.FC = () => {
                 case 'image':
                   form = (
                     <ProFormUploadButton
+                      fieldProps={{
+                        name: 'file',
+                        listType: 'picture-card',
+                      }}
+                      action="/upload.do"
                       {...item.create}
                       label={item.title}
                       name={item.dataIndex}
@@ -390,6 +429,7 @@ const TableList: React.FC = () => {
       )}
       {updateModalVisible && (
         <ModalForm
+          {...formItemLayout}
           title="编辑"
           width="800px"
           layout={'horizontal'}
@@ -431,7 +471,16 @@ const TableList: React.FC = () => {
                   break;
                 case 'image':
                   form = (
-                    <ProFormUploadButton {...item.edit} label={item.title} name={item.dataIndex} />
+                    <ProFormUploadButton
+                      fieldProps={{
+                        name: 'file',
+                        listType: 'picture-card',
+                      }}
+                      action="/upload.do"
+                      {...item.create}
+                      label={item.title}
+                      name={item.dataIndex}
+                    />
                   );
                   break;
               }
@@ -440,7 +489,9 @@ const TableList: React.FC = () => {
         </ModalForm>
       )}
       <Drawer
+        title={currentRow?.id}
         destroyOnClose
+        closable={true}
         closeIcon={<CloseOutlined />}
         width={'80%'}
         open={showDetail}
@@ -448,12 +499,10 @@ const TableList: React.FC = () => {
           setCurrentRow(undefined);
           setShowDetail(false);
         }}
-        closable={false}
       >
         {currentRow?.id && (
           <ProDescriptions<TableListItem>
             column={2}
-            title={currentRow?.id}
             request={async () => ({
               data: currentRow || {},
             })}

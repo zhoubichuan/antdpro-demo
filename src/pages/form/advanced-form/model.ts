@@ -4,7 +4,7 @@ import { fakeSubmitForm } from './service';
 
 export type ModelType = {
   namespace: string;
-  state: {};
+  state: Object;
   effects: {
     submitAdvancedForm: Effect;
   };

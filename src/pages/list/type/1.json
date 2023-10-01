@@ -189,7 +189,8 @@
           "message": "内容必填"
         }
       ],
-      "colProps": { "span": 24 }
+      "colProps": { "span": 24 },
+      "type": "image"
     },
     "edit": {
       "rules": [
@@ -204,5 +205,27 @@
     "view": {
       "type": "image"
     }
+  },
+  {
+    "title": "子节点",
+    "dataIndex": "hasChildren",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": false
+  },
+  {
+    "title": "节点",
+    "dataIndex": "children",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "create": false,
+    "edit": false,
+    "view": false
   }
 ]
