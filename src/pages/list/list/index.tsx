@@ -1,6 +1,6 @@
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
 import { Button, message, Drawer, Upload, Image, Modal } from 'antd';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
@@ -143,15 +143,21 @@ const TableList: React.FC = () => {
       for (let i = 0; i < template.length; i++) {
         const item = template[i];
         Object.keys(item).forEach((field: any) => {
-          if (typeof JSON.parse(item[field]) === 'object') {
-            template[i][field] = JSON.parse(item[field]);
+          if (typeof item[field] === 'string') {
+            if (item[field].includes('{}')) {
+              template[i][field] = false;
+            } else if (item[field].includes('{')) {
+              template[i][field] = JSON.parse(item[field]);
+            }
           }
         });
       }
     }
     setTemplateData(template);
   };
-  getTemplateData(params.id);
+  useEffect(() => {
+    getTemplateData(params.id);
+  }, []);
   const handleOnTabChange = async (key: string) => {
     await getTemplateData(key);
     setTabActiveKey(key);
