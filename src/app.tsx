@@ -15,10 +15,6 @@ const loginPath = '/user/login';
 export const initialStateConfig = {
   loading: <PageLoading />,
 };
-
-/**
- * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
- * */
 export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>;
   currentUser?: API.CurrentUser;
@@ -29,7 +25,7 @@ export async function getInitialState(): Promise<{
       const currentUser = await queryCurrentUser();
       return currentUser;
     } catch (error) {
-      history.push(loginPath);
+      // history.push(loginPath);
     }
     return undefined;
   };
@@ -118,7 +114,6 @@ export const request: RequestConfig = {
   responseInterceptors: [
     async (response) => {
       const res = await response.clone().json(); //这里是关键，获取所有接口请求成功之后的数据
-      console.log(res);
       if (res?.result) {
         const { sacpresult, sucess } = res.result;
         if (sucess) {

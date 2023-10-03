@@ -4,26 +4,25 @@
     layout: false,
     routes: [
       {
-        path: '/user/login',
-        layout: false,
-        name: 'login',
-        component: './user/Login',
-      },
-      {
         path: '/user',
         redirect: '/user/login',
       },
       {
-        name: 'register.result',
-        icon: 'smile',
-        path: '/user/register-result',
-        component: './user/register-result',
+        path: '/user/login',
+        name: 'login',
+        component: './user/Login',
       },
       {
+        path: '/user/register',
         name: 'register',
         icon: 'smile',
-        path: '/user/register',
         component: './user/register',
+      },
+      {
+        icon: 'smile',
+        name: 'register/result',
+        path: '/user/register-result',
+        component: './user/register-result',
       },
       {
         menuRender: false,

@@ -151,7 +151,7 @@ const Register: FC = () => {
       <h3>注册</h3>
       <Form form={form} name="UserRegister" onFinish={onFinish}>
         <FormItem
-          name="mail"
+          name="email"
           rules={[
             {
               required: true,
@@ -164,6 +164,17 @@ const Register: FC = () => {
           ]}
         >
           <Input size="large" placeholder="邮箱" />
+        </FormItem>
+        <FormItem
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: '请输入用户名',
+            },
+          ]}
+        >
+          <Input size="large" placeholder="用户名" />
         </FormItem>
         <Popover
           getPopupContainer={(node) => {
