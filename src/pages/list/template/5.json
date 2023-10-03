@@ -1,56 +1,6 @@
 [
   {
-    "title": "编号",
-    "dataIndex": "code",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "农机名称",
-    "dataIndex": "name",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "农机类型",
+    "title": "类型",
     "dataIndex": "type",
     "hideInSearch": false,
     "hideInTable": false,
@@ -75,8 +25,8 @@
     "view": true
   },
   {
-    "title": "可监控工矿字段数量",
-    "dataIndex": "count",
+    "title": "名称",
+    "dataIndex": "title",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -100,8 +50,8 @@
     "view": true
   },
   {
-    "title": "设置阈值数量",
-    "dataIndex": "number",
+    "title": "字段",
+    "dataIndex": "dataIndex",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -125,8 +75,8 @@
     "view": true
   },
   {
-    "title": "状态",
-    "dataIndex": "status",
+    "title": "搜索显示",
+    "dataIndex": "hideInSearch",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -150,8 +100,133 @@
     "view": true
   },
   {
-    "title": "备注",
-    "dataIndex": "remark",
+    "title": "表格显示",
+    "dataIndex": "hideInTable",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "列表显示",
+    "dataIndex": "hideInForm",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "表格属性",
+    "dataIndex": "table",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "创建属性",
+    "dataIndex": "create",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "编辑属性",
+    "dataIndex": "edit",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "展示属性",
+    "dataIndex": "view",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {

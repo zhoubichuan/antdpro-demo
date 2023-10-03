@@ -2,16 +2,17 @@
 /* eslint-disable */
 import { request } from 'umi';
 import { TableListItem } from './data';
-export async function getTemplate() {
+export async function getTemplate(key: string, type: string) {
   return request<{
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/list/template/' + location.pathname.slice(-1), {
+  }>('/api/list/template/' + key, {
     method: 'GET',
     params: {
       current: '1',
       pageSize: '20',
+      type: type,
     },
   });
 }

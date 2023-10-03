@@ -15,7 +15,7 @@ import {
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { list, addList, updateList, removeList, exportList } from './service';
+import { list, addList, updateList, removeList, exportList, getTemplate } from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
@@ -119,6 +119,7 @@ const formItemLayout = {
     sm: { span: 20 },
   },
 };
+
 const TableList: React.FC = () => {
   const path: String = location.pathname.replace('/antdpro-demo', '');
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
@@ -131,8 +132,28 @@ const TableList: React.FC = () => {
   );
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const params: any = useParams();
-  const templateData: any = require(`../${path.split('/')[2]}/${params.id}.json`);
-  const handleOnTabChange = (key: string) => {
+  const [templateData, setTemplateData] = useState<any>([]);
+  const getTemplateData = async (key: string) => {
+    let template: any = [];
+    if (path.includes('template')) {
+      template = await require(`../${path.split('/')[2]}/${key}.json`);
+    } else {
+      const result = await getTemplate(key, path.split('/')[2]);
+      template = result.data;
+      for (let i = 0; i < template.length; i++) {
+        const item = template[i];
+        Object.keys(item).forEach((field: any) => {
+          if (typeof JSON.parse(item[field]) === 'object') {
+            template[i][field] = JSON.parse(item[field]);
+          }
+        });
+      }
+    }
+    setTemplateData(template);
+  };
+  getTemplateData(params.id);
+  const handleOnTabChange = async (key: string) => {
+    await getTemplateData(key);
     setTabActiveKey(key);
     if (actionRef.current) {
       actionRef.current.reload();

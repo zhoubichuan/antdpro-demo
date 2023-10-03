@@ -1,7 +1,7 @@
 [
   {
-    "title": "ip号码",
-    "dataIndex": "ip",
+    "title": "类型",
+    "dataIndex": "type",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -25,8 +25,8 @@
     "view": true
   },
   {
-    "title": "网络",
-    "dataIndex": "network",
+    "title": "名称",
+    "dataIndex": "title",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -50,8 +50,8 @@
     "view": true
   },
   {
-    "title": "版本",
-    "dataIndex": "version",
+    "title": "字段",
+    "dataIndex": "dataIndex",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -75,8 +75,8 @@
     "view": true
   },
   {
-    "title": "城市",
-    "dataIndex": "city",
+    "title": "搜索显示",
+    "dataIndex": "hideInSearch",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -100,8 +100,8 @@
     "view": true
   },
   {
-    "title": "经度",
-    "dataIndex": "latitude",
+    "title": "表格显示",
+    "dataIndex": "hideInTable",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
@@ -125,8 +125,108 @@
     "view": true
   },
   {
-    "title": "纬度",
-    "dataIndex": "longitude",
+    "title": "列表显示",
+    "dataIndex": "hideInForm",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "表格属性",
+    "dataIndex": "table",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "创建属性",
+    "dataIndex": "create",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "编辑属性",
+    "dataIndex": "edit",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "展示属性",
+    "dataIndex": "view",
     "hideInSearch": false,
     "hideInTable": false,
     "create": {
