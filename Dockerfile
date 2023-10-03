@@ -1,5 +1,5 @@
 #设置构建的基础镜像
-FROM node:12-alpine 
+FROM node:16.5.0
 RUN mkdir -p /project/
 WORKDIR /project/
 COPY package*.json /project/

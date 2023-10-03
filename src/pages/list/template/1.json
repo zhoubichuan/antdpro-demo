@@ -1,6 +1,6 @@
 [
   {
-    "title": "title",
+    "title": "名称",
     "dataIndex": "title",
     "hideInSearch": false,
     "hideInTable": false,
@@ -25,7 +25,7 @@
     "view": true
   },
   {
-    "title": "dataIndex",
+    "title": "字段",
     "dataIndex": "dataIndex",
     "hideInSearch": false,
     "hideInTable": false,
@@ -50,7 +50,7 @@
     "view": true
   },
   {
-    "title": "hideInSearch",
+    "title": "搜索显示",
     "dataIndex": "hideInSearch",
     "hideInSearch": false,
     "hideInTable": false,
@@ -75,7 +75,57 @@
     "view": true
   },
   {
-    "title": "table",
+    "title": "表格显示",
+    "dataIndex": "hideInTable",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "列表显示",
+    "dataIndex": "hideInForm",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "表格属性",
     "dataIndex": "table",
     "hideInSearch": false,
     "hideInTable": false,
@@ -100,7 +150,7 @@
     "view": true
   },
   {
-    "title": "create",
+    "title": "创建属性",
     "dataIndex": "create",
     "hideInSearch": false,
     "hideInTable": false,
@@ -125,7 +175,7 @@
     "view": true
   },
   {
-    "title": "edit",
+    "title": "编辑属性",
     "dataIndex": "edit",
     "hideInSearch": false,
     "hideInTable": false,
@@ -150,7 +200,7 @@
     "view": true
   },
   {
-    "title": "view",
+    "title": "展示属性",
     "dataIndex": "view",
     "hideInSearch": false,
     "hideInTable": false,
