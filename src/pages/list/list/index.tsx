@@ -122,6 +122,7 @@ const formItemLayout = {
 
 const TableList: React.FC = () => {
   const path: String = location.pathname.replace('/antdpro-demo', '');
+  const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
   const [showDetail, setShowDetail] = useState<boolean>(false);
@@ -386,6 +387,15 @@ const TableList: React.FC = () => {
           >
             <PlusOutlined /> 新建
           </Button>,
+          <Button
+            type="primary"
+            key="primary"
+            onClick={() => {
+              handleManyModalVisible(true);
+            }}
+          >
+            <PlusOutlined /> 批量添加
+          </Button>,
         ]}
         request={list}
         columns={columns}
@@ -406,6 +416,35 @@ const TableList: React.FC = () => {
           defaultPageSize: 10,
         }}
       />
+      {createManyModalVisible && (
+        <ModalForm
+          title="JSON批量新增"
+          width="800px"
+          layout={'horizontal'}
+          visible={createManyModalVisible}
+          onVisibleChange={handleManyModalVisible}
+          onFinish={async (data: any) => {
+            const value = JSON.parse(data.content);
+            for (let i = 0; i < value.length; i++) {
+              const item = value[i];
+              const success = await handleAdd(item as TableListItem);
+              if (success) {
+                handleManyModalVisible(false);
+                if (actionRef.current) {
+                  actionRef.current.reload();
+                }
+              }
+            }
+          }}
+        >
+          <ProFormTextArea
+            name="content"
+            label="数据"
+            placeholder="请输入JSON数据"
+            colProps={{ span: 24 }}
+          />
+        </ModalForm>
+      )}
       {createModalVisible && (
         <ModalForm
           {...formItemLayout}
