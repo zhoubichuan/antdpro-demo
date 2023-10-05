@@ -25,13 +25,13 @@ export async function getInitialState(): Promise<{
       const currentUser = await queryCurrentUser();
       return currentUser;
     } catch (error) {
-      // history.push(loginPath);
+      history.push(loginPath);
     }
     return undefined;
   };
 
   // 如果是登录页面，不执行
-  if (history.location.pathname !== loginPath) {
+  if (history.location.pathname !== '/user/login') {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -143,7 +143,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
+      if (!initialState?.currentUser && !location.pathname.includes('/user/')) {
         history.push(loginPath);
       }
     },

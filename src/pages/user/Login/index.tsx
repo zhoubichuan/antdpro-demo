@@ -61,7 +61,7 @@ const Login: React.FC = () => {
     setSubmitting(true);
     try {
       // 登录
-      const msg = await login({ ...values, type });
+      const msg: any = await login({ ...values, type });
       if (msg.status === 'success') {
         localStorage.token = msg.token;
         const defaultloginSuccessMessage = intl.formatMessage({
@@ -95,7 +95,7 @@ const Login: React.FC = () => {
       <div className={styles.content}>
         <div className={styles.top}>
           <div className={styles.header}>
-            <Link to="/">
+            <Link to="/user/register">
               <img
                 alt="logo"
                 onClick={() =>
@@ -287,7 +287,7 @@ const Login: React.FC = () => {
                     const result = await getFakeCaptcha({
                       phone,
                     });
-                    if (result === false) {
+                    if (result.status !== '200') {
                       return;
                     }
                     message.success('获取验证码成功！验证码为：1234');
@@ -318,6 +318,9 @@ const Login: React.FC = () => {
             <TaobaoCircleOutlined className={styles.icon} />
             <WeiboCircleOutlined className={styles.icon} />
           </Space>
+          <div>
+            <Link to="/user/register">注册页面</Link>
+          </div>
         </div>
       </div>
       <Footer />

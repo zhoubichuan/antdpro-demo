@@ -2,10 +2,10 @@ import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { Form, Button, Col, Input, Popover, Progress, Row, Select, message } from 'antd';
 import type { Store } from 'antd/es/form/interface';
-import { Link, useRequest, history } from 'umi';
+import { useRequest } from 'umi';
 import type { StateType } from './service';
 import { fakeRegister } from './service';
-
+import { useIntl, Link, history, SelectLang } from 'umi';
 import styles from './style.less';
 
 const FormItem = Form.Item;
@@ -48,7 +48,7 @@ const Register: FC = () => {
   const confirmDirty = false;
   let interval: number | undefined;
   const [form] = Form.useForm();
-
+  const intl = useIntl();
   useEffect(
     () => () => {
       clearInterval(interval);
@@ -147,149 +147,174 @@ const Register: FC = () => {
   };
 
   return (
-    <div className={styles.main}>
-      <h3>注册</h3>
-      <Form form={form} name="UserRegister" onFinish={onFinish}>
-        <FormItem
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: '请输入邮箱地址!',
-            },
-            {
-              type: 'email',
-              message: '邮箱地址格式错误!',
-            },
-          ]}
-        >
-          <Input size="large" placeholder="邮箱" />
-        </FormItem>
-        <FormItem
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: '请输入用户名',
-            },
-          ]}
-        >
-          <Input size="large" placeholder="用户名" />
-        </FormItem>
-        <Popover
-          getPopupContainer={(node) => {
-            if (node && node.parentNode) {
-              return node.parentNode as HTMLElement;
-            }
-            return node;
-          }}
-          content={
-            visible && (
-              <div style={{ padding: '4px 0' }}>
-                {passwordStatusMap[getPasswordStatus()]}
-                {renderPasswordProgress()}
-                <div style={{ marginTop: 10 }}>
-                  <span>请至少输入 6 个字符。请不要使用容易被猜到的密码。</span>
-                </div>
-              </div>
-            )
-          }
-          overlayStyle={{ width: 240 }}
-          placement="right"
-          visible={visible}
-        >
-          <FormItem
-            name="password"
-            className={
-              form.getFieldValue('password') &&
-              form.getFieldValue('password').length > 0 &&
-              styles.password
-            }
-            rules={[
-              {
-                validator: checkPassword,
-              },
-            ]}
-          >
-            <Input size="large" type="password" placeholder="至少6位密码，区分大小写" />
-          </FormItem>
-        </Popover>
-        <FormItem
-          name="confirm"
-          rules={[
-            {
-              required: true,
-              message: '确认密码',
-            },
-            {
-              validator: checkConfirm,
-            },
-          ]}
-        >
-          <Input size="large" type="password" placeholder="确认密码" />
-        </FormItem>
-        <InputGroup compact>
-          <Select size="large" value={prefix} onChange={changePrefix} style={{ width: '20%' }}>
-            <Option value="86">+86</Option>
-            <Option value="87">+87</Option>
-          </Select>
-          <FormItem
-            style={{ width: '80%' }}
-            name="mobile"
-            rules={[
-              {
-                required: true,
-                message: '请输入手机号!',
-              },
-              {
-                pattern: /^\d{11}$/,
-                message: '手机号格式错误!',
-              },
-            ]}
-          >
-            <Input size="large" placeholder="手机号" />
-          </FormItem>
-        </InputGroup>
-        <Row gutter={8}>
-          <Col span={16}>
+    <div className={styles.container}>
+      <div className={styles.lang} data-lang>
+        {SelectLang && <SelectLang />}
+      </div>
+      <div className={styles.content}>
+        <div className={styles.top}>
+          <div className={styles.header}>
+            <Link to="/user/register-result">
+              <img
+                alt="logo"
+                onClick={() =>
+                  (localStorage.antdprourl = 'https://zhoubichuan.com/antdpro-express')
+                }
+                className={styles.logo}
+                src="/antdpro-demo/logo.svg"
+              />
+              <span className={styles.title}>数据管理系统</span>
+            </Link>
+          </div>
+          <div className={styles.desc}>
+            {intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+          </div>
+        </div>
+        <div className={styles.main}>
+          <h3>注册</h3>
+          <Form form={form} name="UserRegister" onFinish={onFinish}>
             <FormItem
-              name="captcha"
+              name="email"
               rules={[
                 {
                   required: true,
-                  message: '请输入验证码!',
+                  message: '请输入邮箱地址!',
+                },
+                {
+                  type: 'email',
+                  message: '邮箱地址格式错误!',
                 },
               ]}
             >
-              <Input size="large" placeholder="验证码" />
+              <Input size="large" placeholder="邮箱" />
             </FormItem>
-          </Col>
-          <Col span={8}>
-            <Button
-              size="large"
-              disabled={!!count}
-              className={styles.getCaptcha}
-              onClick={onGetCaptcha}
+            <FormItem
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: '请输入用户名',
+                },
+              ]}
             >
-              {count ? `${count} s` : '获取验证码'}
-            </Button>
-          </Col>
-        </Row>
-        <FormItem>
-          <Button
-            size="large"
-            loading={submitting}
-            className={styles.submit}
-            type="primary"
-            htmlType="submit"
-          >
-            <span>注册</span>
-          </Button>
-          <Link className={styles.login} to="/user/login">
-            <span>使用已有账户登录</span>
-          </Link>
-        </FormItem>
-      </Form>
+              <Input size="large" placeholder="用户名" />
+            </FormItem>
+            <Popover
+              getPopupContainer={(node) => {
+                if (node && node.parentNode) {
+                  return node.parentNode as HTMLElement;
+                }
+                return node;
+              }}
+              content={
+                visible && (
+                  <div style={{ padding: '4px 0' }}>
+                    {passwordStatusMap[getPasswordStatus()]}
+                    {renderPasswordProgress()}
+                    <div style={{ marginTop: 10 }}>
+                      <span>请至少输入 6 个字符。请不要使用容易被猜到的密码。</span>
+                    </div>
+                  </div>
+                )
+              }
+              overlayStyle={{ width: 240 }}
+              placement="right"
+              visible={visible}
+            >
+              <FormItem
+                name="password"
+                className={
+                  form.getFieldValue('password') &&
+                  form.getFieldValue('password').length > 0 &&
+                  styles.password
+                }
+                rules={[
+                  {
+                    validator: checkPassword,
+                  },
+                ]}
+              >
+                <Input size="large" type="password" placeholder="至少6位密码，区分大小写" />
+              </FormItem>
+            </Popover>
+            <FormItem
+              name="confirm"
+              rules={[
+                {
+                  required: true,
+                  message: '确认密码',
+                },
+                {
+                  validator: checkConfirm,
+                },
+              ]}
+            >
+              <Input size="large" type="password" placeholder="确认密码" />
+            </FormItem>
+            <InputGroup compact>
+              <Select size="large" value={prefix} onChange={changePrefix} style={{ width: '20%' }}>
+                <Option value="86">+86</Option>
+                <Option value="87">+87</Option>
+              </Select>
+              <FormItem
+                style={{ width: '80%' }}
+                name="mobile"
+                rules={[
+                  {
+                    required: true,
+                    message: '请输入手机号!',
+                  },
+                  {
+                    pattern: /^\d{11}$/,
+                    message: '手机号格式错误!',
+                  },
+                ]}
+              >
+                <Input size="large" placeholder="手机号" />
+              </FormItem>
+            </InputGroup>
+            <Row gutter={8}>
+              <Col span={16}>
+                <FormItem
+                  name="captcha"
+                  rules={[
+                    {
+                      required: true,
+                      message: '请输入验证码!',
+                    },
+                  ]}
+                >
+                  <Input size="large" placeholder="验证码" />
+                </FormItem>
+              </Col>
+              <Col span={8}>
+                <Button
+                  size="large"
+                  disabled={!!count}
+                  className={styles.getCaptcha}
+                  onClick={onGetCaptcha}
+                >
+                  {count ? `${count} s` : '获取验证码'}
+                </Button>
+              </Col>
+            </Row>
+            <FormItem>
+              <Button
+                size="large"
+                loading={submitting}
+                className={styles.submit}
+                type="primary"
+                htmlType="submit"
+              >
+                <span>注册</span>
+              </Button>
+              <Link className={styles.login} to="/user/login">
+                <span>使用已有账户登录</span>
+              </Link>
+            </FormItem>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };
