@@ -209,7 +209,7 @@ const TableList: React.FC = () => {
       width: 160,
       render: (_, record) => [
         <a
-          key="config"
+          key="add"
           onClick={async () => {
             const copyParams = {};
             templateData
@@ -231,7 +231,7 @@ const TableList: React.FC = () => {
           添加
         </a>,
         <a
-          key="config"
+          key="edit"
           onClick={() => {
             setCurrentRow(record);
             handleUpdateModalVisible(true);
@@ -240,7 +240,7 @@ const TableList: React.FC = () => {
           修改
         </a>,
         <a
-          key="subscribeAlert"
+          key="delete"
           onClick={() => {
             Modal.confirm({
               title: '删除数据',

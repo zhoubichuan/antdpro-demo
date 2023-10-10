@@ -20,7 +20,7 @@
       },
       {
         icon: 'smile',
-        name: 'register/result',
+        name: 'register.result',
         path: '/user/register-result',
         component: './user/register-result',
       },
@@ -116,31 +116,31 @@
         ],
       },
       {
-        name: '查询表格样式一',
+        name: 'list1',
         icon: 'smile',
         path: '/list/table-list1',
         component: './list/table-list1',
       },
       {
-        name: '查询表格样式一',
+        name: 'list2',
         icon: 'smile',
         path: '/list/table-list2',
         component: './list/table-list2',
       },
       {
-        name: '查询表格样式二',
+        name: 'list3',
         icon: 'smile',
         path: '/list/table-list3',
         component: './list/table-list3',
       },
       {
-        name: '查询表格样式三',
+        name: 'list4',
         icon: 'smile',
         path: '/list/table-list4',
         component: './list/table-list4',
       },
       {
-        name: '模板列表',
+        name: 'list5',
         icon: 'smile',
         path: '/list/template',
         redirect: '/list/template/1',
@@ -153,7 +153,7 @@
         component: './list/list',
       },
       {
-        name: '数据列表',
+        name: 'list6',
         icon: 'smile',
         path: '/list/data',
         redirect: '/list/data/1',
@@ -166,7 +166,7 @@
         component: './list/list',
       },
       {
-        name: '字段列表',
+        name: 'list7',
         icon: 'smile',
         path: '/list/field',
         redirect: '/list/field/1',
@@ -179,7 +179,7 @@
         component: './list/list',
       },
       {
-        name: '类型列表',
+        name: 'list8',
         icon: 'smile',
         path: '/list/type',
         redirect: '/list/type/1',
