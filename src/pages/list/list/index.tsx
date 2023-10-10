@@ -439,9 +439,9 @@ const TableList: React.FC = () => {
         >
           <ProFormTextArea
             name="content"
-            label="数据"
             placeholder="请输入JSON数据"
             colProps={{ span: 24 }}
+            allowClear
           />
         </ModalForm>
       )}
