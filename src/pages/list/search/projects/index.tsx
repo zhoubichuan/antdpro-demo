@@ -16,19 +16,19 @@ const { Paragraph } = Typography;
 const getKey = (id: string, index: number) => `${id}-${index}`;
 
 const Projects: FC = () => {
-  const { data, loading, run } = useRequest((values: any) => {
+  const res = useRequest((values: any) => {
     return queryFakeList({
       current: 1,
       pageSize: 20,
     });
   });
-
-  const list = data?.list || [];
+  debugger;
+  const list = res.data?.list || [];
   debugger;
   const cardList = list && (
     <List<ListItemDataType>
       rowKey="id"
-      loading={loading}
+      loading={res.loading}
       grid={{
         gutter: 16,
         xs: 1,
@@ -83,9 +83,7 @@ const Projects: FC = () => {
         <Form
           layout="inline"
           onValuesChange={(_, values) => {
-            // 表单项变化时请求数据
-            // 模拟查询表单生效
-            run(values);
+            res.run(values);
           }}
         >
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>

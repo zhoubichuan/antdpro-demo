@@ -13,15 +13,14 @@ import styles from './style.less';
 const { Option } = Select;
 const FormItem = Form.Item;
 
-const pageSize = 5;
-
 const Articles: FC = () => {
   const [form] = Form.useForm();
 
   const { data, reload, loading, loadMore, loadingMore } = useRequest(
     () => {
       return queryFakeList({
-        count: pageSize,
+        current: 1,
+        pageSize: 20,
       });
     },
     {
@@ -188,33 +187,35 @@ const Articles: FC = () => {
           itemLayout="vertical"
           loadMore={loadMoreDom}
           dataSource={list}
-          renderItem={(item) => (
-            <List.Item
-              key={item.id}
-              actions={[
-                <IconText key="star" type="star-o" text={item.star} />,
-                <IconText key="like" type="like-o" text={item.like} />,
-                <IconText key="message" type="message" text={item.message} />,
-              ]}
-              extra={<div className={styles.listItemExtra} />}
-            >
-              <List.Item.Meta
-                title={
-                  <a className={styles.listItemMetaTitle} href={item.href}>
-                    {item.title}
-                  </a>
-                }
-                description={
-                  <span>
-                    <Tag>数据管理系统</Tag>
-                    <Tag>设计语言</Tag>
-                    <Tag>蚂蚁金服</Tag>
-                  </span>
-                }
-              />
-              <ArticleListContent data={item} />
-            </List.Item>
-          )}
+          renderItem={(item) => {
+            return (
+              <List.Item
+                key={item.id}
+                actions={[
+                  <IconText key="star" type="star-o" text={item.star} />,
+                  <IconText key="like" type="like-o" text={item.like} />,
+                  <IconText key="message" type="message" text={item.message} />,
+                ]}
+                extra={<div className={styles.listItemExtra} />}
+              >
+                <List.Item.Meta
+                  title={
+                    <a className={styles.listItemMetaTitle} href={item.href}>
+                      {item.title}
+                    </a>
+                  }
+                  description={
+                    <span>
+                      <Tag>数据管理系统</Tag>
+                      <Tag>设计语言</Tag>
+                      <Tag>蚂蚁金服</Tag>
+                    </span>
+                  }
+                />
+                <ArticleListContent data={item} />
+              </List.Item>
+            );
+          }}
         />
       </Card>
     </>
