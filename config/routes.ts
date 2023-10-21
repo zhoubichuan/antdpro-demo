@@ -96,20 +96,14 @@
             redirect: '/list/search/articles',
           },
           {
-            name: 'articles',
-            icon: 'smile',
             path: '/list/search/articles',
             component: './list/search/articles',
           },
           {
-            name: 'projects',
-            icon: 'smile',
             path: '/list/search/projects',
             component: './list/search/projects',
           },
           {
-            name: 'applications',
-            icon: 'smile',
             path: '/list/search/applications',
             component: './list/search/applications',
           },

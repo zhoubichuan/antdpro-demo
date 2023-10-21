@@ -17,14 +17,14 @@ const getKey = (id: string, index: number) => `${id}-${index}`;
 
 const Projects: FC = () => {
   const { data, loading, run } = useRequest((values: any) => {
-    console.log('form data', values);
     return queryFakeList({
-      count: 8,
+      current: 1,
+      pageSize: 20,
     });
   });
 
   const list = data?.list || [];
-
+  debugger;
   const cardList = list && (
     <List<ListItemDataType>
       rowKey="id"
