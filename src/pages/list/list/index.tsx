@@ -350,6 +350,7 @@ const TableList: React.FC = () => {
                 cancelText: '取消',
                 onOk: async () => {
                   await handleDelete(selectedRowsState);
+                  setSelectedRows([]);
                   if (actionRef.current) {
                     actionRef.current.reload();
                   }
