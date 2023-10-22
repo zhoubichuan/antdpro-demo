@@ -5,7 +5,8 @@ export type Member = {
 };
 
 export interface Params {
-  count: number;
+  current: number;
+  pageSize: number;
 }
 export interface ListItemDataType {
   id: string;

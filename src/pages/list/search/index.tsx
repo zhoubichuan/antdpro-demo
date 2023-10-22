@@ -1,7 +1,9 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import { Input } from 'antd';
 import type { FC } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { history } from 'umi';
+import { list, addList, updateList, removeList, exportList, getTemplate } from './service';
 
 type SearchProps = {
   match: {
@@ -13,22 +15,24 @@ type SearchProps = {
   };
 };
 
-const tabList = [
-  {
-    key: 'articles',
-    tab: '文章',
-  },
-  {
-    key: 'projects',
-    tab: '项目',
-  },
-  {
-    key: 'applications',
-    tab: '应用',
-  },
-];
-
 const Search: FC<SearchProps> = (props) => {
+  const path: String = location.pathname.replace('/antdpro-demo', '');
+  const [templateData, setTemplateData] = useState<any>([]);
+  const getTemplateData = async () => {
+    let template: any = [];
+    const result = await list(
+      {
+        current: 1,
+        pageSize: 20,
+      },
+      { type: 'studentType' },
+    );
+    template = result.data;
+    setTemplateData(template);
+  };
+  useEffect(() => {
+    getTemplateData();
+  }, []);
   const handleTabChange = (key: string) => {
     const { match } = props;
     const url = match.url === '/' ? '' : match.url;
@@ -75,7 +79,7 @@ const Search: FC<SearchProps> = (props) => {
           />
         </div>
       }
-      tabList={tabList}
+      tabList={templateData.map((item: any) => ({ key: 'project', tab: item.name }))}
       tabActiveKey={getTabKey()}
       onTabChange={handleTabChange}
     >
