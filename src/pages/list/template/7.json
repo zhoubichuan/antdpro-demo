@@ -248,5 +248,83 @@
       "colProps": { "span": 24 }
     },
     "view": true
+  },
+  {
+    "title": "后端增",
+    "dataIndex": "add",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端删",
+    "dataIndex": "delete",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端改",
+    "dataIndex": "modify",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端查",
+    "dataIndex": "query",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端类型",
+    "dataIndex": "typesof",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端默认值",
+    "dataIndex": "defaults",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
   }
 ]
