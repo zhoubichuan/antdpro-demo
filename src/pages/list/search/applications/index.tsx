@@ -107,7 +107,7 @@ export const Applications: FC<Record<string, any>> = () => {
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>
             <Form.Item name="category">
               <TagSelect expandable>
-                <TagSelect.Option value="cat1">类目一</TagSelect.Option>
+                <TagSelect.Option value="cat1">类目一2</TagSelect.Option>
                 <TagSelect.Option value="cat2">类目二</TagSelect.Option>
                 <TagSelect.Option value="cat3">类目三</TagSelect.Option>
                 <TagSelect.Option value="cat4">类目四</TagSelect.Option>

@@ -93,18 +93,18 @@
         routes: [
           {
             path: '/list/search',
-            redirect: '/list/search/articles',
+            redirect: '/list/search/articles/1',
           },
           {
-            path: '/list/search/articles',
+            path: '/list/search/articles/:id',
             component: './list/search/articles',
           },
           {
-            path: '/list/search/projects',
+            path: '/list/search/projects/:id',
             component: './list/search/projects',
           },
           {
-            path: '/list/search/applications',
+            path: '/list/search/applications/:id',
             component: './list/search/applications',
           },
         ],

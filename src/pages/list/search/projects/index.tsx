@@ -8,6 +8,8 @@ import TagSelect from './components/TagSelect';
 import type { ListItemDataType } from './data.d';
 import { queryFakeList } from './service';
 import styles from './style.less';
+import React, { useState, useRef, useEffect } from 'react';
+import { list, addList, updateList, removeList, exportList, getTemplate } from '../service';
 
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -16,16 +18,32 @@ const { Paragraph } = Typography;
 const getKey = (id: string, index: number) => `${id}-${index}`;
 
 const Projects: FC = () => {
+  const path: String = location.pathname.replace('/antdpro-demo', '');
+  const [templateData, setTemplateData] = useState<any>([]);
+  const getTemplateData = async () => {
+    let template: any = [];
+    const result = await list(
+      'field/1',
+      {
+        current: 1,
+        pageSize: 20,
+      },
+      { type: path.split('/')[path.split('/').length - 1] },
+    );
+    template = result.data;
+    setTemplateData(template);
+  };
+  useEffect(() => {
+    getTemplateData();
+  }, [path]);
   const res = useRequest((values: any) => {
     return queryFakeList({
       current: 1,
       pageSize: 20,
     });
   });
-  debugger;
-  const list = res.data?.list || [];
-  debugger;
-  const cardList = list && (
+  const lists = res.data?.list || [];
+  const cardList = lists && (
     <List<ListItemDataType>
       rowKey="id"
       loading={res.loading}
@@ -38,7 +56,7 @@ const Projects: FC = () => {
         xl: 4,
         xxl: 4,
       }}
-      dataSource={list}
+      dataSource={lists}
       renderItem={(item) => (
         <List.Item>
           <Card className={styles.card} hoverable cover={<img alt={item.title} src={item.cover} />}>
@@ -89,18 +107,9 @@ const Projects: FC = () => {
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>
             <FormItem name="category">
               <TagSelect expandable>
-                <TagSelect.Option value="cat1">类目一</TagSelect.Option>
-                <TagSelect.Option value="cat2">类目二</TagSelect.Option>
-                <TagSelect.Option value="cat3">类目三</TagSelect.Option>
-                <TagSelect.Option value="cat4">类目四</TagSelect.Option>
-                <TagSelect.Option value="cat5">类目五</TagSelect.Option>
-                <TagSelect.Option value="cat6">类目六</TagSelect.Option>
-                <TagSelect.Option value="cat7">类目七</TagSelect.Option>
-                <TagSelect.Option value="cat8">类目八</TagSelect.Option>
-                <TagSelect.Option value="cat9">类目九</TagSelect.Option>
-                <TagSelect.Option value="cat10">类目十</TagSelect.Option>
-                <TagSelect.Option value="cat11">类目十一</TagSelect.Option>
-                <TagSelect.Option value="cat12">类目十二</TagSelect.Option>
+                {templateData.map((item: any) => (
+                  <TagSelect.Option value={item.value}>{item.name}</TagSelect.Option>
+                ))}
               </TagSelect>
             </FormItem>
           </StandardFormRow>

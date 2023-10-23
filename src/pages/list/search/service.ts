@@ -17,6 +17,7 @@ export async function getTemplate(key: string, type: string) {
   });
 }
 export async function list(
+  url: string,
   params: {
     current?: number;
     pageSize?: number;
@@ -27,12 +28,12 @@ export async function list(
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/list/type/1', {
+  }>('/api/list/' + url, {
     method: 'GET',
     params: {
       ...params,
+      ...(options || {}),
     },
-    ...(options || {}),
   });
 }
 

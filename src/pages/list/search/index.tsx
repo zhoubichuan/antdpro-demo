@@ -20,13 +20,10 @@ const Search: FC<SearchProps> = (props) => {
   const [templateData, setTemplateData] = useState<any>([]);
   const getTemplateData = async () => {
     let template: any = [];
-    const result = await list(
-      {
-        current: 1,
-        pageSize: 20,
-      },
-      { type: 'studentType' },
-    );
+    const result = await list('type/1', {
+      current: 1,
+      pageSize: 20,
+    });
     template = result.data;
     setTemplateData(template);
   };
@@ -36,19 +33,7 @@ const Search: FC<SearchProps> = (props) => {
   const handleTabChange = (key: string) => {
     const { match } = props;
     const url = match.url === '/' ? '' : match.url;
-    switch (key) {
-      case 'articles':
-        history.push(`${url}/articles`);
-        break;
-      case 'applications':
-        history.push(`${url}/applications`);
-        break;
-      case 'projects':
-        history.push(`${url}/projects`);
-        break;
-      default:
-        break;
-    }
+    history.push(`${url}/${key}`);
   };
 
   const handleFormSubmit = (value: string) => {
@@ -63,7 +48,7 @@ const Search: FC<SearchProps> = (props) => {
     if (tabKey && tabKey !== '/') {
       return tabKey;
     }
-    return 'articles';
+    return 'projects';
   };
 
   return (
@@ -79,7 +64,7 @@ const Search: FC<SearchProps> = (props) => {
           />
         </div>
       }
-      tabList={templateData.map((item: any) => ({ key: 'project', tab: item.name }))}
+      tabList={templateData.map((item: any) => ({ key: 'projects/' + item.value, tab: item.name }))}
       tabActiveKey={getTabKey()}
       onTabChange={handleTabChange}
     >
