@@ -20,6 +20,7 @@ const getKey = (id: string, index: number) => `${id}-${index}`;
 const Projects: FC = () => {
   const path: String = location.pathname.replace('/antdpro-demo', '');
   const [templateData, setTemplateData] = useState<any>([]);
+  const [lists, setLists] = useState<any>([]);
   const getTemplateData = async () => {
     let template: any = [];
     const result = await list(
@@ -36,17 +37,25 @@ const Projects: FC = () => {
   useEffect(() => {
     getTemplateData();
   }, [path]);
-  const res = useRequest((values: any) => {
-    return queryFakeList({
-      current: 1,
-      pageSize: 20,
-    });
-  });
-  const lists = res.data?.list || [];
+  const getData = async (values: string) => {
+    let data: any = [];
+    const result = await list(
+      'data/1',
+      {
+        current: 1,
+        pageSize: 20,
+      },
+      { process: values },
+    );
+    data = result.data;
+    setLists(data);
+  };
+  useEffect(() => {
+    getData('');
+  }, []);
   const cardList = lists && (
     <List<ListItemDataType>
       rowKey="id"
-      loading={res.loading}
       grid={{
         gutter: 16,
         xs: 1,
@@ -59,7 +68,11 @@ const Projects: FC = () => {
       dataSource={lists}
       renderItem={(item) => (
         <List.Item>
-          <Card className={styles.card} hoverable cover={<img alt={item.title} src={item.cover} />}>
+          <Card
+            className={styles.card}
+            hoverable
+            cover={<img alt={item.title} src={item.images[0].thumbUrl} />}
+          >
             <Card.Meta
               title={<a>{item.title}</a>}
               description={
@@ -72,7 +85,7 @@ const Projects: FC = () => {
               <span>{moment(item.updatedAt).fromNow()}</span>
               <div className={styles.avatarList}>
                 <AvatarList size="small">
-                  {item.members.map((member, i) => (
+                  {item.members?.map((member, i) => (
                     <AvatarList.Item
                       key={getKey(item.id, i)}
                       src={member.avatar}
@@ -100,8 +113,8 @@ const Projects: FC = () => {
       <Card bordered={false}>
         <Form
           layout="inline"
-          onValuesChange={(_, values) => {
-            res.run(values);
+          onValuesChange={(_, { category }) => {
+            getData(category[0]);
           }}
         >
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>

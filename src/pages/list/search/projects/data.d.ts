@@ -12,7 +12,7 @@ export interface ListItemDataType {
   id: string;
   owner: string;
   title: string;
-  avatar: string;
+  images: any;
   cover: string;
   status: 'normal' | 'exception' | 'active' | 'success';
   percent: number;
