@@ -11,7 +11,7 @@ export interface Params {
 export interface ListItemDataType {
   id: string;
   owner: string;
-  title: string;
+  name: string;
   images: any;
   cover: string;
   status: 'normal' | 'exception' | 'active' | 'success';
@@ -21,7 +21,7 @@ export interface ListItemDataType {
   body?: any;
   updatedAt: number;
   createdAt: number;
-  subDescription: string;
+  descript: string;
   description: string;
   activeUser: number;
   newUser: number;

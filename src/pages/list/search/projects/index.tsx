@@ -45,7 +45,7 @@ const Projects: FC = () => {
         current: 1,
         pageSize: 20,
       },
-      { process: values },
+      { type: values },
     );
     data = result.data;
     setLists(data);
@@ -71,13 +71,13 @@ const Projects: FC = () => {
           <Card
             className={styles.card}
             hoverable
-            cover={<img alt={item.title} src={item.images[0].thumbUrl} />}
+            cover={<img alt={item.name} src={item.images[0].thumbUrl} />}
           >
             <Card.Meta
-              title={<a>{item.title}</a>}
+              title={<a>{item.name}</a>}
               description={
                 <Paragraph className={styles.item} ellipsis={{ rows: 2 }}>
-                  {item.subDescription}
+                  {item.descript}
                 </Paragraph>
               }
             />
