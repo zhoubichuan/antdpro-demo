@@ -18,7 +18,7 @@ const { Paragraph } = Typography;
 const getKey = (id: string, index: number) => `${id}-${index}`;
 
 const Projects: FC = () => {
-  const path: String = location.pathname.replace('/antdpro-demo', '');
+  const path: string = location.pathname.replace('/antdpro-demo', '');
   const [templateData, setTemplateData] = useState<any>([]);
   const [lists, setLists] = useState<any>([]);
   const getTemplateData = async () => {

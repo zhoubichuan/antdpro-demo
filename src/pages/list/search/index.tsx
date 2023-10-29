@@ -16,7 +16,7 @@ type SearchProps = {
 };
 
 const Search: FC<SearchProps> = (props) => {
-  const path: String = location.pathname.replace('/antdpro-demo', '');
+  const path: string = location.pathname.replace('/antdpro-demo', '');
   const [templateData, setTemplateData] = useState<any>([]);
   const getTemplateData = async () => {
     let template: any = [];

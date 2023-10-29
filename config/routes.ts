@@ -93,7 +93,7 @@
         routes: [
           {
             path: '/list/search',
-            redirect: '/list/search/articles/1',
+            redirect: '/list/search/projects/1',
           },
           {
             path: '/list/search/articles/:id',

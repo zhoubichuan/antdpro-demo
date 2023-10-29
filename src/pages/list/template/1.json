@@ -79,6 +79,13 @@
     "dataIndex": "hideInSearch",
     "hideInSearch": false,
     "hideInTable": false,
+    "table": {
+      "type": "select",
+      "data": [
+        { "value": true, "name": "是" },
+        { "value": false, "name": "否" }
+      ]
+    },
     "create": {
       "rules": [
         {
@@ -104,6 +111,13 @@
     "dataIndex": "hideInTable",
     "hideInSearch": false,
     "hideInTable": false,
+    "table": {
+      "type": "select",
+      "data": [
+        { "value": true, "name": "是" },
+        { "value": false, "name": "否" }
+      ]
+    },
     "create": {
       "rules": [
         {
@@ -129,6 +143,13 @@
     "dataIndex": "hideInForm",
     "hideInSearch": false,
     "hideInTable": false,
+    "table": {
+      "type": "select",
+      "data": [
+        { "value": true, "name": "是" },
+        { "value": false, "name": "否" }
+      ]
+    },
     "create": {
       "rules": [
         {
@@ -247,6 +268,30 @@
       ],
       "colProps": { "span": 24 }
     },
+    "view": true
+  },
+  {
+    "title": "创建时间",
+    "dataIndex": "createdAt",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "table": {
+      "type": "time"
+    },
+    "create": false,
+    "edit": false,
+    "view": true
+  },
+  {
+    "title": "更新时间",
+    "dataIndex": "updatedAt",
+    "hideInSearch": true,
+    "hideInTable": true,
+    "table": {
+      "type": "time"
+    },
+    "create": false,
+    "edit": false,
     "view": true
   }
 ]

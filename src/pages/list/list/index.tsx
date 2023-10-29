@@ -19,6 +19,7 @@ import { list, addList, updateList, removeList, exportList, getTemplate } from '
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
+import moment from 'moment';
 const XLSX = require('xlsx');
 const handleExport = async (fields: TableListItem[]) => {
   const hide = message.loading('正在添加');
@@ -121,7 +122,7 @@ const formItemLayout = {
 };
 
 const TableList: React.FC = () => {
-  const path: String = location.pathname.replace('/antdpro-demo', '');
+  const path: string = location.pathname.replace('/antdpro-demo', '');
   const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
@@ -190,6 +191,7 @@ const TableList: React.FC = () => {
     },
     ...templateData.map((item: any) => ({
       ...item,
+      ...item.table,
       render: (dom: any) => {
         if (!item.hideInTable && item.table && item.table.type === 'image') {
           if (Array.isArray(dom)) {
@@ -197,6 +199,16 @@ const TableList: React.FC = () => {
           } else {
             return <Image height={100} src={dom[0]?.thumbUrl} />;
           }
+        }
+        if (!item.hideInTable && item.table && item.table.type === 'time') {
+          return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;
+        }
+        if (!item.hideInTable && item.table && item.table.type === 'select') {
+          return (
+            <div style={{ whiteSpace: 'pre-line' }}>
+              {item.table.data.find((o: any) => o.value === dom).name}
+            </div>
+          );
         }
         return dom;
       },
@@ -274,6 +286,13 @@ const TableList: React.FC = () => {
             } else {
               return <Image height={300} src={text[0]?.thumbUrl} />;
             }
+          }
+          if (!item.hideInTable && item.view && item.view.type === 'time') {
+            return (
+              <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>
+                {moment(text).fromNow()}
+              </div>
+            );
           }
           return <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>{text}</div>;
         },
