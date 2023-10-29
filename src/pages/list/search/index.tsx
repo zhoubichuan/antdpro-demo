@@ -37,7 +37,6 @@ const Search: FC<SearchProps> = (props) => {
   };
 
   const handleFormSubmit = (value: string) => {
-    // eslint-disable-next-line no-console
     console.log(value);
   };
 
@@ -45,10 +44,15 @@ const Search: FC<SearchProps> = (props) => {
     const { match, location } = props;
     const url = match.path === '/' ? '' : match.path;
     const tabKey = location.pathname.replace(`${url}/`, '');
-    if (tabKey && tabKey !== '/') {
-      return tabKey;
+    if (tabKey.includes('articles')) {
+      return 'articles';
     }
-    return 'projects';
+    if (tabKey.includes('projects')) {
+      return 'projects';
+    }
+    if (tabKey.includes('applications')) {
+      return 'applications';
+    }
   };
 
   return (
@@ -64,7 +68,10 @@ const Search: FC<SearchProps> = (props) => {
           />
         </div>
       }
-      tabList={templateData.map((item: any) => ({ key: 'projects/' + item.value, tab: item.name }))}
+      tabList={templateData.map((item: any) => ({
+        key: getTabKey() + '/' + item.value,
+        tab: item.name,
+      }))}
       tabActiveKey={getTabKey()}
       onTabChange={handleTabChange}
     >

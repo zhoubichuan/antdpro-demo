@@ -84,7 +84,7 @@ const TagSelect: FC<TagSelectProps> & { Option: typeof TagSelectOption } = (prop
     } else if (!checked && index > -1) {
       checkedTags.splice(index, 1);
     }
-    setValue(checkedTags);
+    setValue([tag]);
   };
 
   const checkedAll = getAllTags().length === value?.length;

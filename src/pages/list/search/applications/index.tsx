@@ -7,13 +7,14 @@ import {
 import { Avatar, Card, Col, Dropdown, Form, List, Menu, Row, Select, Tooltip } from 'antd';
 import numeral from 'numeral';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useRequest } from 'umi';
 import StandardFormRow from './components/StandardFormRow';
 import TagSelect from './components/TagSelect';
 import type { ListItemDataType } from './data.d';
 import { queryFakeList } from './service';
 import styles from './style.less';
+import { list, addList, updateList, removeList, exportList, getTemplate } from '../service';
 
 const { Option } = Select;
 
@@ -67,6 +68,46 @@ const CardInfo: React.FC<{
 );
 
 export const Applications: FC<Record<string, any>> = () => {
+  const path: string = location.pathname.replace('/antdpro-demo', '');
+  const [templateData, setTemplateData] = useState<any>([]);
+  const [lists, setLists] = useState<any>([]);
+  const getTemplateData = async () => {
+    let template: any = [];
+    const result = await list(
+      'field/1',
+      {
+        current: 1,
+        pageSize: 20,
+      },
+      { type: path.split('/')[path.split('/').length - 1] },
+    );
+    template = result.data;
+    setTemplateData(template);
+    setLists(template);
+  };
+  useEffect(() => {
+    getTemplateData();
+  }, [path]);
+  const getData = async (params: any) => {
+    let data: any = [];
+    if (params.category) {
+      params.type = params.category[0];
+      delete params.category;
+    }
+    const result = await list(
+      'data/1',
+      {
+        current: 1,
+        pageSize: 20,
+      },
+      params,
+    );
+    data = result.data;
+    setLists(data);
+  };
+  useEffect(() => {
+    getData({});
+  }, []);
   const { data, loading, run } = useRequest((values: any) => {
     console.log('form data', values);
     return queryFakeList({
@@ -74,7 +115,7 @@ export const Applications: FC<Record<string, any>> = () => {
     });
   });
 
-  const list = data?.list || [];
+  const lists1 = data?.list || [];
 
   const itemMenu = (
     <Menu>
@@ -107,18 +148,9 @@ export const Applications: FC<Record<string, any>> = () => {
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>
             <Form.Item name="category">
               <TagSelect expandable>
-                <TagSelect.Option value="cat1">类目一2</TagSelect.Option>
-                <TagSelect.Option value="cat2">类目二</TagSelect.Option>
-                <TagSelect.Option value="cat3">类目三</TagSelect.Option>
-                <TagSelect.Option value="cat4">类目四</TagSelect.Option>
-                <TagSelect.Option value="cat5">类目五</TagSelect.Option>
-                <TagSelect.Option value="cat6">类目六</TagSelect.Option>
-                <TagSelect.Option value="cat7">类目七</TagSelect.Option>
-                <TagSelect.Option value="cat8">类目八</TagSelect.Option>
-                <TagSelect.Option value="cat9">类目九</TagSelect.Option>
-                <TagSelect.Option value="cat10">类目十</TagSelect.Option>
-                <TagSelect.Option value="cat11">类目十一</TagSelect.Option>
-                <TagSelect.Option value="cat12">类目十二</TagSelect.Option>
+                {templateData.map((item: any) => (
+                  <TagSelect.Option value={item.value}>{item.name}</TagSelect.Option>
+                ))}
               </TagSelect>
             </Form.Item>
           </StandardFormRow>
@@ -156,7 +188,7 @@ export const Applications: FC<Record<string, any>> = () => {
           xxl: 4,
         }}
         loading={loading}
-        dataSource={list}
+        dataSource={lists}
         renderItem={(item) => (
           <List.Item key={item.id}>
             <Card

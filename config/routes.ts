@@ -92,16 +92,27 @@
         component: './list/search',
         routes: [
           {
-            path: '/list/search',
-            redirect: '/list/search/projects/1',
+            name: '文章',
+            icon: 'smile',
+            path: '/list/search/articles/1',
           },
           {
             path: '/list/search/articles/:id',
             component: './list/search/articles',
           },
           {
+            name: '项目',
+            icon: 'smile',
+            path: '/list/search/projects/1',
+          },
+          {
             path: '/list/search/projects/:id',
             component: './list/search/projects',
+          },
+          {
+            name: '应用',
+            icon: 'smile',
+            path: '/list/search/applications/1',
           },
           {
             path: '/list/search/applications/:id',

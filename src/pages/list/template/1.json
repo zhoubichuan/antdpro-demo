@@ -99,8 +99,8 @@
     "table": {
       "type": "select",
       "data": [
-        { "value": true, "name": "是" },
-        { "value": false, "name": "否" }
+        { "value": true, "name": "否" },
+        { "value": false, "name": "是" }
       ],
       "width": 80
     },
@@ -132,8 +132,8 @@
     "table": {
       "type": "select",
       "data": [
-        { "value": true, "name": "是" },
-        { "value": false, "name": "否" }
+        { "value": true, "name": "否" },
+        { "value": false, "name": "是" }
       ],
       "width": 80
     },
@@ -194,8 +194,8 @@
     "table": {
       "type": "select",
       "data": [
-        { "value": true, "name": "是" },
-        { "value": false, "name": "否" }
+        { "value": true, "name": "否" },
+        { "value": false, "name": "是" }
       ],
       "width": 80
     },

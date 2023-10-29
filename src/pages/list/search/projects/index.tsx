@@ -6,7 +6,6 @@ import AvatarList from './components/AvatarList';
 import StandardFormRow from './components/StandardFormRow';
 import TagSelect from './components/TagSelect';
 import type { ListItemDataType } from './data.d';
-import { queryFakeList } from './service';
 import styles from './style.less';
 import React, { useState, useRef, useEffect } from 'react';
 import { list, addList, updateList, removeList, exportList, getTemplate } from '../service';
@@ -38,21 +37,25 @@ const Projects: FC = () => {
   useEffect(() => {
     getTemplateData();
   }, [path]);
-  const getData = async (values: string) => {
+  const getData = async (params: any) => {
     let data: any = [];
+    if (params.category) {
+      params.type = params.category[0];
+      delete params.category;
+    }
     const result = await list(
       'data/1',
       {
         current: 1,
         pageSize: 20,
       },
-      { type: values },
+      params,
     );
     data = result.data;
     setLists(data);
   };
   useEffect(() => {
-    getData('');
+    getData({});
   }, []);
   const formItemLayout = {
     wrapperCol: {
@@ -67,7 +70,7 @@ const Projects: FC = () => {
         <Form
           layout="inline"
           onValuesChange={(_, { category }) => {
-            getData(category[0]);
+            getData(_);
           }}
         >
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>
@@ -85,7 +88,7 @@ const Projects: FC = () => {
                 <FormItem {...formItemLayout} label="作者" name="author">
                   <Select placeholder="不限" style={{ maxWidth: 200, width: '100%' }}>
                     {lists.map((item: any) => (
-                      <Option value={item.value}>{item.name}</Option>
+                      <Option value={item.author}>{item.author}</Option>
                     ))}
                   </Select>
                 </FormItem>
@@ -94,7 +97,7 @@ const Projects: FC = () => {
                 <FormItem {...formItemLayout} label="好评度" name="rate">
                   <Select placeholder="不限" style={{ maxWidth: 200, width: '100%' }}>
                     {lists.map((item: any) => (
-                      <Option value={item.value2}>{item.name2}</Option>
+                      <Option value={item.code}>{item.code}</Option>
                     ))}
                   </Select>
                 </FormItem>
