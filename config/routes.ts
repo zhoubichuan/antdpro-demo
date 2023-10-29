@@ -147,15 +147,15 @@
         component: './list/list',
       },
       {
-        name: 'list6',
+        name: 'list8',
         icon: 'smile',
-        path: '/list/data',
-        redirect: '/list/data/1',
+        path: '/list/type',
+        redirect: '/list/type/1',
       },
       {
         name: '',
         icon: 'smile',
-        path: '/list/data/:id',
+        path: '/list/type/:id',
         menuRender: false, // 不渲染菜单
         component: './list/list',
       },
@@ -173,15 +173,15 @@
         component: './list/list',
       },
       {
-        name: 'list8',
+        name: 'list6',
         icon: 'smile',
-        path: '/list/type',
-        redirect: '/list/type/1',
+        path: '/list/data',
+        redirect: '/list/data/1',
       },
       {
         name: '',
         icon: 'smile',
-        path: '/list/type/:id',
+        path: '/list/data/:id',
         menuRender: false, // 不渲染菜单
         component: './list/list',
       },

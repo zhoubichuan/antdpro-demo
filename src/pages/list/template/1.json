@@ -4,6 +4,15 @@
     "dataIndex": "type",
     "hideInSearch": false,
     "hideInTable": false,
+    "table": {
+      "type": "select",
+      "data": [
+        { "value": "type", "name": "类型" },
+        { "value": "field", "name": "字段" },
+        { "value": "data", "name": "数据" }
+      ],
+      "width": 60
+    },
     "create": {
       "rules": [
         {
@@ -25,10 +34,14 @@
     "view": true
   },
   {
-    "title": "名称",
+    "title": "字段名称",
     "dataIndex": "title",
     "hideInSearch": false,
     "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 60
+    },
     "create": {
       "rules": [
         {
@@ -50,10 +63,14 @@
     "view": true
   },
   {
-    "title": "字段",
+    "title": "字段值",
     "dataIndex": "dataIndex",
     "hideInSearch": false,
     "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 60
+    },
     "create": {
       "rules": [
         {
@@ -77,14 +94,15 @@
   {
     "title": "搜索显示",
     "dataIndex": "hideInSearch",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "select",
       "data": [
         { "value": true, "name": "是" },
         { "value": false, "name": "否" }
-      ]
+      ],
+      "width": 80
     },
     "create": {
       "rules": [
@@ -109,46 +127,15 @@
   {
     "title": "表格显示",
     "dataIndex": "hideInTable",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "select",
       "data": [
         { "value": true, "name": "是" },
         { "value": false, "name": "否" }
-      ]
-    },
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
       ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
-  },
-  {
-    "title": "列表显示",
-    "dataIndex": "hideInForm",
-    "hideInSearch": false,
-    "hideInTable": false,
-    "table": {
-      "type": "select",
-      "data": [
-        { "value": true, "name": "是" },
-        { "value": false, "name": "否" }
-      ]
+      "width": 80
     },
     "create": {
       "rules": [
@@ -173,8 +160,45 @@
   {
     "title": "表格属性",
     "dataIndex": "table",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 160
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "列表显示",
+    "dataIndex": "hideInForm",
+    "hideInSearch": true,
+    "hideInTable": false,
+    "table": {
+      "type": "select",
+      "data": [
+        { "value": true, "name": "是" },
+        { "value": false, "name": "否" }
+      ],
+      "width": 80
+    },
     "create": {
       "rules": [
         {
@@ -198,8 +222,12 @@
   {
     "title": "创建属性",
     "dataIndex": "create",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 160
+    },
     "create": {
       "rules": [
         {
@@ -223,8 +251,12 @@
   {
     "title": "编辑属性",
     "dataIndex": "edit",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 160
+    },
     "create": {
       "rules": [
         {
@@ -248,8 +280,12 @@
   {
     "title": "展示属性",
     "dataIndex": "view",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 160
+    },
     "create": {
       "rules": [
         {
@@ -276,7 +312,8 @@
     "hideInSearch": true,
     "hideInTable": true,
     "table": {
-      "type": "time"
+      "type": "time",
+      "width": 60
     },
     "create": false,
     "edit": false,
@@ -288,7 +325,8 @@
     "hideInSearch": true,
     "hideInTable": true,
     "table": {
-      "type": "time"
+      "type": "time",
+      "width": 60
     },
     "create": false,
     "edit": false,
