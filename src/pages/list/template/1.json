@@ -4,6 +4,15 @@
     "dataIndex": "type",
     "hideInSearch": false,
     "hideInTable": false,
+    "search": {
+      "type": "select",
+      "data": [
+        { "value": "type", "label": "类型" },
+        { "value": "field", "label": "字段" },
+        { "value": "data", "label": "数据" }
+      ],
+      "width": 60
+    },
     "table": {
       "type": "select",
       "data": [
@@ -335,7 +344,7 @@
   {
     "title": "后端增",
     "dataIndex": "add",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "text",
@@ -352,7 +361,7 @@
   {
     "title": "后端删",
     "dataIndex": "delete",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "text",
@@ -369,7 +378,7 @@
   {
     "title": "后端改",
     "dataIndex": "modify",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "text",
@@ -386,7 +395,7 @@
   {
     "title": "后端查",
     "dataIndex": "query",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "text",
@@ -403,7 +412,7 @@
   {
     "title": "后端类型",
     "dataIndex": "typesof",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "text",
@@ -420,7 +429,7 @@
   {
     "title": "后端默认值",
     "dataIndex": "defaults",
-    "hideInSearch": false,
+    "hideInSearch": true,
     "hideInTable": false,
     "table": {
       "type": "text",

@@ -1,5 +1,5 @@
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
-import { Button, message, Drawer, Upload, Image, Modal } from 'antd';
+import { Button, message, Drawer, Upload, Image, Modal, Select } from 'antd';
 import React, { useState, useRef, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
@@ -195,6 +195,13 @@ const TableList: React.FC = () => {
     ...templateData.map((item: any) => ({
       ...item,
       ...item.table,
+      renderFormItem: () => {
+        if (item.search && item.search.type === 'select') {
+          return <ProFormSelect name={item.dataIndex} options={item.search.data} />;
+        } else {
+          return <ProFormText name={item.dataIndex} />;
+        }
+      },
       render: (dom: any) => {
         if (!item.hideInTable && item.table && item.table.type === 'image') {
           if (Array.isArray(dom)) {
@@ -303,11 +310,7 @@ const TableList: React.FC = () => {
     });
   return (
     <PageContainer
-      style={{
-        height: `calc(100vh - 208px)`,
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      className={classNames('pro-container', styles['pro-container'])}
       onTabChange={handleOnTabChange}
       header={{
         title: false,
@@ -350,8 +353,6 @@ const TableList: React.FC = () => {
       tabActiveKey={tabActiveKey}
     >
       <ProTable<TableListItem, TableListPagination>
-        className={classNames('pro-table', styles['pro-table'])}
-        style={{ height: '100%' }}
         sticky
         actionRef={actionRef}
         ghost={true}
