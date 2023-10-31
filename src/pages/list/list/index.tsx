@@ -20,6 +20,8 @@ import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
 import moment from 'moment';
+import classNames from 'classnames';
+import styles from './index.less';
 const XLSX = require('xlsx');
 const handleExport = async (fields: TableListItem[]) => {
   const hide = message.loading('正在添加');
@@ -174,6 +176,7 @@ const TableList: React.FC = () => {
       dataIndex: 'id',
       width: 160,
       fixed: 'left',
+      align: 'center',
       hideInSearch: true,
       hideInDescriptions: true,
       render: (dom, entity) => {
@@ -347,12 +350,14 @@ const TableList: React.FC = () => {
       tabActiveKey={tabActiveKey}
     >
       <ProTable<TableListItem, TableListPagination>
+        className={classNames('pro-table', styles['pro-table'])}
         style={{ height: '100%' }}
+        sticky
         actionRef={actionRef}
         ghost={true}
         rowKey="id"
         search={{
-          labelWidth: 100,
+          labelWidth: 80,
         }}
         toolBarRender={() => [
           <Button
@@ -377,8 +382,18 @@ const TableList: React.FC = () => {
               });
             }}
           >
-            <PlusOutlined /> 批量删除
+            批量删除
           </Button>,
+          <Upload
+            {...uploadprops}
+            onChange={() => {
+              if (actionRef.current) {
+                actionRef.current.reload();
+              }
+            }}
+          >
+            <Button type="primary">批量导出</Button>
+          </Upload>,
           <Upload
             {...uploadprops}
             onChange={() => {

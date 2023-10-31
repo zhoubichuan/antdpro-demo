@@ -40,7 +40,7 @@
     "hideInTable": false,
     "table": {
       "type": "text",
-      "width": 60
+      "width": 100
     },
     "create": {
       "rules": [
@@ -69,7 +69,7 @@
     "hideInTable": false,
     "table": {
       "type": "text",
-      "width": 60
+      "width": 100
     },
     "create": {
       "rules": [
@@ -102,7 +102,7 @@
         { "value": true, "name": "否" },
         { "value": false, "name": "是" }
       ],
-      "width": 80
+      "width": 100
     },
     "create": {
       "rules": [
@@ -135,7 +135,7 @@
         { "value": true, "name": "否" },
         { "value": false, "name": "是" }
       ],
-      "width": 80
+      "width": 100
     },
     "create": {
       "rules": [
@@ -197,7 +197,7 @@
         { "value": true, "name": "否" },
         { "value": false, "name": "是" }
       ],
-      "width": 80
+      "width": 100
     },
     "create": {
       "rules": [
@@ -226,7 +226,7 @@
     "hideInTable": false,
     "table": {
       "type": "text",
-      "width": 160
+      "width": 260
     },
     "create": {
       "rules": [
@@ -255,7 +255,7 @@
     "hideInTable": false,
     "table": {
       "type": "text",
-      "width": 160
+      "width": 260
     },
     "create": {
       "rules": [
@@ -310,10 +310,10 @@
     "title": "创建时间",
     "dataIndex": "createdAt",
     "hideInSearch": true,
-    "hideInTable": true,
+    "hideInTable": false,
     "table": {
       "type": "time",
-      "width": 60
+      "width": 100
     },
     "create": false,
     "edit": false,
@@ -323,13 +323,115 @@
     "title": "更新时间",
     "dataIndex": "updatedAt",
     "hideInSearch": true,
-    "hideInTable": true,
+    "hideInTable": false,
     "table": {
       "type": "time",
-      "width": 60
+      "width": 100
     },
     "create": false,
     "edit": false,
+    "view": true
+  },
+  {
+    "title": "后端增",
+    "dataIndex": "add",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端删",
+    "dataIndex": "delete",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端改",
+    "dataIndex": "modify",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端查",
+    "dataIndex": "query",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端类型",
+    "dataIndex": "typesof",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
+    "title": "后端默认值",
+    "dataIndex": "defaults",
+    "hideInSearch": false,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
     "view": true
   }
 ]
