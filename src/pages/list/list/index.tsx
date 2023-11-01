@@ -205,9 +205,9 @@ const TableList: React.FC = () => {
       render: (dom: any) => {
         if (!item.hideInTable && item.table && item.table.type === 'image') {
           if (Array.isArray(dom)) {
-            return dom.map((i: any) => <Image height={100} src={i?.thumbUrl} />);
+            return dom.map((i: any) => <Image height={100} src={i} />);
           } else {
-            return <Image height={100} src={dom[0]?.thumbUrl} />;
+            return <Image height={100} src={dom} />;
           }
         }
         if (!item.hideInTable && item.table && item.table.type === 'time') {
@@ -292,9 +292,9 @@ const TableList: React.FC = () => {
         render: (text: any) => {
           if (!item.hideInTable && item.view && item.view.type === 'image') {
             if (Array.isArray(text)) {
-              return text.map((i: any) => <Image height={300} src={i?.thumbUrl} />);
+              return text.map((i: any) => <Image height={300} src={i} />);
             } else {
-              return <Image height={300} src={text[0]?.thumbUrl} />;
+              return <Image height={300} src={text} />;
             }
           }
           if (!item.hideInTable && item.view && item.view.type === 'time') {
@@ -358,7 +358,10 @@ const TableList: React.FC = () => {
         ghost={true}
         rowKey="id"
         search={{
-          labelWidth: 80,
+          labelWidth: 100,
+          optionRender: (searchConfig, formProps, dom) => {
+            return dom;
+          },
         }}
         toolBarRender={() => [
           <Button
@@ -490,6 +493,9 @@ const TableList: React.FC = () => {
           visible={createModalVisible}
           onVisibleChange={handleModalVisible}
           onFinish={async (value) => {
+            if (value.images) {
+              value.images = [value.images];
+            }
             const success = await handleAdd(value as TableListItem);
             if (success) {
               handleModalVisible(false);
@@ -529,20 +535,20 @@ const TableList: React.FC = () => {
                   form = (
                     <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />
                   );
-                case 'image':
-                  form = (
-                    <ProFormUploadButton
-                      fieldProps={{
-                        name: 'file',
-                        listType: 'picture-card',
-                      }}
-                      action="/upload.do"
-                      {...item.create}
-                      label={item.title}
-                      name={item.dataIndex}
-                    />
-                  );
-                  break;
+                //   case 'image':
+                //     form = (
+                //       <ProFormUploadButton
+                //         fieldProps={{
+                //           name: 'file',
+                //           listType: 'picture-card',
+                //         }}
+                //         action="/upload.do"
+                //         {...item.create}
+                //         label={item.title}
+                //         name={item.dataIndex}
+                //       />
+                //     );
+                //     break;
               }
               return form;
             })}
@@ -557,6 +563,9 @@ const TableList: React.FC = () => {
           visible={updateModalVisible}
           onVisibleChange={handleUpdateModalVisible}
           onFinish={async (value) => {
+            if (value.images) {
+              value.images = [value.images];
+            }
             const success = await handleEdit(value as TableListItem);
             if (success) {
               handleUpdateModalVisible(false);
@@ -590,19 +599,19 @@ const TableList: React.FC = () => {
                 case 'switch':
                   form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
                   break;
-                case 'image':
-                  form = (
-                    <ProFormUploadButton
-                      fieldProps={{
-                        name: 'file',
-                        listType: 'picture-card',
-                      }}
-                      action="/upload.do"
-                      {...item.create}
-                      label={item.title}
-                      name={item.dataIndex}
-                    />
-                  );
+                  // case 'image':
+                  //   form = (
+                  //     <ProFormUploadButton
+                  //       fieldProps={{
+                  //         name: 'file',
+                  //         listType: 'picture-card',
+                  //       }}
+                  //       action="/upload.do"
+                  //       {...item.create}
+                  //       label={item.title}
+                  //       name={item.dataIndex}
+                  //     />
+                  //   );
                   break;
               }
               return form;

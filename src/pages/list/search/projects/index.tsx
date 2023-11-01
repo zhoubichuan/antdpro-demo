@@ -126,7 +126,7 @@ const Projects: FC = () => {
                   <Card
                     className={styles.card}
                     hoverable
-                    cover={<img alt={item.name} src={item.images[0].thumbUrl} />}
+                    cover={<img alt={item.name} src={item.images[0]} />}
                   >
                     <Card.Meta
                       title={<a>{item.name}</a>}
