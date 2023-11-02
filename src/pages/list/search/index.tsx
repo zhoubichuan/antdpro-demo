@@ -18,28 +18,6 @@ type SearchProps = {
 const Search: FC<SearchProps> = (props) => {
   const path: string = location.pathname.replace('/antdpro-demo', '');
   const [templateData, setTemplateData] = useState<any>([]);
-  const getTemplateData = async () => {
-    let template: any = [];
-    const result = await list('type/1', {
-      current: 1,
-      pageSize: 20,
-    });
-    template = result.data;
-    setTemplateData(template);
-  };
-  useEffect(() => {
-    getTemplateData();
-  }, []);
-  const handleTabChange = (key: string) => {
-    const { match } = props;
-    const url = match.url === '/' ? '' : match.url;
-    history.push(`${url}/${key}`);
-  };
-
-  const handleFormSubmit = (value: string) => {
-    console.log(value);
-  };
-
   const getTabKey = () => {
     const { match, location } = props;
     const url = match.path === '/' ? '' : match.path;
@@ -53,6 +31,32 @@ const Search: FC<SearchProps> = (props) => {
     if (tabKey.includes('applications')) {
       return 'applications';
     }
+  };
+  const [activeKey, setActiveKey] = useState<string>('');
+  const getTemplateData = async () => {
+    let template: any = [];
+    const result = await list('type/1', {
+      current: 1,
+      pageSize: 20,
+    });
+    template = result.data;
+    setTemplateData(template);
+    if (!activeKey) {
+      setActiveKey(getTabKey() + '/' + template[0].value);
+    }
+  };
+  useEffect(() => {
+    getTemplateData();
+  }, []);
+  const handleTabChange = (key: string) => {
+    const { match } = props;
+    const url = match.url === '/' ? '' : match.url;
+    history.push(`${url}/${key}`);
+    setActiveKey(getTabKey() + '/' + key);
+  };
+
+  const handleFormSubmit = (value: string) => {
+    console.log(value);
   };
 
   return (
@@ -72,7 +76,7 @@ const Search: FC<SearchProps> = (props) => {
         key: getTabKey() + '/' + item.value,
         tab: item.name,
       }))}
-      tabActiveKey={getTabKey()}
+      tabActiveKey={activeKey}
       onTabChange={handleTabChange}
     >
       {props.children}

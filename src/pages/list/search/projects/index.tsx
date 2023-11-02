@@ -2,7 +2,6 @@ import { Card, Col, Form, List, Row, Select, Typography } from 'antd';
 import moment from 'moment';
 import type { FC } from 'react';
 import { useRequest, Link } from 'umi';
-import AvatarList from './components/AvatarList';
 import StandardFormRow from './components/StandardFormRow';
 import TagSelect from './components/TagSelect';
 import type { ListItemDataType } from './data.d';
@@ -13,8 +12,6 @@ import { list, addList, updateList, removeList, exportList, getTemplate } from '
 const { Option } = Select;
 const FormItem = Form.Item;
 const { Paragraph } = Typography;
-
-const getKey = (id: string, index: number) => `${id}-${index}`;
 
 const Projects: FC = () => {
   const path: string = location.pathname.replace('/antdpro-demo', '');
@@ -112,21 +109,27 @@ const Projects: FC = () => {
             rowKey="id"
             grid={{
               gutter: 16,
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 3,
-              xl: 4,
-              xxl: 4,
+              xs: 2,
+              sm: 4,
+              md: 6,
+              lg: 6,
+              xl: 8,
+              xxl: 8,
             }}
             dataSource={lists}
             renderItem={(item: any) => (
               <List.Item>
-                <Link to={`/list/data/1?type=${item.type}`} target="_blank">
+                <Link to={`/list/data/1?id=${item.id}`} target="_blank">
                   <Card
                     className={styles.card}
                     hoverable
-                    cover={<img alt={item.name} src={item.images[0]} />}
+                    cover={
+                      <img
+                        style={{ height: '250px', objectFit: 'contain' }}
+                        alt={item.name}
+                        src={item.images[0]}
+                      />
+                    }
                   >
                     <Card.Meta
                       title={<a>{item.name}</a>}
@@ -138,17 +141,6 @@ const Projects: FC = () => {
                     />
                     <div className={styles.cardItemContent}>
                       <span>{moment(item.updatedAt).fromNow()}</span>
-                      <div className={styles.avatarList}>
-                        <AvatarList size="small">
-                          {item.members?.map((member, i) => (
-                            <AvatarList.Item
-                              key={getKey(item.id, i)}
-                              src={member.avatar}
-                              tips={member.name}
-                            />
-                          ))}
-                        </AvatarList>
-                      </div>
                     </div>
                   </Card>
                 </Link>

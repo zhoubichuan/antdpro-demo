@@ -158,6 +158,13 @@ const TableList: React.FC = () => {
       }
     }
     setTemplateData(template);
+    if (location.href.includes('id')) {
+      const arr = location.href.split('?id=');
+      const id: string = arr[arr.length - 1];
+      const result = await list({ current: 1, pageSize: 1 }, { id });
+      setCurrentRow(result.data[0]);
+      setShowDetail(true);
+    }
   };
   useEffect(() => {
     getTemplateData(params.id);

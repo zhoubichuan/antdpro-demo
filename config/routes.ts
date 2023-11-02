@@ -103,7 +103,7 @@
           {
             name: '项目',
             icon: 'smile',
-            path: '/list/search/projects/1',
+            path: '/list/search/projects',
           },
           {
             path: '/list/search/projects/:id',
