@@ -17,32 +17,29 @@ type SearchProps = {
 
 const Search: FC<SearchProps> = (props) => {
   const path: string = location.pathname.replace('/antdpro-demo', '');
+  let tabKey: string = '';
+  if (path.includes('articles')) {
+    tabKey = 'articles';
+  }
+  if (path.includes('projects')) {
+    tabKey = 'projects';
+  }
+  if (path.includes('applications')) {
+    tabKey = 'applications';
+  }
   const [templateData, setTemplateData] = useState<any>([]);
-  const getTabKey = () => {
-    const { match, location } = props;
-    const url = match.path === '/' ? '' : match.path;
-    const tabKey = location.pathname.replace(`${url}/`, '');
-    if (tabKey.includes('articles')) {
-      return 'articles';
-    }
-    if (tabKey.includes('projects')) {
-      return 'projects';
-    }
-    if (tabKey.includes('applications')) {
-      return 'applications';
-    }
-  };
   const [activeKey, setActiveKey] = useState<string>('');
   const getTemplateData = async () => {
-    let template: any = [];
-    const result = await list('type/1', {
-      current: 1,
-      pageSize: 20,
-    });
-    template = result.data;
-    setTemplateData(template);
+    const { data } = await list('type/1', { current: 1, pageSize: 20 });
+    const { value } = data[0];
+    setTemplateData(data);
     if (!activeKey) {
-      setActiveKey(getTabKey() + '/' + template[0].value);
+      if (path.includes(tabKey + '/')) {
+        setActiveKey(tabKey + '/' + path.split('/')[path.split('/').length - 1]);
+      } else {
+        history.push(`${path}/${value}`);
+        setActiveKey(tabKey + '/' + value);
+      }
     }
   };
   useEffect(() => {
@@ -52,7 +49,7 @@ const Search: FC<SearchProps> = (props) => {
     const { match } = props;
     const url = match.url === '/' ? '' : match.url;
     history.push(`${url}/${key}`);
-    setActiveKey(getTabKey() + '/' + key);
+    setActiveKey(key);
   };
 
   const handleFormSubmit = (value: string) => {
@@ -73,7 +70,7 @@ const Search: FC<SearchProps> = (props) => {
         </div>
       }
       tabList={templateData.map((item: any) => ({
-        key: getTabKey() + '/' + item.value,
+        key: tabKey + '/' + item.value,
         tab: item.name,
       }))}
       tabActiveKey={activeKey}
