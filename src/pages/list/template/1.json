@@ -134,6 +134,35 @@
     "view": true
   },
   {
+    "title": "搜索属性",
+    "dataIndex": "search",
+    "hideInSearch": true,
+    "hideInTable": false,
+    "table": {
+      "type": "text",
+      "width": 160
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": true
+  },
+  {
     "title": "表格显示",
     "dataIndex": "hideInTable",
     "hideInSearch": true,

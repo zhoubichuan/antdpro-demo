@@ -18,8 +18,7 @@ const Projects: FC = () => {
   const [templateData, setTemplateData] = useState<any>([]);
   const [lists, setLists] = useState<any>([]);
   const getTemplateData = async () => {
-    let template: any = [];
-    const result = await list(
+    const { data } = await list(
       'field/1',
       {
         current: 1,
@@ -27,9 +26,8 @@ const Projects: FC = () => {
       },
       { type: path.split('/')[path.split('/').length - 1] },
     );
-    template = result.data;
-    setTemplateData(template);
-    setLists(template);
+    setTemplateData(data);
+    setLists(data);
   };
   useEffect(() => {
     getTemplateData();
@@ -51,9 +49,6 @@ const Projects: FC = () => {
     data = result.data;
     setLists(data);
   };
-  useEffect(() => {
-    getData({});
-  }, []);
   const formItemLayout = {
     wrapperCol: {
       xs: { span: 24 },
@@ -66,7 +61,7 @@ const Projects: FC = () => {
       <Card bordered={false}>
         <Form
           layout="inline"
-          onValuesChange={(_, { category }) => {
+          onValuesChange={(_) => {
             getData(_);
           }}
         >
