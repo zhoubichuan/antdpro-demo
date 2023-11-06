@@ -1,5 +1,5 @@
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
-import { Button, message, Drawer, Upload, Image, Modal, Select } from 'antd';
+import { Button, message, Drawer, Upload, Image, Modal } from 'antd';
 import React, { useState, useRef, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
@@ -11,7 +11,6 @@ import {
   ProFormSwitch,
   ProFormSelect,
   ProFormRadio,
-  ProFormUploadButton,
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
@@ -37,15 +36,12 @@ const handleExport = async (fields: TableListItem[]) => {
   }
 };
 const uploadprops = {
-  // 这里我们只接受excel2007以后版本的文件，accept就是指定文件选择框的文件类型
   accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   name: 'file',
   headers: {
     authorization: 'authorization-text',
   },
   showUploadList: false,
-  // 把excel的处理放在beforeUpload事件，否则要把文件上传到通过action指定的地址去后台处理
-  // 这里我们没有指定action地址，因为没有传到后台
   beforeUpload: (file: any, fileList: any) => {
     const rABS = true;
     const f = fileList[0];
@@ -56,11 +52,8 @@ const uploadprops = {
       const workbook = XLSX.read(dataResult, {
         type: rABS ? 'binary' : 'array',
       });
-      // 假设我们的数据在第一个标签
       const firstWorksheet = workbook.Sheets[workbook.SheetNames[0]];
-      // XLSX自带了一个工具把导入的数据转成json
       const jsonArr = XLSX.utils.sheet_to_json(firstWorksheet, { header: 1 });
-      // 通过自定义的方法处理Json,得到Excel原始数据传给后端，后端统一处理
       handleExport(jsonArr);
     };
     if (rABS) reader.readAsBinaryString(f);

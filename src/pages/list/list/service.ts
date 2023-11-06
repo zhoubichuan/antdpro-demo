@@ -1,5 +1,3 @@
-// @ts-ignore
-/* eslint-disable */
 import { request } from 'umi';
 import { TableListItem } from './data';
 export async function getTemplate(key: string, type: string) {
