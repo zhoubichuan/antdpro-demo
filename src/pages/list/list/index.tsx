@@ -255,7 +255,15 @@ const TableList: React.FC = () => {
         <a
           key="edit"
           onClick={() => {
-            setCurrentRow(record);
+            const obj: any = {};
+            for (const key in record) {
+              if (typeof record[key] === 'object') {
+                obj[key] = JSON.stringify(record[key]);
+              } else {
+                obj[key] = record[key];
+              }
+            }
+            setCurrentRow(obj);
             handleUpdateModalVisible(true);
           }}
         >
