@@ -54,7 +54,15 @@ export async function removeList(options?: { [key: string]: any }) {
     data: { ...(options || {}) },
   });
 }
-
+export async function importList(options?: { [key: string]: any }) {
+  return request<TableListItem>(
+    '/api' + location.pathname.replace('/antdpro-demo', '') + '/import',
+    {
+      method: 'POST',
+      data: options,
+    },
+  );
+}
 export async function exportList(options?: { [key: string]: any }) {
   return request<TableListItem>(
     '/api' + location.pathname.replace('/antdpro-demo', '') + '/export',

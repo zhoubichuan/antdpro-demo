@@ -14,7 +14,7 @@ import {
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { list, addList, updateList, removeList, exportList, getTemplate } from './service';
+import { list, addList, updateList, removeList, importList, getTemplate } from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
@@ -25,7 +25,7 @@ const XLSX = require('xlsx');
 const handleExport = async (fields: TableListItem[]) => {
   const hide = message.loading('正在添加');
   try {
-    await exportList(fields);
+    await importList(fields);
     hide();
     message.success('添加成功');
     return true;
@@ -396,16 +396,43 @@ const TableList: React.FC = () => {
           >
             批量删除
           </Button>,
-          <Upload
-            {...uploadprops}
-            onChange={() => {
+          <Button
+            type="primary"
+            key="primary"
+            onClick={(): any => {
+              if (!selectedRowsState.length) {
+                return message.warning('请选择数据');
+              }
+              Modal.confirm({
+                title: '删除数据',
+                content: '确定删除该数据吗？',
+                okText: '确认',
+                cancelText: '取消',
+                onOk: async () => {
+                  await handleDelete(selectedRowsState);
+                  setSelectedRows([]);
+                  if (actionRef.current) {
+                    actionRef.current.reload();
+                  }
+                },
+              });
+            }}
+          >
+            全部导出
+          </Button>,
+          <Button
+            type="primary"
+            key="primary"
+            onClick={async () => {
+              await handleDelete(selectedRowsState);
+              setSelectedRows([]);
               if (actionRef.current) {
                 actionRef.current.reload();
               }
             }}
           >
-            <Button type="primary">批量导出</Button>
-          </Upload>,
+            批量导出
+          </Button>,
           <Upload
             {...uploadprops}
             onChange={() => {
