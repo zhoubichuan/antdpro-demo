@@ -1,26 +1,14 @@
 [
   {
-    "title": "类型",
-    "dataIndex": "type",
-    "hideInSearch": false,
-    "hideInTable": false,
+    "title": "类型名称",
+    "dataIndex": "typeName",
     "search": {
       "type": "select",
-      "data": [
-        { "value": "type", "label": "类型" },
-        { "value": "field", "label": "字段" },
-        { "value": "data", "label": "数据" }
-      ],
       "width": 60
     },
     "table": {
-      "type": "select",
-      "data": [
-        { "value": "type", "name": "类型" },
-        { "value": "field", "name": "字段" },
-        { "value": "data", "name": "数据" }
-      ],
-      "width": 60
+      "type": "text",
+      "width": 100
     },
     "create": {
       "rules": [
@@ -40,16 +28,47 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "title": "类型编号",
+    "dataIndex": "type",
+    "search": {},
+    "table": {},
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "字段名称",
     "dataIndex": "title",
-    "hideInSearch": false,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 100
+    },
+    "search": {
+      "type": "text",
+      "width": 60
     },
     "create": {
       "rules": [
@@ -69,13 +88,13 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "字段值",
     "dataIndex": "dataIndex",
-    "hideInSearch": false,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 100
@@ -98,46 +117,13 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
-  },
-  {
-    "title": "搜索显示",
-    "dataIndex": "hideInSearch",
-    "hideInSearch": true,
-    "hideInTable": false,
-    "table": {
-      "type": "select",
-      "data": [
-        { "value": true, "name": "否" },
-        { "value": false, "name": "是" }
-      ],
-      "width": 100
-    },
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "搜索属性",
     "dataIndex": "search",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 160
@@ -160,46 +146,13 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
-  },
-  {
-    "title": "表格显示",
-    "dataIndex": "hideInTable",
-    "hideInSearch": true,
-    "hideInTable": false,
-    "table": {
-      "type": "select",
-      "data": [
-        { "value": true, "name": "否" },
-        { "value": false, "name": "是" }
-      ],
-      "width": 100
-    },
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "表格属性",
     "dataIndex": "table",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 160
@@ -222,46 +175,13 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
-  },
-  {
-    "title": "列表显示",
-    "dataIndex": "hideInForm",
-    "hideInSearch": true,
-    "hideInTable": false,
-    "table": {
-      "type": "select",
-      "data": [
-        { "value": true, "name": "否" },
-        { "value": false, "name": "是" }
-      ],
-      "width": 100
-    },
-    "create": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "创建属性",
     "dataIndex": "create",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 260
@@ -284,13 +204,13 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "编辑属性",
     "dataIndex": "edit",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 260
@@ -313,13 +233,13 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "展示属性",
     "dataIndex": "view",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 160
@@ -342,39 +262,39 @@
       ],
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "创建时间",
     "dataIndex": "createdAt",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "time",
       "width": 100
     },
     "create": false,
     "edit": false,
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "更新时间",
     "dataIndex": "updatedAt",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "time",
       "width": 100
     },
     "create": false,
     "edit": false,
-    "view": true
+    "view": {
+      "type": "text"
+    }
   },
   {
     "title": "后端",
     "dataIndex": "backend",
-    "hideInSearch": true,
-    "hideInTable": false,
     "table": {
       "type": "text",
       "width": 100
@@ -385,6 +305,8 @@
     "edit": {
       "colProps": { "span": 24 }
     },
-    "view": true
+    "view": {
+      "type": "text"
+    }
   }
 ]

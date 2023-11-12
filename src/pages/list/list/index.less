@@ -1,36 +1,47 @@
 @import '~antd/es/style/themes/default.less';
 
 .pro-container {
+  margin: 0 !important;
+
   :global {
     .ant-pro-grid-content {
       .ant-pro-grid-content-children {
         height: calc(100vh - 163px);
+
         .ant-pro-layout-watermark-wrapper {
           height: 100%;
+
           .ant-pro-page-container-children-content {
             height: 100%;
+
             .ant-pro-table {
-              display: flex;
-              flex-direction: column;
               height: 100%;
+
               .ant-pro-card {
                 &:first-child {
                   flex-basis: 100px;
                 }
+
                 &:last-child {
                   flex-grow: 1;
                 }
+
                 .ant-pro-card-body {
                   .ant-table-wrapper {
                     height: calc(100% - 64px);
+
                     .ant-spin-nested-loading {
                       height: 100%;
+
                       .ant-spin-container {
                         height: 100%;
+
                         .ant-table {
                           height: calc(100% - 24px);
+
                           .ant-table-container {
                             height: 100%;
+
                             .ant-table-body {
                               width: 100%;
                               height: calc(100% - 47px);

@@ -14,7 +14,7 @@ export async function getTemplate(key: string, type: string) {
     },
   });
 }
-export async function list(
+export async function requestList(
   params: {
     current?: number;
     pageSize?: number;
@@ -68,6 +68,7 @@ export async function exportList(options?: { [key: string]: any }) {
     '/api' + location.pathname.replace('/antdpro-demo', '') + '/export',
     {
       method: 'POST',
+      responseType: 'blob',
       data: options,
     },
   );

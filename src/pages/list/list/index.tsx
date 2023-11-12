@@ -14,7 +14,15 @@ import {
 } from '@ant-design/pro-form';
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { list, addList, updateList, removeList, importList, getTemplate } from './service';
+import {
+  requestList,
+  addList,
+  updateList,
+  removeList,
+  importList,
+  getTemplate,
+  exportList,
+} from './service';
 import type { TableListItem, TableListPagination } from './data';
 import { useParams } from 'react-router';
 import { history } from 'umi';
@@ -130,6 +138,7 @@ const TableList: React.FC = () => {
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const params: any = useParams();
   const [templateData, setTemplateData] = useState<any>([]);
+  const [options, setOptions] = useState<any[]>([]);
   const getTemplateData = async (key: string) => {
     let template: any = [];
     if (path.includes('template')) {
@@ -154,13 +163,26 @@ const TableList: React.FC = () => {
     if (location.href.includes('id')) {
       const arr = location.href.split('?id=');
       const id: string = arr[arr.length - 1];
-      const result = await list({ current: 1, pageSize: 1 }, { id });
-      setCurrentRow(result.data[0]);
-      setShowDetail(true);
+      const result = await requestList({ current: 1, pageSize: 1 }, { id });
+      setOptions(result.data);
     }
+  };
+  const handleOnSearch = async () => {
+    const { data } = await requestList({ current: 1, pageSize: 1000 });
+    const targetArr = [],
+      obj = {};
+    for (let i = 0; i < data.length; i++) {
+      const { typeName = '' } = data[i];
+      if (!obj[typeName]) {
+        obj[typeName] = true;
+        targetArr.push({ label: typeName, value: typeName });
+      }
+    }
+    setOptions(targetArr);
   };
   useEffect(() => {
     getTemplateData(params.id);
+    handleOnSearch();
   }, []);
   const handleOnTabChange = async (key: string) => {
     await getTemplateData(key);
@@ -192,37 +214,40 @@ const TableList: React.FC = () => {
         );
       },
     },
-    ...templateData.map((item: any) => ({
-      ...item,
-      ...item.table,
-      renderFormItem: () => {
-        if (item.search && item.search.type === 'select') {
-          return <ProFormSelect name={item.dataIndex} options={item.search.data} />;
-        } else {
-          return <ProFormText name={item.dataIndex} />;
-        }
-      },
-      render: (dom: any) => {
-        if (!item.hideInTable && item.table && item.table.type === 'image') {
-          if (Array.isArray(dom)) {
-            return dom.map((i: any) => <Image height={100} src={i} />);
+    ...templateData.map((item: any) => {
+      item.hideInSearch = !item.search || JSON.stringify(item.search) === '{}';
+      item.hideInTable = !item.table || JSON.stringify(item.table) === '{}';
+      return {
+        ...item,
+        defaultSortOrder: 'descend',
+        sorter: (a: any, b: any) => a[item.dataIndex] - b[item.dataIndex],
+        ...item.table,
+        renderFormItem: () => {
+          if (item.search && item.search.type === 'select') {
+            // if(item.search.data){
+            //   return <ProFormSelect name={item.dataIndex} options={item.search.data} />;
+            // }else{
+            return <ProFormSelect name={item.dataIndex} options={options} />;
+            // }
           } else {
-            return <Image height={100} src={dom} />;
+            return <ProFormText name={item.dataIndex} />;
           }
-        }
-        if (!item.hideInTable && item.table && item.table.type === 'time') {
-          return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;
-        }
-        if (!item.hideInTable && item.table && item.table.type === 'select') {
-          return (
-            <div style={{ whiteSpace: 'pre-line' }}>
-              {item.table.data.find((o: any) => o.value === dom).name}
-            </div>
-          );
-        }
-        return dom;
-      },
-    })),
+        },
+        render: (dom: any) => {
+          if (!item.hideInTable && item.table && item.table.type === 'image') {
+            if (Array.isArray(dom)) {
+              return dom.map((i: any) => <Image height={100} src={i} />);
+            } else {
+              return <Image height={100} src={dom} />;
+            }
+          }
+          if (!item.hideInTable && item.table && item.table.type === 'time') {
+            return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;
+          }
+          return dom;
+        },
+      };
+    }),
     {
       title: '操作',
       dataIndex: 'option',
@@ -292,27 +317,27 @@ const TableList: React.FC = () => {
     },
   ];
   const descriptions: ProColumns<TableListItem>[] = templateData
-    .filter((item: any) => item.view)
+    .filter((item: any) => JSON.stringify(item.view) !== '{}')
     .map((item: any) => {
       const { width, view, ellipsis, ...rest } = item;
       return {
         ...rest,
         render: (text: any) => {
-          if (!item.hideInTable && item.view && item.view.type === 'image') {
+          if (item.view && item.view.type === 'image') {
             if (Array.isArray(text)) {
               return text.map((i: any) => <Image height={300} src={i} />);
             } else {
               return <Image height={300} src={text} />;
             }
           }
-          if (!item.hideInTable && item.view && item.view.type === 'time') {
-            return (
-              <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>
-                {moment(text).fromNow()}
-              </div>
-            );
+          if (item.view && item.view.type === 'time') {
+            return <div style={{ whiteSpace: 'pre-line' }}>{moment(text).fromNow()}</div>;
           }
-          return <div style={{ color: 'lightblue', whiteSpace: 'pre-line' }}>{text}</div>;
+          return (
+            <div style={{ whiteSpace: 'pre-line' }}>
+              {typeof text === 'string' ? text : JSON.stringify(text)}
+            </div>
+          );
         },
       };
     });
@@ -365,6 +390,7 @@ const TableList: React.FC = () => {
         actionRef={actionRef}
         ghost={true}
         rowKey="id"
+        scroll={{ x: 1500, y: 480 }}
         search={{
           labelWidth: 100,
           optionRender: (searchConfig, formProps, dom) => {
@@ -400,20 +426,13 @@ const TableList: React.FC = () => {
             type="primary"
             key="primary"
             onClick={(): any => {
-              if (!selectedRowsState.length) {
-                return message.warning('请选择数据');
-              }
               Modal.confirm({
-                title: '删除数据',
-                content: '确定删除该数据吗？',
+                title: '导出数据',
+                content: '确定导出全部数据吗？',
                 okText: '确认',
                 cancelText: '取消',
                 onOk: async () => {
-                  await handleDelete(selectedRowsState);
-                  setSelectedRows([]);
-                  if (actionRef.current) {
-                    actionRef.current.reload();
-                  }
+                  await exportList();
                 },
               });
             }}
@@ -424,11 +443,32 @@ const TableList: React.FC = () => {
             type="primary"
             key="primary"
             onClick={async () => {
-              await handleDelete(selectedRowsState);
-              setSelectedRows([]);
-              if (actionRef.current) {
-                actionRef.current.reload();
-              }
+              Modal.confirm({
+                title: '导出数据',
+                content: '确定导出选中数据吗？',
+                okText: '确认',
+                cancelText: '取消',
+                onOk: async () => {
+                  const res: any = await exportList(selectedRowsState);
+                  debugger;
+                  const blob = new Blob([res.data], {
+                    type: 'application/vnd.ms-excel;charset=utf-8',
+                  });
+                  const downloadElement = document.createElement('a');
+                  const href = window.URL.createObjectURL(blob); //创建下载的链接
+                  downloadElement.href = href;
+                  downloadElement.download =
+                    decodeURI(res.headers['content-disposition'].split('filename=')[1]) || ''; //下载后文件名
+                  document.body.appendChild(downloadElement);
+                  downloadElement.click(); //点击下载
+                  document.body.removeChild(downloadElement); //下载完成移除元素
+                  window.URL.revokeObjectURL(href); //释放掉blob对象
+                  setSelectedRows([]);
+                  if (actionRef.current) {
+                    actionRef.current.reload();
+                  }
+                },
+              });
             }}
           >
             批量导出
@@ -471,7 +511,7 @@ const TableList: React.FC = () => {
             <PlusOutlined /> 批量添加
           </Button>,
         ]}
-        request={list}
+        request={requestList}
         columns={columns}
         rowSelection={{
           onChange: (_, selectedRows) => {
