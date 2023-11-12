@@ -169,16 +169,7 @@ const TableList: React.FC = () => {
   };
   const handleOnSearch = async () => {
     const { data } = await requestList({ current: 1, pageSize: 1000 });
-    const targetArr = [],
-      obj = {};
-    for (let i = 0; i < data.length; i++) {
-      const { typeName = '' } = data[i];
-      if (!obj[typeName]) {
-        obj[typeName] = true;
-        targetArr.push({ label: typeName, value: typeName });
-      }
-    }
-    setOptions(targetArr);
+    setOptions(data);
   };
   useEffect(() => {
     getTemplateData(params.id);
@@ -224,11 +215,17 @@ const TableList: React.FC = () => {
         ...item.table,
         renderFormItem: () => {
           if (item.search && item.search.type === 'select') {
-            // if(item.search.data){
-            //   return <ProFormSelect name={item.dataIndex} options={item.search.data} />;
-            // }else{
-            return <ProFormSelect name={item.dataIndex} options={options} />;
-            // }
+            return (
+              <ProFormSelect
+                name={item.dataIndex}
+                options={[...new Set(options.map((o: any) => o[item.dataIndex]))].map(
+                  (name: string) => ({
+                    label: name,
+                    value: name,
+                  }),
+                )}
+              />
+            );
           } else {
             return <ProFormText name={item.dataIndex} />;
           }
