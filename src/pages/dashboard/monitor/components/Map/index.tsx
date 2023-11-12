@@ -11,19 +11,19 @@ export default class Map extends React.Component {
   };
 
   public async componentDidMount() {
-    const [geoData, gridData] = await Promise.all([
-      fetch(
-        'https://gw.alipayobjects.com/os/bmw-prod/c5dba875-b6ea-4e88-b778-66a862906c93.json',
-      ).then((d) => d.json()),
-      fetch(
-        'https://gw.alipayobjects.com/os/bmw-prod/8990e8b4-c58e-419b-afb9-8ea3daff2dd1.json',
-      ).then((d) => d.json()),
-    ]);
-    this.setState({
-      data: geoData,
-      grid: gridData,
-      loading: true,
-    });
+    // const [geoData, gridData] = await Promise.all([
+    //   fetch(
+    //     'https://gw.alipayobjects.com/os/bmw-prod/c5dba875-b6ea-4e88-b778-66a862906c93.json',
+    //   ).then((d) => d.json()),
+    //   fetch(
+    //     'https://gw.alipayobjects.com/os/bmw-prod/8990e8b4-c58e-419b-afb9-8ea3daff2dd1.json',
+    //   ).then((d) => d.json()),
+    // ]);
+    // this.setState({
+    //   data: geoData,
+    //   grid: gridData,
+    //   loading: true,
+    // });
   }
 
   public render() {

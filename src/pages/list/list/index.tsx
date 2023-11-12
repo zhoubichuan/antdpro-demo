@@ -348,31 +348,31 @@ const TableList: React.FC = () => {
       }}
       tabList={[
         {
-          tab: '列表1',
+          tab: 'echarts',
           key: '1',
         },
         {
-          tab: '列表2',
+          tab: 'openlayers',
           key: '2',
         },
         {
-          tab: '列表3',
+          tab: 'cesium',
           key: '3',
         },
         {
-          tab: '列表4',
+          tab: 'web-vue',
           key: '4',
         },
         {
-          tab: '列表5',
+          tab: 'web-elementui',
           key: '5',
         },
         {
-          tab: '列表6',
+          tab: 'web-react',
           key: '6',
         },
         {
-          tab: '列表7',
+          tab: 'web-antd',
           key: '7',
         },
         {
