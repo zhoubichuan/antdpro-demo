@@ -1,0 +1,1112 @@
+[
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "创建时间",
+    "dataIndex": "createdAt",
+    "search": {},
+    "table": {
+      "type": "time"
+    },
+    "edit": false,
+    "view": {
+      "type": "time"
+    },
+    "create": false
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "更新时间",
+    "dataIndex": "updatedAt",
+    "search": {},
+    "table": {
+      "type": "time"
+    },
+    "create": false,
+    "edit": false,
+    "view": {
+      "type": "time"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "数值",
+    "dataIndex": "images",
+    "search": {},
+    "table": {
+      "type": "text",
+      "width": 200
+    },
+    "create": {
+      "type": "text",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "text",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "详情",
+    "dataIndex": "detail",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text",
+      "width": 200,
+      "ellipsis": {
+        "showTitle": true
+      }
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "描述",
+    "dataIndex": "descript",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text",
+      "width": 500,
+      "ellipsis": {
+        "showTitle": true
+      }
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "作者",
+    "dataIndex": "author",
+    "search": {
+      "type": "select"
+    },
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": "24"
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": "24"
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "名称",
+    "dataIndex": "name",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "类型编号",
+    "dataIndex": "type",
+    "search": {},
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "类型名称",
+    "dataIndex": "typeName",
+    "search": {
+      "type": "select"
+    },
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "数据",
+    "type": "data",
+    "title": "编号",
+    "dataIndex": "id",
+    "search": {},
+    "table": {},
+    "create": {},
+    "edit": {
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "创建时间",
+    "dataIndex": "createdAt",
+    "search": {},
+    "table": {
+      "type": "time"
+    },
+    "edit": false,
+    "view": {
+      "type": "time"
+    },
+    "create": false
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "更新时间",
+    "dataIndex": "updatedAt",
+    "search": {},
+    "table": {
+      "type": "time"
+    },
+    "create": false,
+    "edit": false,
+    "view": {
+      "type": "time"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "数值",
+    "dataIndex": "images",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "type": "text",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 30
+      }
+    },
+    "edit": {
+      "type": "text",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "详情",
+    "dataIndex": "detail",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text",
+      "width": 200,
+      "ellipsis": {
+        "showTitle": true
+      }
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "描述",
+    "dataIndex": "descript",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text",
+      "width": 500,
+      "ellipsis": {
+        "showTitle": true
+      }
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "名称编号",
+    "dataIndex": "value",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "名称",
+    "dataIndex": "name",
+    "search": { "type": "text" },
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "类型编号",
+    "dataIndex": "type",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "类型名称",
+    "dataIndex": "typeName",
+    "search": {
+      "type": "select"
+    },
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "字段",
+    "type": "field",
+    "title": "编号",
+    "dataIndex": "id",
+    "search": {},
+    "table": {},
+    "create": {},
+    "edit": {
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "更新时间",
+    "dataIndex": "updatedAt",
+    "search": {},
+    "table": {
+      "type": "time"
+    },
+    "create": false,
+    "edit": false,
+    "view": {
+      "type": "time"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "updatedAt",
+      "type": "array",
+      "addDefault": "[]",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "创建时间",
+    "dataIndex": "createdAt",
+    "search": {},
+    "table": {
+      "type": "time"
+    },
+    "edit": false,
+    "view": {
+      "type": "time"
+    },
+    "create": false,
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "createdAt",
+      "type": "array",
+      "addDefault": "[]",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "节点",
+    "dataIndex": "children",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {},
+    "edit": {},
+    "view": {},
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "children",
+      "type": "array",
+      "addDefault": "[]",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "子节点",
+    "dataIndex": "hasChildren",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {},
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "hasChildren",
+      "type": "string",
+      "addDefault": "",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "数值",
+    "dataIndex": "images",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "type": "text",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 30
+      }
+    },
+    "edit": {
+      "type": "text",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "images",
+      "type": "array",
+      "addDefault": "[]",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "详情",
+    "dataIndex": "detail",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text",
+      "width": 200,
+      "ellipsis": {
+        "showTitle": true
+      }
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "textArea"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "detail",
+      "type": "string",
+      "addDefault": "111",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "描述",
+    "dataIndex": "descript",
+    "search": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text",
+      "width": 500,
+      "ellipsis": {
+        "showTitle": true
+      }
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "textArea"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "descript",
+      "type": "string",
+      "addDefault": "111",
+      "single": true
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "名称编号",
+    "dataIndex": "value",
+    "search": {},
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "value",
+      "type": "string",
+      "addDefault": "名称编号"
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "名称",
+    "dataIndex": "name",
+    "search": {
+      "type": "select"
+    },
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "name",
+      "type": "string",
+      "addDefault": "名称"
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "类型编号",
+    "dataIndex": "type",
+    "search": {},
+    "table": {},
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "type",
+      "type": "string",
+      "addDefault": "类型编号"
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "类型名称",
+    "dataIndex": "typeName",
+    "search": {
+      "type": "select"
+    },
+    "table": {
+      "type": "text"
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    },
+    "backend": {
+      "add": true,
+      "delete": true,
+      "edit": true,
+      "view": true,
+      "name": "typeName",
+      "type": "string",
+      "addDefault": "类型名称"
+    }
+  },
+  {
+    "typeName": "类型",
+    "type": "type",
+    "title": "编号",
+    "dataIndex": "id",
+    "search": {},
+    "table": {},
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    },
+    "backend": {
+      "add": false,
+      "delete": false,
+      "edit": false,
+      "view": true,
+      "name": "id",
+      "type": "string",
+      "addDefault": "id号"
+    }
+  }
+]

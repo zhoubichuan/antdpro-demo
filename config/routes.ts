@@ -145,6 +145,19 @@
         component: './list/table-list4',
       },
       {
+        name: 'list9',
+        icon: 'smile',
+        path: '/list/backend',
+        redirect: '/list/backend/1',
+      },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/backend/:id',
+        menuRender: false, // 不渲染菜单
+        component: './list/list',
+      },
+      {
         name: 'list5',
         icon: 'smile',
         path: '/list/template',

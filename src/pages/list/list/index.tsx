@@ -141,7 +141,7 @@ const TableList: React.FC = () => {
   const [options, setOptions] = useState<any[]>([]);
   const getTemplateData = async (key: string) => {
     let template: any = [];
-    if (path.includes('template')) {
+    if (path.includes('template') || path.includes('backend')) {
       template = await require(`../${path.split('/')[2]}/${key}.json`);
     } else {
       const result = await getTemplate(key, path.split('/')[2]);
@@ -174,7 +174,7 @@ const TableList: React.FC = () => {
   useEffect(() => {
     getTemplateData(params.id);
     handleOnSearch();
-  }, []);
+  }, [params.id]);
   const handleOnTabChange = async (key: string) => {
     await getTemplateData(key);
     setTabActiveKey(key);
@@ -233,10 +233,13 @@ const TableList: React.FC = () => {
         render: (dom: any) => {
           if (!item.hideInTable && item.table && item.table.type === 'image') {
             if (Array.isArray(dom)) {
-              return dom.map((i: any) => <Image height={100} src={i} />);
+              return dom.map((i: any, key) => <Image height={100} src={i} key={key} />);
             } else {
               return <Image height={100} src={dom} />;
             }
+          }
+          if (!item.hideInTable && item.table && item.table.type === 'radio') {
+            return item.table.options.find((i: any) => i.value === dom)?.label;
           }
           if (!item.hideInTable && item.table && item.table.type === 'time') {
             return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;
@@ -601,7 +604,9 @@ const TableList: React.FC = () => {
                   );
                   break;
                 case 'radio':
-                  form = <ProFormRadio {...item.create} label={item.title} name={item.dataIndex} />;
+                  form = (
+                    <ProFormRadio.Group {...item.create} label={item.title} name={item.dataIndex} />
+                  );
                   break;
                 case 'switch':
                   form = (
@@ -666,7 +671,9 @@ const TableList: React.FC = () => {
                   form = <ProFormSelect {...item.edit} label={item.title} name={item.dataIndex} />;
                   break;
                 case 'radio':
-                  form = <ProFormRadio {...item.edit} label={item.title} name={item.dataIndex} />;
+                  form = (
+                    <ProFormRadio.Group {...item.create} label={item.title} name={item.dataIndex} />
+                  );
                   break;
                 case 'switch':
                   form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
