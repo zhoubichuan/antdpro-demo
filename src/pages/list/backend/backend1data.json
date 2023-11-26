@@ -1,5 +1,6 @@
 [
   {
+    "filterType": "template",
     "add": false,
     "delete": false,
     "edit": false,
@@ -9,6 +10,17 @@
     "addDefault": "0000001"
   },
   {
+    "filterType": "template",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "filterType",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -18,6 +30,7 @@
     "addDefault": ""
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -27,6 +40,7 @@
     "addDefault": true
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -36,6 +50,7 @@
     "addDefault": true
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -45,6 +60,7 @@
     "addDefault": true
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -54,6 +70,7 @@
     "addDefault": true
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -63,6 +80,7 @@
     "addDefault": ""
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -72,6 +90,7 @@
     "addDefault": ""
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -81,6 +100,7 @@
     "addDefault": ""
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -90,6 +110,7 @@
     "addDefault": ""
   },
   {
+    "filterType": "template",
     "add": true,
     "delete": true,
     "edit": true,
@@ -97,5 +118,342 @@
     "name": "updatedAt",
     "type": "string",
     "addDefault": ""
+  },
+  {
+    "filterType": "type",
+    "add": false,
+    "delete": false,
+    "edit": false,
+    "view": true,
+    "name": "id",
+    "type": "string",
+    "addDefault": "id号"
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "typeName",
+    "type": "string",
+    "addDefault": "类型名称"
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "type",
+    "type": "string",
+    "addDefault": "类型编号"
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "name",
+    "type": "string",
+    "addDefault": "名称"
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "value",
+    "type": "string",
+    "addDefault": "名称编号"
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "descript",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "images",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hasChildren",
+    "type": "string",
+    "addDefault": "",
+    "single": true
+  },
+  {
+    "filterType": "type",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "children",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
+  },
+  {
+    "filterType": "field",
+    "add": false,
+    "delete": false,
+    "edit": false,
+    "view": true,
+    "name": "id",
+    "type": "string",
+    "addDefault": "id号"
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "typeName",
+    "type": "string",
+    "addDefault": "类型名称"
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "type",
+    "type": "string",
+    "addDefault": "类型编号"
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "name",
+    "type": "string",
+    "addDefault": "名称"
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "value",
+    "type": "string",
+    "addDefault": "名称编号"
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "descript",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "images",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hasChildren",
+    "type": "string",
+    "addDefault": "",
+    "single": true
+  },
+  {
+    "filterType": "field",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "children",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": false,
+    "delete": false,
+    "edit": false,
+    "view": true,
+    "name": "id",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "typeName",
+    "type": "string",
+    "addDefault": "类型名称"
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "type",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "author",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "name",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "descript",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "images",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "latitude",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "longitude",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "city",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "filterType": "data",
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "time",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
   }
 ]
