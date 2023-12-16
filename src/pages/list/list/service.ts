@@ -8,8 +8,6 @@ export async function getTemplate(key: string, type: string) {
   }>('/api/list/template/' + key, {
     method: 'GET',
     params: {
-      current: '1',
-      pageSize: '20',
       type: type,
     },
   });
@@ -33,7 +31,25 @@ export async function requestList(
     ...(options || {}),
   });
 }
-
+export async function requestTabs(
+  params: {
+    current?: number;
+    pageSize?: number;
+  },
+  options?: {},
+) {
+  return request<{
+    data: TableListItem[];
+    total?: number;
+    success?: boolean;
+  }>('/api/list/tab/' + location.pathname.split('/')[location.pathname.split('/').length - 1], {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
 export async function updateList(options?: { [key: string]: any }) {
   return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
     method: 'PUT',

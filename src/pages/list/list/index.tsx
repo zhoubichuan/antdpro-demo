@@ -15,6 +15,7 @@ import {
 import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import {
+  requestTabs,
   requestList,
   addList,
   updateList,
@@ -137,11 +138,12 @@ const TableList: React.FC = () => {
   );
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const params: any = useParams();
+  const [tabs, setTabs] = useState<any>([]);
   const [templateData, setTemplateData] = useState<any>([]);
   const [options, setOptions] = useState<any[]>([]);
   const getTemplateData = async (key: string) => {
     let template: any = [];
-    if (path.includes('template') || path.includes('backend')) {
+    if (path.includes('template') || path.includes('backend') || path.includes('tab')) {
       template = await require(`../${path.split('/')[2]}/${key}.json`);
     } else {
       const result = await getTemplate(key, path.split('/')[2]);
@@ -160,6 +162,8 @@ const TableList: React.FC = () => {
       }
     }
     setTemplateData(template);
+    const tabsData = await requestTabs({});
+    setTabs(tabsData.data);
     if (location.href.includes('id')) {
       const arr = location.href.split('?id=');
       const id: string = arr[arr.length - 1];
@@ -349,40 +353,11 @@ const TableList: React.FC = () => {
         title: false,
         ghost: true,
       }}
-      tabList={[
-        {
-          tab: 'echarts',
-          key: '1',
-        },
-        {
-          tab: 'openlayers',
-          key: '2',
-        },
-        {
-          tab: 'cesium',
-          key: '3',
-        },
-        {
-          tab: 'web-vue',
-          key: '4',
-        },
-        {
-          tab: 'web-elementui',
-          key: '5',
-        },
-        {
-          tab: 'web-react',
-          key: '6',
-        },
-        {
-          tab: 'web-antd',
-          key: '7',
-        },
-        {
-          tab: '列表8',
-          key: '8',
-        },
-      ]}
+      tabList={
+        location.pathname.includes('tab')
+          ? []
+          : tabs.reverse().map((item: any) => ({ tab: item.name, key: item.type }))
+      }
       tabActiveKey={tabActiveKey}
     >
       <ProTable<TableListItem, TableListPagination>

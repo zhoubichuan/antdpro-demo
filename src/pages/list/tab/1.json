@@ -1,0 +1,173 @@
+[
+  {
+    "type": "data",
+    "title": "编号",
+    "dataIndex": "id",
+    "search": {},
+    "table": {},
+    "create": {},
+    "edit": {
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "title": "名称",
+    "dataIndex": "name",
+    "search": {
+      "type": "text",
+      "width": 260
+    },
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "title": "类型编号",
+    "dataIndex": "type",
+    "search": {
+      "type": "text",
+      "width": 260
+    },
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "title": "默认值",
+    "dataIndex": "addDefault",
+    "table": {
+      "type": "text",
+      "width": 260
+    },
+    "create": {
+      "rules": [
+        {
+          "required": false,
+          "message": "设置字段的默认值"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": false,
+          "message": "修改字段的默认值"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "title": "备注",
+    "dataIndex": "remark",
+    "table": {
+      "type": "text",
+      "width": 260
+    },
+    "create": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": false,
+          "message": "设置字段的备注信息"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "type": "textArea",
+      "rules": [
+        {
+          "required": false,
+          "message": "修改字段的备注信息"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "textArea"
+    }
+  },
+  {
+    "title": "创建时间",
+    "dataIndex": "createdAt",
+    "table": {
+      "type": "time",
+      "width": 100
+    },
+    "create": false,
+    "edit": false,
+    "view": {
+      "type": "time",
+      "width": 100
+    }
+  },
+  {
+    "title": "更新时间",
+    "dataIndex": "updatedAt",
+    "table": {
+      "type": "time",
+      "width": 100
+    },
+    "create": false,
+    "edit": false,
+    "view": {
+      "type": "time",
+      "width": 100
+    }
+  }
+]
