@@ -254,11 +254,11 @@ const TableList: React.FC = () => {
       valueType: 'option',
       fixed: 'right',
       width: 160,
-      render: (_, record) => [
+      render: (_, record: any) => [
         <a
           key="add"
           onClick={async () => {
-            const copyParams = {};
+            const copyParams: any = {};
             templateData
               .filter((item: any) => item.create)
               .forEach((field: any) => {

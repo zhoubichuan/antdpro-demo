@@ -1,5 +1,5 @@
 export type Member = {
-  avatar: string;
+  images: array;
   name: string;
   id: string;
 };
@@ -7,8 +7,8 @@ export type Member = {
 export type CardListItemDataType = {
   id: string;
   owner: string;
-  title: string;
-  avatar: string;
+  author: string;
+  images: array;
   cover: string;
   status: 'normal' | 'exception' | 'active' | 'success';
   percent: number;
@@ -18,7 +18,7 @@ export type CardListItemDataType = {
   updatedAt: number;
   createdAt: number;
   subDescription: string;
-  description: string;
+  descript: string;
   activeUser: number;
   newUser: number;
   star: number;

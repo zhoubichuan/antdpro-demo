@@ -1,9 +1,9 @@
 import { PageContainer } from '@ant-design/pro-layout';
 import { Input } from 'antd';
 import type { FC } from 'react';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { history } from 'umi';
-import { list, addList, updateList, removeList, exportList, getTemplate } from './service';
+import { list } from './service';
 
 type SearchProps = {
   match: {
