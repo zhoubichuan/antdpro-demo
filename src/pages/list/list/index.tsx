@@ -365,7 +365,6 @@ const TableList: React.FC = () => {
         actionRef={actionRef}
         ghost={true}
         rowKey="id"
-        scroll={{ x: 1500, y: 480 }}
         search={{
           labelWidth: 100,
           optionRender: (searchConfig, formProps, dom) => {
