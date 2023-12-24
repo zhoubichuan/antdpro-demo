@@ -291,7 +291,13 @@
       "width": 100
     },
     "create": false,
-    "edit": false,
+    "edit": {
+      "type": "time",
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
     "view": {
       "type": "time"
     }
@@ -304,7 +310,13 @@
       "width": 100
     },
     "create": false,
-    "edit": false,
+    "edit": {
+      "type": "time",
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
     "view": {
       "type": "time"
     }
