@@ -1,6 +1,6 @@
 @import '~antd/es/style/themes/default.less';
 
-.pro-container {
+.container-part {
   height: calc(100vh - 96px);
   margin: 0 !important;
   :global {
@@ -14,7 +14,7 @@
           .ant-pro-page-container-children-content {
             height: 100%;
             margin: 0;
-            .ant-pro-table {
+            .table-part {
               display: flex;
               flex-direction: column;
               height: 100%;
@@ -48,6 +48,9 @@
                                 flex: 1;
                                 height: calc(100% - 47px);
                                 overflow: auto;
+                                > tbody {
+                                  height: calc(100% - 47px);
+                                }
                               }
                             }
                           }
@@ -64,6 +67,3 @@
     }
   }
 }
-// .pro-table{
-
-// }
