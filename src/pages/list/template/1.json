@@ -1,5 +1,21 @@
 [
   {
+    "title": "编号",
+    "dataIndex": "id",
+    "search": {},
+    "table": {},
+    "create": {},
+    "edit": {
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
     "title": "类型名称",
     "dataIndex": "typeName",
     "search": {

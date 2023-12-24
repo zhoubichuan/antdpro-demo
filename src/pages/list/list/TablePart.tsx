@@ -289,7 +289,6 @@ const TablePart: React.FC<TablePartProps> = (props) => {
               cancelText: '取消',
               onOk: async () => {
                 const res: any = await exportList(selectedRowsState);
-                debugger;
                 const blob = new Blob([res.data], {
                   type: 'application/vnd.ms-excel;charset=utf-8',
                 });

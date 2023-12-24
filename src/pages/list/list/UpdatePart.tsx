@@ -17,7 +17,7 @@ export type UpdatePartProps = {
   template: any;
 };
 const UpdatePart: React.FC<UpdatePartProps> = (props) => {
-  const { data, template = [], onVisibleChange, onFinish } = props;
+  const { data, template, onVisibleChange, onFinish } = props;
   const [createModalVisible, handleModalVisible] = useState<boolean>(true);
   const handleEdit = async (fields: TableListItem) => {
     const hide = message.loading('正在配置');
@@ -63,10 +63,10 @@ const UpdatePart: React.FC<UpdatePartProps> = (props) => {
       initialValues={data}
     >
       {template
-        .filter((item: any) => item.edit)
+        .filter((o: any) => o.edit && JSON.stringify(o.edit) !== '{}')
         .map((item: any) => {
           let form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
-          switch (item.edit ? item.edit.type || '' : '') {
+          switch (item.edit.type) {
             case 'input':
               form = <ProFormText {...item.edit} label={item.title} name={item.dataIndex} />;
               break;
