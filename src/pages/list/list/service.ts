@@ -1,4 +1,5 @@
 import { request } from 'umi';
+
 import { TableListItem } from './data';
 export async function getTemplate(key: string, type: string) {
   return request<{
@@ -42,7 +43,7 @@ export async function requestTabs(
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/list/tab/' + location.pathname.split('/')[location.pathname.split('/').length - 1], {
+  }>('/api/list/tab/1', {
     method: 'GET',
     params: {
       ...params,

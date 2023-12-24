@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ModalForm,
   ProFormText,
@@ -17,6 +17,7 @@ export type CreatePartProps = {
 };
 const CreatePart: React.FC<CreatePartProps> = (props) => {
   const { template = [], onVisibleChange, onFinish } = props;
+  const [createModalVisible, handleModalVisible] = useState<boolean>(true);
   const handleAdd = async (fields: TableListItem) => {
     const hide = message.loading('正在添加');
     try {
@@ -46,7 +47,7 @@ const CreatePart: React.FC<CreatePartProps> = (props) => {
       title="新增"
       width="800px"
       layout={'horizontal'}
-      visible={true}
+      visible={createModalVisible}
       onVisibleChange={onVisibleChange}
       onFinish={async (value) => {
         if (value.images) {
@@ -55,6 +56,7 @@ const CreatePart: React.FC<CreatePartProps> = (props) => {
         const success = await handleAdd(value as TableListItem);
         if (success) {
           onFinish();
+          handleModalVisible(false);
         }
       }}
     >

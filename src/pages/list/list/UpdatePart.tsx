@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ModalForm,
   ProFormText,
@@ -18,6 +18,7 @@ export type UpdatePartProps = {
 };
 const UpdatePart: React.FC<UpdatePartProps> = (props) => {
   const { data, template = [], onVisibleChange, onFinish } = props;
+  const [createModalVisible, handleModalVisible] = useState<boolean>(true);
   const handleEdit = async (fields: TableListItem) => {
     const hide = message.loading('正在配置');
     try {
@@ -47,7 +48,7 @@ const UpdatePart: React.FC<UpdatePartProps> = (props) => {
       title="编辑"
       width="800px"
       layout={'horizontal'}
-      visible={true}
+      visible={createModalVisible}
       onVisibleChange={onVisibleChange}
       onFinish={async (value) => {
         if (value.images) {
@@ -56,6 +57,7 @@ const UpdatePart: React.FC<UpdatePartProps> = (props) => {
         const success = await handleEdit(value as TableListItem);
         if (success) {
           onFinish();
+          handleModalVisible(false);
         }
       }}
       initialValues={data}
