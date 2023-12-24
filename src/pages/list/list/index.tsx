@@ -148,11 +148,11 @@ const TableList: React.FC = () => {
     handleOnSearch();
   }, [params.id]);
   const handleOnTabChange = async (key: string) => {
-    // await getTemplateData(key);
-    // setTabActiveKey(key);
-    // if (actionRef.current) {
-    //   actionRef.current.reload();
-    // }
+    await getTemplateData(key);
+    setTabActiveKey(key);
+    if (actionRef.current) {
+      actionRef.current.reload();
+    }
     history.push(path.slice(0, -1) + key);
   };
   const columns: ProColumns<TableListItem>[] = [
@@ -300,7 +300,9 @@ const TableList: React.FC = () => {
       tabList={
         location.pathname.includes('tab')
           ? []
-          : tabs.reverse().map((item: any) => ({ tab: item.name, key: item.type }))
+          : tabs
+              .reverse((a: any, b: any) => a.type - b.type)
+              .map((item: any) => ({ tab: item.name, key: item.type }))
       }
       tabActiveKey={tabActiveKey}
     >
@@ -310,8 +312,9 @@ const TableList: React.FC = () => {
         actionRef={actionRef}
         ghost={true}
         rowKey="id"
+        scroll={{ x: 800, y: 260 }}
         search={{
-          labelWidth: 100,
+          labelWidth: 80,
           optionRender: (searchConfig, formProps, dom) => {
             return dom;
           },

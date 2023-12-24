@@ -1,69 +1,76 @@
 @import '~antd/es/style/themes/default.less';
 
-.container-part {
-  height: calc(100vh - 96px);
-  margin: 0 !important;
+// .container-part {
+//   height: calc(100vh - 96px);
+//   margin: 0 !important;
+//   :global {
+//     .ant-pro-grid-content {
+//       height: calc(100% - 138px);
+//       .ant-pro-grid-content-children {
+//         height: 100%;
+//         .ant-pro-layout-watermark-wrapper {
+//           height: 100%;
+
+//           .ant-pro-page-container-children-content {
+//             height: 100%;
+//             margin: 0;
+//             .table-part {
+//               display: flex;
+//               flex-direction: column;
+//               height: 100%;
+//               .ant-pro-table-search-ghost {
+//                 flex-basis: 104px;
+//                 flex-shrink: 0;
+//                 min-height: 104px;
+//               }
+//               .ant-pro-card {
+//                 &:last-child {
+//                   flex: 1;
+//                   height: calc(100% - 104px);
+//                   .ant-pro-card-body {
+//                     .ant-table-wrapper {
+//                       height: calc(100% - 64px);
+
+//                       .ant-spin-nested-loading {
+//                         height: 100%;
+
+//                         .ant-spin-container {
+//                           height: 100%;
+
+//                           .ant-table {
+//                             height: calc(100% - 24px);
+
+//                             .ant-table-container {
+//                               display: flex;
+//                               flex-direction: column;
+//                               height: 100%;
+//                               .ant-table-body {
+//                                 flex: 1;
+//                                 height: calc(100% - 47px);
+//                                 overflow: auto;
+//                                 > tbody {
+//                                   height: calc(100% - 47px);
+//                                 }
+//                               }
+//                             }
+//                           }
+//                         }
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+.table-part {
   :global {
-    .ant-pro-grid-content {
-      height: calc(100% - 138px);
-      .ant-pro-grid-content-children {
-        height: 100%;
-        .ant-pro-layout-watermark-wrapper {
-          height: 100%;
-
-          .ant-pro-page-container-children-content {
-            height: 100%;
-            margin: 0;
-            .table-part {
-              display: flex;
-              flex-direction: column;
-              height: 100%;
-              .ant-pro-table-search-ghost {
-                flex-basis: 104px;
-                flex-shrink: 0;
-                min-height: 104px;
-              }
-              .ant-pro-card {
-                &:last-child {
-                  flex: 1;
-                  height: calc(100% - 104px);
-                  .ant-pro-card-body {
-                    .ant-table-wrapper {
-                      height: calc(100% - 64px);
-
-                      .ant-spin-nested-loading {
-                        height: 100%;
-
-                        .ant-spin-container {
-                          height: 100%;
-
-                          .ant-table {
-                            height: calc(100% - 24px);
-
-                            .ant-table-container {
-                              display: flex;
-                              flex-direction: column;
-                              height: 100%;
-                              .ant-table-body {
-                                flex: 1;
-                                height: calc(100% - 47px);
-                                overflow: auto;
-                                > tbody {
-                                  height: calc(100% - 47px);
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    .ant-form-item-control {
+      max-width: inherit !important;
     }
   }
 }

@@ -129,6 +129,7 @@
       "width": 160
     },
     "create": {
+      "type": "text",
       "rules": [
         {
           "required": true,
@@ -276,7 +277,7 @@
     "create": false,
     "edit": false,
     "view": {
-      "type": "text"
+      "type": "time"
     }
   },
   {
@@ -289,24 +290,7 @@
     "create": false,
     "edit": false,
     "view": {
-      "type": "text"
-    }
-  },
-  {
-    "title": "后端",
-    "dataIndex": "backend",
-    "table": {
-      "type": "text",
-      "width": 100
-    },
-    "create": {
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "colProps": { "span": 24 }
-    },
-    "view": {
-      "type": "text"
+      "type": "time"
     }
   }
 ]

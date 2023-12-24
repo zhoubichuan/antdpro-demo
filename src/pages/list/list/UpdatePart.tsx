@@ -75,9 +75,7 @@ const UpdatePart: React.FC<UpdatePartProps> = (props) => {
               form = <ProFormSelect {...item.edit} label={item.title} name={item.dataIndex} />;
               break;
             case 'radio':
-              form = (
-                <ProFormRadio.Group {...item.create} label={item.title} name={item.dataIndex} />
-              );
+              form = <ProFormRadio.Group {...item.edit} label={item.title} name={item.dataIndex} />;
               break;
             case 'switch':
               form = <ProFormSwitch {...item.edit} label={item.title} name={item.dataIndex} />;
