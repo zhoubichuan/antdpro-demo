@@ -361,6 +361,7 @@ const TableList: React.FC = () => {
       tabActiveKey={tabActiveKey}
     >
       <ProTable<TableListItem, TableListPagination>
+        className={classNames('pro-table', styles['pro-table'])}
         sticky
         actionRef={actionRef}
         ghost={true}
