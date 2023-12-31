@@ -30,6 +30,7 @@ export default {
   'menu.list.list5': '模板列表',
   'menu.list.list6': '数据列表',
   'menu.list.list7': '字段列表',
+  'menu.list.list27': '用户列表',
   'menu.list.list8': '类型列表',
   'menu.list.list9': '后端列表',
   'menu.list.list10': '项目列表',

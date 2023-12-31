@@ -1,6 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, message, Upload, Modal, Image } from 'antd';
-import React, { useRef, useState } from 'react';
+import React, { useImperativeHandle, useRef, useState, forwardRef } from 'react';
 import ProTable from '@ant-design/pro-table';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import { ModalForm, ProFormText, ProFormTextArea, ProFormSelect } from '@ant-design/pro-form';
@@ -11,6 +11,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 
 export type TablePartProps = {
+  actionRef: any;
   onViewDetail: (e?: any) => void;
   onEdit: (e?: any) => void;
   onCreate: (e?: any) => void;
@@ -18,7 +19,7 @@ export type TablePartProps = {
   template: any[];
   options: string[];
 };
-const TablePart: React.FC<TablePartProps> = (props) => {
+const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
   const actionRef = useRef<ActionType>();
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const { template = [], onViewDetail, onEdit, onCreate, onManyCreate, options = [] } = props;
@@ -113,49 +114,71 @@ const TablePart: React.FC<TablePartProps> = (props) => {
         );
       },
     },
-    ...template.map((item: any) => {
-      item.hideInSearch = !item.search || JSON.stringify(item.search) === '{}';
-      item.hideInTable = !item.table || JSON.stringify(item.table) === '{}';
-      return {
-        ...item,
-        defaultSortOrder: 'descend',
-        sorter: (a: any, b: any) => a[item.dataIndex] - b[item.dataIndex],
-        ...item.table,
-        renderFormItem: () => {
-          if (item.search && item.search.type === 'select') {
-            return (
-              <ProFormSelect
-                name={item.dataIndex}
-                options={[...new Set(options.map((o: any) => o[item.dataIndex]))].map(
-                  (name: string) => ({
-                    label: name,
-                    value: name,
-                  }),
-                )}
-              />
-            );
-          } else {
-            return <ProFormText name={item.dataIndex} />;
-          }
-        },
-        render: (dom: any) => {
-          if (!item.hideInTable && item.table && item.table.type === 'image') {
-            if (Array.isArray(dom)) {
-              return dom.map((i: any, key) => <Image height={100} src={i} key={key} />);
+    ...template
+      .sort((a, b) => a.sort - b.sort)
+      .map((item: any) => {
+        item.hideInSearch = !item.search || JSON.stringify(item.search) === '{}';
+        item.hideInTable = !item.table || JSON.stringify(item.table) === '{}';
+        return {
+          ...item,
+          defaultSortOrder: 'descend',
+          sorter: (a: any, b: any) => a[item.dataIndex] - b[item.dataIndex],
+          ...item.table,
+          renderFormItem: () => {
+            if (item.search && item.search.type === 'select') {
+              return (
+                <ProFormSelect
+                  name={item.dataIndex}
+                  options={[...new Set(options.map((o: any) => o[item.dataIndex]))].map(
+                    (name: string) => ({
+                      label: name,
+                      value: name,
+                    }),
+                  )}
+                />
+              );
             } else {
-              return <Image height={100} src={dom} />;
+              return <ProFormText name={item.dataIndex} />;
             }
-          }
-          if (!item.hideInTable && item.table && item.table.type === 'radio') {
-            return item.table.options.find((i: any) => i.value === dom)?.label;
-          }
-          if (!item.hideInTable && item.table && item.table.type === 'time') {
-            return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;
-          }
-          return dom;
-        },
-      };
-    }),
+          },
+          render: (dom: any) => {
+            if (!item.hideInTable && item.table && item.table.type === 'image') {
+              if (Array.isArray(dom)) {
+                return dom.slice(0, 2).map((i: any, key) => {
+                  if (i.includes('.mp4')) {
+                    return (
+                      <video
+                        key={key}
+                        controls
+                        style={{ objectFit: 'contain', height: '100px', display: 'inline-block' }}
+                      >
+                        <source src={i} type="video/mp4" />
+                      </video>
+                    );
+                  } else {
+                    return (
+                      <Image
+                        key={key}
+                        style={{ objectFit: 'contain', height: '100px', display: 'inline-block' }}
+                        src={i}
+                      />
+                    );
+                  }
+                });
+              } else {
+                return <Image height={100} src={dom} />;
+              }
+            }
+            if (!item.hideInTable && item.table && item.table.type === 'radio') {
+              return item.table.options.find((i: any) => i.value === dom)?.label;
+            }
+            if (!item.hideInTable && item.table && item.table.type === 'time') {
+              return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;
+            }
+            return dom;
+          },
+        };
+      }),
     {
       title: '操作',
       dataIndex: 'option',
@@ -222,6 +245,9 @@ const TablePart: React.FC<TablePartProps> = (props) => {
       ],
     },
   ];
+  useImperativeHandle(ref, () => ({
+    reload: () => actionRef?.current?.reload(),
+  }));
   return (
     <ProTable<TableListItem, TableListPagination>
       className={classNames('table-part', styles['table-part'])}
@@ -229,7 +255,7 @@ const TablePart: React.FC<TablePartProps> = (props) => {
       actionRef={actionRef}
       ghost={true}
       rowKey="id"
-      scroll={{ x: 800, y: 260 }}
+      scroll={{ x: 800, y: document.body.clientHeight / 2 }}
       search={{
         labelWidth: 80,
         optionRender: (searchConfig, formProps, dom) => {
@@ -357,6 +383,6 @@ const TablePart: React.FC<TablePartProps> = (props) => {
       }}
     />
   );
-};
+});
 
 export default TablePart;

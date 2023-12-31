@@ -10,6 +10,8 @@ import {
 } from '@ant-design/pro-form';
 import { addList } from './service';
 import type { TableListItem } from './data';
+import classNames from 'classnames';
+import styles from './index.less';
 export type CreatePartProps = {
   onVisibleChange: (e?: any) => void;
   onFinish: (e?: any) => void;
@@ -50,9 +52,6 @@ const CreatePart: React.FC<CreatePartProps> = (props) => {
       visible={createModalVisible}
       onVisibleChange={onVisibleChange}
       onFinish={async (value) => {
-        if (value.images) {
-          value.images = [value.images];
-        }
         const success = await handleAdd(value as TableListItem);
         if (success) {
           onFinish();
@@ -60,51 +59,53 @@ const CreatePart: React.FC<CreatePartProps> = (props) => {
         }
       }}
     >
-      {template
-        .filter((item: any) => item.create && JSON.stringify(item.create) !== '{}')
-        .map((item: any) => {
-          let form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
-          switch (item.create ? item.create.type || '' : '') {
-            case 'input':
-              form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
-              break;
-            case 'textArea':
-              form = (
-                <ProFormTextArea
-                  {...item.create}
-                  label={item.title}
-                  name={item.dataIndex}
-                  colProps={{ span: 24 }}
-                />
-              );
-              break;
-            case 'select':
-              form = <ProFormSelect {...item.create} label={item.title} name={item.dataIndex} />;
-              break;
-            case 'radio':
-              form = (
-                <ProFormRadio.Group {...item.create} label={item.title} name={item.dataIndex} />
-              );
-              break;
-            case 'switch':
-              form = <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />;
-            //   case 'image':
-            //     form = (
-            //       <ProFormUploadButton
-            //         fieldProps={{
-            //           name: 'file',
-            //           listType: 'picture-card',
-            //         }}
-            //         action="/upload.do"
-            //         {...item.create}
-            //         label={item.title}
-            //         name={item.dataIndex}
-            //       />
-            //     );
-            //     break;
-          }
-          return form;
-        })}
+      <div className={classNames('dialog-part', styles['dialog-part'])}>
+        {template
+          .filter((item: any) => item.create && JSON.stringify(item.create) !== '{}')
+          .map((item: any) => {
+            let form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
+            switch (item.create ? item.create.type || '' : '') {
+              case 'input':
+                form = <ProFormText {...item.create} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'textArea':
+                form = (
+                  <ProFormTextArea
+                    {...item.create}
+                    label={item.title}
+                    name={item.dataIndex}
+                    colProps={{ span: 24 }}
+                  />
+                );
+                break;
+              case 'select':
+                form = <ProFormSelect {...item.create} label={item.title} name={item.dataIndex} />;
+                break;
+              case 'radio':
+                form = (
+                  <ProFormRadio.Group {...item.create} label={item.title} name={item.dataIndex} />
+                );
+                break;
+              case 'switch':
+                form = <ProFormSwitch {...item.create} label={item.title} name={item.dataIndex} />;
+              //   case 'image':
+              //     form = (
+              //       <ProFormUploadButton
+              //         fieldProps={{
+              //           name: 'file',
+              //           listType: 'picture-card',
+              //         }}
+              //         action="/upload.do"
+              //         {...item.create}
+              //         label={item.title}
+              //         name={item.dataIndex}
+              //       />
+              //     );
+              //     break;
+            }
+            return form;
+          })}
+      </div>
     </ModalForm>
   );
 };

@@ -18,7 +18,7 @@ const TableList: React.FC = () => {
   const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
-  const actionRef = useRef<ActionType>();
+  const actionRef = useRef<ActionType>(null);
   const [currentRow, setCurrentRow] = useState<TableListItem>();
   const [tabActiveKey, setTabActiveKey] = useState<any>(
     pathname.split('/')[pathname.split('/').length - 1],
@@ -42,7 +42,12 @@ const TableList: React.FC = () => {
   };
   const getTemplateData = async (key: string) => {
     let template: any = [];
-    if (pathname.includes('template') || pathname.includes('backend') || pathname.includes('tab')) {
+    if (
+      pathname.includes('template') ||
+      pathname.includes('backend') ||
+      pathname.includes('tab') ||
+      pathname.includes('page')
+    ) {
       template = await require(`../${pathname.split('/')[2]}/${key}.json`);
     } else {
       const result = await getTemplate(key, pathname.split('/')[2]);
@@ -87,9 +92,9 @@ const TableList: React.FC = () => {
       className={classNames('container-part', styles['container-part'])}
       onTabChange={async (key: string) => {
         // await getTemplateData(key);
-        // if (actionRef.current) {
-        //   actionRef.current.reload();
-        // }
+        if (actionRef.current) {
+          actionRef.current.reload();
+        }
         history.push(pathname.slice(0, -1) + key);
       }}
       header={{
@@ -97,8 +102,8 @@ const TableList: React.FC = () => {
         ghost: true,
       }}
       tabList={
-        pathname.includes('tab')
-          ? []
+        pathname.includes('tab') || pathname.includes('page')
+          ? [{ tab: 'tab', key: 1 }]
           : tabs
               .reverse((a: any, b: any) => a.type - b.type)
               .map((item: any) => ({ tab: item.name, key: item.type }))
@@ -106,6 +111,7 @@ const TableList: React.FC = () => {
       tabActiveKey={tabActiveKey}
     >
       <TablePart
+        ref={actionRef}
         options={options}
         template={templateData}
         onViewDetail={(entity) => {
@@ -144,12 +150,14 @@ const TableList: React.FC = () => {
             }
           }}
         >
-          <ProFormTextArea
-            name="content"
-            placeholder="请输入JSON数据"
-            colProps={{ span: 24 }}
-            allowClear
-          />
+          <div className={classNames('dialog-part', styles['dialog-part'])}>
+            <ProFormTextArea
+              name="content"
+              placeholder="请输入JSON数据"
+              colProps={{ span: 24 }}
+              allowClear
+            />
+          </div>
         </ModalForm>
       )}
       {createModalVisible && templateData && (
@@ -181,7 +189,7 @@ const TableList: React.FC = () => {
       {showDetail && templateData && (
         <SliderPart
           template={templateData}
-          data={currentRow}
+          data={[currentRow]}
           onClose={() => {
             setCurrentRow(undefined);
             setShowDetail(false);

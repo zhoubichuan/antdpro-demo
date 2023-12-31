@@ -76,6 +76,24 @@
     }
   },
   {
+    "title": "排序",
+    "dataIndex": "sort",
+    "search": {},
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
     "title": "字段名称",
     "dataIndex": "title",
     "table": {

@@ -5,7 +5,7 @@ export async function queryFakeList(params: {
   current: number;
   pageSize: number;
 }): Promise<{ data: { list: CardListItemDataType[] } }> {
-  return request('/api/list/data/1', {
+  return request('/api/list/author/1', {
     params,
   });
 }

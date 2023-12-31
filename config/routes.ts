@@ -145,6 +145,19 @@
         component: './list/table-list4',
       },
       {
+        name: '路由页面',
+        icon: 'smile',
+        path: '/list/page',
+        redirect: '/list/page/1',
+      },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/page/:id',
+        menuRender: false, // 不渲染菜单
+        component: './list/list',
+      },
+      {
         name: 'list10',
         icon: 'smile',
         path: '/list/tab',
@@ -206,6 +219,19 @@
         name: '',
         icon: 'smile',
         path: '/list/field/:id',
+        menuRender: false, // 不渲染菜单
+        component: './list/list',
+      },
+      {
+        name: 'list27',
+        icon: 'smile',
+        path: '/list/author',
+        redirect: '/list/author/1',
+      },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/author/:id',
         menuRender: false, // 不渲染菜单
         component: './list/list',
       },

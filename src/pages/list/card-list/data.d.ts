@@ -7,7 +7,7 @@ export type Member = {
 export type CardListItemDataType = {
   id: string;
   owner: string;
-  author: string;
+  name: string;
   images: array;
   cover: string;
   status: 'normal' | 'exception' | 'active' | 'success';
@@ -26,4 +26,14 @@ export type CardListItemDataType = {
   message: number;
   content: string;
   members: Member[];
+};
+export type TableListItem = {
+  id: string;
+  updatedAt: Date;
+  createdAt: Date;
+  type: string;
+  ip: string;
+  value: string;
+  latitude: string;
+  longitude: string;
 };

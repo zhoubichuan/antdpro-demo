@@ -7,7 +7,8 @@ import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
-
+// import meuns from '../config/routes';
+// import { list as listRequest } from './pages/list/search/service';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
@@ -163,5 +164,27 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
     ...initialState?.settings,
+    // menu: {
+    //   params: initialState,
+    //   request: async (params, defaultMenuData) => {
+    //     const result:any = await listRequest('page/1', {}, {});
+    //     result.data.forEach((item: any) => {
+    //       // meuns[3].routes?.push({
+    //       //   name: item.name,
+    //       //   icon: 'smile',
+    //       //   path: '/list/'+item.type,
+    //       //   redirect: '/list/'+item.type+'/1',
+    //       // });
+    //       meuns[3].routes?.push({
+    //         name: '',
+    //         icon: 'smile',
+    //         path: `/list/${item.type}/:id`,
+    //         menuRender: false, // 不渲染菜单
+    //         component: './list/list',
+    //       });
+    //     });
+    //     return meuns;
+    //   },
+    // },
   };
 };

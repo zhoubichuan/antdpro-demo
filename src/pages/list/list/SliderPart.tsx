@@ -23,9 +23,33 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
         render: (text: any) => {
           if (item.view && item.view.type === 'image') {
             if (Array.isArray(text)) {
-              return text.map((i: any) => <Image height={300} src={i} />);
+              return text.map((i: any) => {
+                if (i.includes('.mp4')) {
+                  return (
+                    <video
+                      controls
+                      style={{ objectFit: 'contain', maxHeight: '300px', display: 'inline-block' }}
+                    >
+                      <source src={i} type="video/mp4" />
+                    </video>
+                  );
+                } else {
+                  return <Image style={{ objectFit: 'contain', maxHeight: '300px' }} src={i} />;
+                }
+              });
             } else {
-              return <Image height={300} src={text} />;
+              if (text.includes('.mp4')) {
+                return <video style={{ objectFit: 'contain', maxHeight: '300px' }} src={text} />;
+              } else {
+                return <Image style={{ objectFit: 'contain', maxHeight: '300px' }} src={text} />;
+              }
+            }
+          }
+          if (item.view && item.view.type === 'video') {
+            if (Array.isArray(text)) {
+              return text.map((i: any) => <video height={300} src={i} />);
+            } else {
+              return <video height={300} src={text} />;
             }
           }
           if (item.view && item.view.type === 'time') {
@@ -42,7 +66,7 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
 
   return (
     <Drawer
-      title={data?.id}
+      title={data[0]?.id}
       destroyOnClose
       closable={true}
       closeIcon={<CloseOutlined />}
@@ -50,18 +74,19 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
       open={true}
       onClose={onClose}
     >
-      {data?.id && (
-        <ProDescriptions<TableListItem>
-          column={2}
-          request={async () => ({
-            data: data || {},
-          })}
-          params={{
-            id: data?.id,
-          }}
-          columns={descriptions as ProDescriptionsItemProps<TableListItem>[]}
-        />
-      )}
+      {Array.isArray(data) &&
+        data.map((d) => (
+          <ProDescriptions<TableListItem>
+            column={2}
+            request={async () => ({
+              data: d || {},
+            })}
+            params={{
+              id: d?.id,
+            }}
+            columns={descriptions as ProDescriptionsItemProps<TableListItem>[]}
+          />
+        ))}
     </Drawer>
   );
 };
