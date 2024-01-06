@@ -17,10 +17,26 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
   const descriptions: ProColumns<TableListItem>[] = template
     .filter((item: any) => JSON.stringify(item.view) !== '{}')
     .map((item: any) => {
-      const { width, view, ellipsis, ...rest } = item;
+      const { width, view, ellipsis, dataIndex, title, ...rest } = item;
+      if (['date'].includes(view.type)) {
+        return {
+          title,
+          span: view.single ? 2 : 1,
+          key: dataIndex,
+          valueType: view.type || 'text',
+          dataIndex,
+          ellipsis: true,
+        };
+      }
       return {
-        ...rest,
-        render: (text: any) => {
+        title,
+        span: view.single ? 2 : 1,
+        key: dataIndex,
+        valueType: view.type || 'text',
+        dataIndex,
+        ellipsis: true,
+        render: (n: any, entry: any) => {
+          let text = entry[dataIndex];
           if (item.view && item.view.type === 'image') {
             if (Array.isArray(text)) {
               return text.map((i: any) => {
@@ -52,15 +68,42 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
               return <video height={300} src={text} />;
             }
           }
-          if (item.view && item.view.type === 'time') {
-            return <div style={{ whiteSpace: 'pre-line' }}>{moment(text).fromNow()}</div>;
-          }
           return (
             <div style={{ whiteSpace: 'pre-line' }}>
               {typeof text === 'string' ? text : JSON.stringify(text)}
             </div>
           );
         },
+        // render: (text: any) => {
+        //   debugger;
+        //   if (item.view && item.view.type === 'image') {
+        //     if (Array.isArray(text)) {
+        //       return text.map((i: any) => {
+        //         if (i.includes('.mp4')) {
+        //           return (
+        //             <video
+        //               controls
+        //               style={{ objectFit: 'contain', maxHeight: '300px', display: 'inline-block' }}
+        //             >
+        //               <source src={i} type="video/mp4" />
+        //             </video>
+        //           );
+        //         } else {
+        //           return <Image style={{ objectFit: 'contain', maxHeight: '300px' }} src={i} />;
+        //         }
+        //       });
+        //     } else {
+        //       if (text.includes('.mp4')) {
+        //         return <video style={{ objectFit: 'contain', maxHeight: '300px' }} src={text} />;
+        //       } else {
+        //         return <Image style={{ objectFit: 'contain', maxHeight: '300px' }} src={text} />;
+        //       }
+        //     }
+        //   }
+        //   if (item.view && item.view.type === 'time') {
+        //     return <div style={{ whiteSpace: 'pre-line' }}>{moment(text).fromNow()}</div>;
+        //   }
+        // },
       };
     });
 
@@ -75,18 +118,20 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
       onClose={onClose}
     >
       {Array.isArray(data) &&
-        data.map((d) => (
-          <ProDescriptions<TableListItem>
-            column={2}
-            request={async () => ({
-              data: d || {},
-            })}
-            params={{
-              id: d?.id,
-            }}
-            columns={descriptions as ProDescriptionsItemProps<TableListItem>[]}
-          />
-        ))}
+        data.map((d) => {
+          return (
+            <ProDescriptions<TableListItem>
+              column={d.single ? 1 : 2}
+              request={async () => ({
+                data: d || {},
+              })}
+              params={{
+                id: d?.id,
+              }}
+              columns={descriptions as ProDescriptionsItemProps<TableListItem>[]}
+            />
+          );
+        })}
     </Drawer>
   );
 };

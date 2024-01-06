@@ -48,7 +48,7 @@ const UpdatePart: React.FC<UpdatePartProps> = (props) => {
     <ModalForm
       {...formItemLayout}
       title="编辑"
-      width="800px"
+      width="90%"
       layout={'horizontal'}
       visible={createModalVisible}
       onVisibleChange={onVisibleChange}

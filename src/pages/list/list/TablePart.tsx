@@ -22,6 +22,7 @@ export type TablePartProps = {
 const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
   const actionRef = useRef<ActionType>();
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
+  const [isFullScreen, setFullScreen] = useState<Boolean>(false);
   const { template = [], onViewDetail, onEdit, onCreate, onManyCreate, options = [] } = props;
   const XLSX = require('xlsx');
   const handleExport = async (fields: TableListItem[]) => {
@@ -144,7 +145,7 @@ const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
           render: (dom: any) => {
             if (!item.hideInTable && item.table && item.table.type === 'image') {
               if (Array.isArray(dom)) {
-                return dom.slice(0, 2).map((i: any, key) => {
+                return dom.slice(0, 1).map((i: any, key) => {
                   if (i.includes('.mp4')) {
                     return (
                       <video
@@ -250,12 +251,12 @@ const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
   }));
   return (
     <ProTable<TableListItem, TableListPagination>
-      className={classNames('table-part', styles['table-part'])}
+      className={classNames(styles['table-part'], { [styles['full-screen']]: isFullScreen })}
       sticky
       actionRef={actionRef}
       ghost={true}
       rowKey="id"
-      scroll={{ x: 800, y: document.body.clientHeight / 2 }}
+      scroll={{ x: 800, y: document.body.clientHeight - (isFullScreen ? 200 : 460) }}
       search={{
         labelWidth: 80,
         optionRender: (searchConfig, formProps, dom) => {
@@ -372,7 +373,15 @@ const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
       }}
       options={{
         density: false,
-        fullScreen: true,
+        fullScreen: function () {
+          const value = !isFullScreen;
+          setFullScreen(value);
+          if (value) {
+            document.querySelector('body')?.requestFullscreen();
+          } else {
+            document?.exitFullscreen();
+          }
+        },
         reload: true,
         setting: true,
       }}

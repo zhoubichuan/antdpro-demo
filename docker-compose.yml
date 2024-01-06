@@ -1,0 +1,22 @@
+version: '3' # compose编排版本为3
+services:
+  # 服务
+  antdpro-demo:
+    # 服务名称
+    hostname: antdpro-demo # 容器主机名
+    build:
+      # 创建容器过程
+      context: ./ # 所需素材都在该目录（仓库）下
+      dockerfile: Dockerfile # 指定Dockerfile文件
+    ports:
+      # 提供端口
+      - 8000:8000 # 对外提供（暴露）的端口
+    networks:
+      # 指定网络
+      - dockerbetweennetwork
+    # volumes:
+    #   # 数据卷
+    #   - ./ # 将宿主机该仓库内文件与nginx首页文件相关联（容器）
+networks:
+  # 对外公开需要声明networks群集名称
+  test:
