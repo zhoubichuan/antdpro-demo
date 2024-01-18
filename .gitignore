@@ -9,7 +9,6 @@ _roadhog-api-doc
 # production
 /antdpro-demo
 /.vscode
-/antdpro-demo
 
 # misc
 .DS_Store

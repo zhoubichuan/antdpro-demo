@@ -83,7 +83,7 @@ const TableList: React.FC = () => {
     handleOnSearch();
   }, []);
   useEffect(() => {
-    getTemplateData(params.id);
+    getTemplateData(params.id || 1);
     handleOnSearch();
   }, [params.id]);
 

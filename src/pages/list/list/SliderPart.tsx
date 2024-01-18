@@ -17,22 +17,22 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
   const descriptions: ProColumns<TableListItem>[] = template
     .filter((item: any) => JSON.stringify(item.view) !== '{}')
     .map((item: any) => {
-      const { width, view, ellipsis, dataIndex, title, ...rest } = item;
-      if (['date'].includes(view.type)) {
+      const { width, view, ellipsis, dataIndex, title } = item;
+      if (['date', 'rate', 'money', 'percent'].includes(view?.type)) {
         return {
           title,
-          span: view.single ? 2 : 1,
+          span: view?.single ? 2 : 1,
           key: dataIndex,
-          valueType: view.type || 'text',
+          valueType: view?.type || 'text',
           dataIndex,
           ellipsis: true,
         };
       }
       return {
         title,
-        span: view.single ? 2 : 1,
+        span: view?.single ? 2 : 1,
         key: dataIndex,
-        valueType: view.type || 'text',
+        valueType: view?.type || 'text',
         dataIndex,
         ellipsis: true,
         render: (n: any, entry: any) => {
