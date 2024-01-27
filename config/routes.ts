@@ -85,6 +85,8 @@
     path: '/list',
     icon: 'table',
     name: 'list',
+    // menuRender: false, // 不渲染菜单
+    // component: './list/menu',
     routes: [
       {
         path: '/list/search',
@@ -120,6 +122,19 @@
           },
         ],
       },
+      {
+        name: '',
+        icon: 'smile',
+        path: '/list/list',
+        menuRender: false, // 不渲染菜单
+        component: './list/list',
+      },
+      {
+        name: '路由页面',
+        icon: 'smile',
+        path: '/list/list/?page=page&tab=1',
+        component: './list/list',
+      },
       // {
       //   name: 'list1',
       //   icon: 'smile',
@@ -150,122 +165,122 @@
       //   path: '/list/page',
       //   redirect: '/list/page/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/page/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/page/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list10',
       //   icon: 'smile',
       //   path: '/list/tab',
       //   redirect: '/list/tab/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/tab/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/tab/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list9',
       //   icon: 'smile',
       //   path: '/list/backend',
       //   redirect: '/list/backend/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/backend/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/backend/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list5',
       //   icon: 'smile',
       //   path: '/list/template',
       //   redirect: '/list/template/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/template/1',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
-      {
-        name: '',
-        path: `/list/:id/:id`,
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/template/1',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
+      // {
+      //   name: '',
+      //   path: `/list/:id/:id`,
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list8',
       //   icon: 'smile',
       //   path: '/list/type',
       //   redirect: '/list/type/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/type/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/type/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list7',
       //   icon: 'smile',
       //   path: '/list/field',
       //   redirect: '/list/field/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/field/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/field/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list27',
       //   icon: 'smile',
       //   path: '/list/author',
       //   redirect: '/list/author/1',
       // },
-      {
-        name: '',
-        icon: 'smile',
-        path: '/list/author/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
-      },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/author/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       // {
       //   name: 'list6',
       //   icon: 'smile',
       //   path: '/list/data',
       //   redirect: '/list/data/1',
       // },
+      // {
+      //   name: '',
+      //   icon: 'smile',
+      //   path: '/list/data/:id',
+      //   menuRender: false, // 不渲染菜单
+      //   component: './list/list',
+      // },
       {
-        name: '',
+        name: 'basic-list',
         icon: 'smile',
-        path: '/list/data/:id',
-        menuRender: false, // 不渲染菜单
-        component: './list/list',
+        path: '/list/basic-list',
+        component: './list/basic-list',
       },
-      // {
-      //   name: 'basic-list',
-      //   icon: 'smile',
-      //   path: '/list/basic-list',
-      //   component: './list/basic-list',
-      // },
-      // {
-      //   name: 'card-list',
-      //   icon: 'smile',
-      //   path: '/list/card-list',
-      //   component: './list/card-list',
-      // },
+      {
+        name: 'card-list',
+        icon: 'smile',
+        path: '/list/card-list',
+        component: './list/card-list',
+      },
     ],
   },
   {

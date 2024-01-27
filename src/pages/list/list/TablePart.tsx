@@ -22,7 +22,7 @@ export type TablePartProps = {
 const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
   const actionRef = useRef<ActionType>();
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
-  const [isFullScreen, setFullScreen] = useState<Boolean>(false);
+  const [isFullScreen, setFullScreen] = useState<boolean>(false);
   const { template = [], onViewDetail, onEdit, onCreate, onManyCreate, options = [] } = props;
   const XLSX = require('xlsx');
   const handleExport = async (fields: TableListItem[]) => {
@@ -172,6 +172,9 @@ const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
             }
             if (!item.hideInTable && item.table && item.table.type === 'radio') {
               return item.table.options.find((i: any) => i.value === dom)?.label;
+            }
+            if (!item.hideInTable && item.table && item.table.type === 'link') {
+              return <a href={dom}>{dom}</a>;
             }
             if (!item.hideInTable && item.table && item.table.type === 'time') {
               return <div style={{ whiteSpace: 'pre-line' }}>{moment(dom).fromNow()}</div>;

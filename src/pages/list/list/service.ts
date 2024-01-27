@@ -1,6 +1,6 @@
 import { request } from 'umi';
 
-import { TableListItem } from './data';
+import type { TableListItem } from './data';
 export async function getTemplate(key: string, type: string) {
   return request<{
     data: TableListItem[];
@@ -18,19 +18,24 @@ export async function requestList(
     current?: number;
     pageSize?: number;
   },
-  options?: { [key: string]: any },
+  options?: Record<string, any>,
 ) {
   return request<{
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api' + location.pathname.replace('/antdpro-demo', ''), {
-    method: 'GET',
-    params: {
-      ...params,
+  }>(
+    '/api/list' +
+      location.search.slice(1).split('&')[0].replace('page=', '/') +
+      location.search.slice(1).split('&')[1].replace('tab=', '/'),
+    {
+      method: 'GET',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
     },
-    ...(options || {}),
-  });
+  );
 }
 export async function requestTabs(
   params: {
@@ -51,38 +56,59 @@ export async function requestTabs(
     ...(options || {}),
   });
 }
-export async function updateList(options?: { [key: string]: any }) {
-  return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
-    method: 'PUT',
-    data: { ...(options || {}) },
-  });
-}
-
-export async function addList(options?: { [key: string]: any }) {
-  return request<TableListItem>('/api' + location.pathname.replace('/antdpro-demo', ''), {
-    method: 'POST',
-    data: { ...(options || {}) },
-  });
-}
-
-export async function removeList(options?: { [key: string]: any }) {
-  return request<Record<string, any>>('/api' + location.pathname.replace('/antdpro-demo', ''), {
-    method: 'DELETE',
-    data: { ...(options || {}) },
-  });
-}
-export async function importList(options?: { [key: string]: any }) {
+export async function updateList(options?: Record<string, any>) {
   return request<TableListItem>(
-    '/api' + location.pathname.replace('/antdpro-demo', '') + '/import',
+    '/api/list' +
+      location.search.slice(1).split('&')[0].replace('page=', '/') +
+      location.search.slice(1).split('&')[1].replace('tab=', '/'),
+    {
+      method: 'PUT',
+      data: { ...(options || {}) },
+    },
+  );
+}
+
+export async function addList(options?: Record<string, any>) {
+  return request<TableListItem>(
+    '/api/list' +
+      location.search.slice(1).split('&')[0].replace('page=', '/') +
+      location.search.slice(1).split('&')[1].replace('tab=', '/'),
+    {
+      method: 'POST',
+      data: { ...(options || {}) },
+    },
+  );
+}
+
+export async function removeList(options?: Record<string, any>) {
+  return request<Record<string, any>>(
+    '/api/list' +
+      location.search.slice(1).split('&')[0].replace('page=', '/') +
+      location.search.slice(1).split('&')[1].replace('tab=', '/'),
+    {
+      method: 'DELETE',
+      data: { ...(options || {}) },
+    },
+  );
+}
+export async function importList(options?: Record<string, any>) {
+  return request<TableListItem>(
+    '/api/list' +
+      location.search.slice(1).split('&')[0].replace('page=', '/') +
+      location.search.slice(1).split('&')[1].replace('tab=', '/') +
+      '/import',
     {
       method: 'POST',
       data: options,
     },
   );
 }
-export async function exportList(options?: { [key: string]: any }) {
+export async function exportList(options?: Record<string, any>) {
   return request<TableListItem>(
-    '/api' + location.pathname.replace('/antdpro-demo', '') + '/export',
+    '/api/list' +
+      location.search.slice(1).split('&')[0].replace('page=', '/') +
+      location.search.slice(1).split('&')[1].replace('tab=', '/') +
+      '/export',
     {
       method: 'POST',
       responseType: 'blob',

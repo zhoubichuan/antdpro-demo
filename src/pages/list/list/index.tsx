@@ -13,16 +13,15 @@ import UpdatePart from './UpdatePart';
 import CreatePart from './CreatePart';
 import TablePart from './TablePart';
 const TableList: React.FC = () => {
-  const { pathname }: any = useLocation();
+  const { pathname, query }: any = useLocation();
+  const { page, tab }: any = query;
   const params: any = useParams();
   const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
   const actionRef = useRef<ActionType>(null);
   const [currentRow, setCurrentRow] = useState<TableListItem>();
-  const [tabActiveKey, setTabActiveKey] = useState<any>(
-    pathname.split('/')[pathname.split('/').length - 1],
-  );
+  const [tabActiveKey, setTabActiveKey] = useState<any>(tab);
   const [tabs, setTabs] = useState<any>([]);
   const [templateData, setTemplateData] = useState<any>([]);
   const [options, setOptions] = useState<string[]>([]);
@@ -42,15 +41,10 @@ const TableList: React.FC = () => {
   };
   const getTemplateData = async (key: string) => {
     let template: any = [];
-    if (
-      pathname.includes('template') ||
-      pathname.includes('backend') ||
-      pathname.includes('tab') ||
-      pathname.includes('page')
-    ) {
-      template = await require(`../${pathname.split('/')[2]}/${key}.json`);
+    if (['template', 'backend', 'tab', 'page'].includes(page)) {
+      template = await require(`../${page}/${tab}.json`);
     } else {
-      const result = await getTemplate(key, pathname.split('/')[2]);
+      const result = await getTemplate(key, page);
       template = result.data;
     }
     for (let i = 0; i < template.length; i++) {
@@ -95,14 +89,14 @@ const TableList: React.FC = () => {
         if (actionRef.current) {
           actionRef.current.reload();
         }
-        history.push(pathname.slice(0, -1) + key);
+        history.push(pathname + '?page=' + page + '&tab=' + key);
       }}
       header={{
         title: false,
         ghost: true,
       }}
       tabList={
-        pathname.includes('tab') || pathname.includes('page')
+        ['tab', 'page'].includes(page)
           ? [{ tab: 'tab', key: 1 }]
           : tabs
               .reverse((a: any, b: any) => a.type - b.type)

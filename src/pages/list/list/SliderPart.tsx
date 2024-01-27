@@ -36,7 +36,7 @@ const SliderPart: React.FC<SliderPartProps> = (props) => {
         dataIndex,
         ellipsis: true,
         render: (n: any, entry: any) => {
-          let text = entry[dataIndex];
+          const text = entry[dataIndex];
           if (item.view && item.view.type === 'image') {
             if (Array.isArray(text)) {
               return text.map((i: any) => {

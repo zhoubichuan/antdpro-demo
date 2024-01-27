@@ -58,7 +58,7 @@
     },
     "table": {
       "type": "text",
-      "width": 100
+      "width": 200
     },
     "create": {
       "rules": [
