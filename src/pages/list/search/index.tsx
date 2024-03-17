@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { history } from 'umi';
 import { list } from './service';
-
+import styles from './style.less';
 type SearchProps = {
   match: {
     url: string;
@@ -58,6 +58,7 @@ const Search: FC<SearchProps> = (props) => {
 
   return (
     <PageContainer
+      className={styles.pageContainer}
       content={
         <div style={{ textAlign: 'center' }}>
           <Input.Search
@@ -76,7 +77,7 @@ const Search: FC<SearchProps> = (props) => {
       tabActiveKey={activeKey}
       onTabChange={handleTabChange}
     >
-      {props.children}
+      <div className={styles.content}> {props.children}</div>
     </PageContainer>
   );
 };

@@ -63,11 +63,13 @@ const TableList: React.FC = () => {
     setTabs(tabsData.data);
     if (dataId) {
       const result: any = await requestList({ current: 1, pageSize: 1 }, { id: dataId });
-      setOptions(result.data);
-    }
-    setTabActiveKey(key);
-    if (actionRef.current) {
-      actionRef.current.reload();
+      setCurrentRow(result.data[0]);
+      setShowDetail(true);
+    } else {
+      setTabActiveKey(key);
+      if (actionRef.current) {
+        actionRef.current.reload();
+      }
     }
   };
 

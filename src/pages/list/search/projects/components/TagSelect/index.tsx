@@ -53,7 +53,6 @@ const TagSelect: FC<TagSelectProps> & { Option: typeof TagSelectOption } = (prop
   const [expand, { toggle }] = useBoolean();
 
   const [value, setValue] = useControllableValue<(string | number)[]>(props);
-
   const isTagSelectOption = (node: TagSelectOptionElement) =>
     node &&
     node.type &&

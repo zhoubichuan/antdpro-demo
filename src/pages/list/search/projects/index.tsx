@@ -16,7 +16,20 @@ const { Paragraph } = Typography;
 const Projects: FC = () => {
   const path: string = location.pathname.replace('/antdpro-demo', '');
   const [templateData, setTemplateData] = useState<any>([]);
+  const [type, setType] = useState<any>({});
   const [lists, setLists] = useState<any>([]);
+  const getData = async (params: any) => {
+    let data: any = [];
+    const result = await list(
+      'data/1',
+      {
+        current: 1,
+      },
+      params,
+    );
+    data = result.data;
+    setLists(data);
+  };
   const getTemplateData = async () => {
     const { data } = await list(
       'field/1',
@@ -28,27 +41,18 @@ const Projects: FC = () => {
     );
     setTemplateData(data);
     setLists(data);
+    setType({ type: [data[0].value] });
   };
   useEffect(() => {
     getTemplateData();
   }, [path]);
-  const getData = async (params: any) => {
-    let data: any = [];
-    if (params.category) {
-      params.type = params.category[0];
-      delete params.category;
+  useEffect(() => {
+    if (type.type) {
+      type.type = type.type[0];
     }
-    const result = await list(
-      'data/1',
-      {
-        current: 1,
-        pageSize: 20,
-      },
-      params,
-    );
-    data = result.data;
-    setLists(data);
-  };
+    getData(type);
+  }, [JSON.stringify(type)]);
+
   const formItemLayout = {
     wrapperCol: {
       xs: { span: 24 },
@@ -61,12 +65,12 @@ const Projects: FC = () => {
       <Card bordered={false}>
         <Form
           layout="inline"
-          onValuesChange={(_) => {
-            getData(_);
+          onValuesChange={(params) => {
+            setType(params);
           }}
         >
           <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>
-            <FormItem name="category">
+            <FormItem name="type">
               <TagSelect expandable>
                 {templateData.map((item: any) => (
                   <TagSelect.Option value={item.value}>{item.name}</TagSelect.Option>
@@ -86,7 +90,7 @@ const Projects: FC = () => {
                 </FormItem>
               </Col>
               <Col lg={8} md={10} sm={10} xs={24}>
-                <FormItem {...formItemLayout} label="好评度" name="rate">
+                <FormItem {...formItemLayout} label="好评度" name="code">
                   <Select placeholder="不限" style={{ maxWidth: 200, width: '100%' }}>
                     {lists.map((item: any) => (
                       <Option value={item.code}>{item.code}</Option>
@@ -114,7 +118,7 @@ const Projects: FC = () => {
             dataSource={lists}
             renderItem={(item: any) => (
               <List.Item>
-                <Link to={`/list/data/1?id=${item.id}`} target="_blank">
+                <Link to={`/list/list?page=data&tab=1&dataId=${item.id}`} target="_blank">
                   <Card
                     className={styles.card}
                     hoverable
