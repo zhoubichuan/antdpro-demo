@@ -4,7 +4,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { ModalForm, ProFormTextArea } from '@ant-design/pro-form';
 import { requestTabs, requestList, getTemplate, addList } from './service';
 import type { TableListItem } from './data';
-import { history, useLocation, useParams } from 'umi';
+import { history, useLocation } from 'umi';
 import type { ActionType } from '@ant-design/pro-table';
 import classNames from 'classnames';
 import styles from './index.less';
@@ -14,8 +14,7 @@ import CreatePart from './CreatePart';
 import TablePart from './TablePart';
 const TableList: React.FC = () => {
   const { pathname, query }: any = useLocation();
-  const { page, tab }: any = query;
-  const params: any = useParams();
+  const { page, tab, dataId }: any = query;
   const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
@@ -62,24 +61,19 @@ const TableList: React.FC = () => {
     setTemplateData(template);
     const tabsData = await requestTabs({});
     setTabs(tabsData.data);
-    if (params?.id) {
-      const result: any = await requestList({ current: 1, pageSize: 1 }, { id: params.id });
+    if (dataId) {
+      const result: any = await requestList({ current: 1, pageSize: 1 }, { id: dataId });
       setOptions(result.data);
     }
     setTabActiveKey(key);
+    if (actionRef.current) {
+      actionRef.current.reload();
+    }
   };
-  const handleOnSearch = async () => {
-    const { data }: any = await requestList({ current: 1 });
-    setOptions(data);
-  };
+
   useEffect(() => {
-    getTemplateData(params?.id || 1);
-    handleOnSearch();
-  }, []);
-  useEffect(() => {
-    getTemplateData(params.id || 1);
-    handleOnSearch();
-  }, [params.id]);
+    getTemplateData(tab || 1);
+  }, [tab, page]);
 
   return (
     <PageContainer
@@ -98,9 +92,7 @@ const TableList: React.FC = () => {
       tabList={
         ['tab', 'page'].includes(page)
           ? [{ tab: 'tab', key: 1 }]
-          : tabs
-              .reverse((a: any, b: any) => a.type - b.type)
-              .map((item: any) => ({ tab: item.name, key: item.type }))
+          : tabs.map((item: any) => ({ tab: item.name, key: item.type }))
       }
       tabActiveKey={tabActiveKey}
     >

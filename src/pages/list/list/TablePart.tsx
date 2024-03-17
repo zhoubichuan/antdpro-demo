@@ -3,7 +3,7 @@ import { Button, message, Upload, Modal, Image } from 'antd';
 import React, { useImperativeHandle, useRef, useState, forwardRef } from 'react';
 import ProTable from '@ant-design/pro-table';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import { ModalForm, ProFormText, ProFormTextArea, ProFormSelect } from '@ant-design/pro-form';
+import { ProFormText, ProFormSelect } from '@ant-design/pro-form';
 import { requestList, removeList, importList, exportList, addList } from './service';
 import styles from './index.less';
 import type { TableListItem, TableListPagination } from './data';
@@ -11,7 +11,8 @@ import moment from 'moment';
 import classNames from 'classnames';
 
 export type TablePartProps = {
-  actionRef: any;
+  ref?: any;
+  actionRef?: any;
   onViewDetail: (e?: any) => void;
   onEdit: (e?: any) => void;
   onCreate: (e?: any) => void;
