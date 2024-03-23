@@ -2,7 +2,7 @@ import { message } from 'antd';
 import React, { useState, useRef, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { ModalForm, ProFormTextArea } from '@ant-design/pro-form';
-import { requestTabs, requestList, getTemplate, addList } from './service';
+import { requestTabs, requestList, requestPageList, getTemplate, addList } from './service';
 import type { TableListItem } from './data';
 import { history, useLocation } from 'umi';
 import type { ActionType } from '@ant-design/pro-table';
@@ -14,7 +14,7 @@ import CreatePart from './CreatePart';
 import TablePart from './TablePart';
 const TableList: React.FC = () => {
   const { pathname, query }: any = useLocation();
-  const { page, tab, dataId }: any = query;
+  const { page, tab, dataId, menu }: any = query;
   const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
@@ -59,8 +59,17 @@ const TableList: React.FC = () => {
       });
     }
     setTemplateData(template);
-    const tabsData = await requestTabs({});
-    setTabs(tabsData.data);
+    // tabs展示内容
+    if (['page'].includes(page)) {
+      setTabs([]);
+    } else if (['tab'].includes(page)) {
+      const tabsData: any = await requestPageList({});
+      tabsData.data.map((i: any) => (i.type = i.remark));
+      setTabs(tabsData.data);
+    } else {
+      const tabsData = await requestTabs({});
+      setTabs(tabsData.data);
+    }
     if (dataId) {
       const result: any = await requestList({ current: 1, pageSize: 1 }, { id: dataId });
       setCurrentRow(result.data[0]);
@@ -74,7 +83,7 @@ const TableList: React.FC = () => {
   };
 
   useEffect(() => {
-    getTemplateData(tab || 1);
+    getTemplateData(tab);
   }, [tab, page]);
 
   return (
@@ -85,17 +94,13 @@ const TableList: React.FC = () => {
         if (actionRef.current) {
           actionRef.current.reload();
         }
-        history.push(pathname + '?page=' + page + '&tab=' + key);
+        history.push(pathname + '?page=' + page + '&tab=' + key + '&menu=' + menu);
       }}
       header={{
         title: false,
         ghost: true,
       }}
-      tabList={
-        ['tab', 'page'].includes(page)
-          ? [{ tab: 'tab', key: 1 }]
-          : tabs.map((item: any) => ({ tab: item.name, key: item.type }))
-      }
+      tabList={tabs.map((item: any) => ({ tab: item.name, key: item.type }))}
       tabActiveKey={tabActiveKey}
     >
       <TablePart

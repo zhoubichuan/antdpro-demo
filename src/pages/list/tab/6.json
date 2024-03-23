@@ -1,5 +1,55 @@
 [
   {
+    "type": "data",
+    "title": "编号",
+    "dataIndex": "id",
+    "search": {},
+    "table": {},
+    "create": {},
+    "edit": {
+      "disabled": true,
+      "colProps": {
+        "span": 24
+      }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
+    "title": "tabId",
+    "dataIndex": "tabId",
+    "search": {
+      "type": "text",
+      "width": 260
+    },
+    "table": {
+      "type": "text",
+      "width": 100
+    },
+    "create": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "edit": {
+      "rules": [
+        {
+          "required": true,
+          "message": "内容必填"
+        }
+      ],
+      "colProps": { "span": 24 }
+    },
+    "view": {
+      "type": "text"
+    }
+  },
+  {
     "title": "名称",
     "dataIndex": "name",
     "search": {
@@ -33,36 +83,17 @@
     }
   },
   {
-    "title": "增",
-    "dataIndex": "add",
-    "search": {},
+    "title": "类型编号",
+    "dataIndex": "type",
+    "search": {
+      "type": "text",
+      "width": 260
+    },
     "table": {
-      "width": 60,
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
+      "type": "text",
+      "width": 200
     },
     "create": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "help": "是否支持字段的增加",
       "rules": [
         {
           "required": true,
@@ -72,163 +103,6 @@
       "colProps": { "span": 24 }
     },
     "edit": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "help": "是否支持字段的增加",
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
-    }
-  },
-  {
-    "title": "删",
-    "dataIndex": "delete",
-    "table": {
-      "width": 60,
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
-    },
-    "search": {},
-    "create": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "help": "是否支持字段的删除",
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
-    }
-  },
-  {
-    "title": "改",
-    "dataIndex": "edit",
-    "table": {
-      "width": 60,
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
-    },
-    "create": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "help": "是否支持字段的修改",
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
       "rules": [
         {
           "required": true,
@@ -239,187 +113,6 @@
     },
     "view": {
       "type": "text"
-    }
-  },
-  {
-    "title": "查",
-    "dataIndex": "view",
-    "table": {
-      "width": 60,
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
-    },
-    "create": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "help": "是否支持字段的查询",
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ],
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": {
-      "type": "radio",
-      "options": [
-        {
-          "value": true,
-          "label": "是"
-        },
-        {
-          "value": false,
-          "label": "否"
-        }
-      ]
-    }
-  },
-  {
-    "title": "字段类型",
-    "dataIndex": "type",
-    "table": {
-      "type": "text",
-      "width": 160
-    },
-    "create": {
-      "type": "select",
-      "options": [
-        {
-          "value": "string",
-          "label": "字符串"
-        },
-        {
-          "value": "boolean",
-          "label": "布尔值"
-        },
-        {
-          "value": "array",
-          "label": "数组"
-        },
-        {
-          "value": "object",
-          "label": "对象"
-        },
-        {
-          "value": "time",
-          "label": "时间"
-        },
-        {
-          "value": "image",
-          "label": "图片"
-        }
-      ],
-      "rules": [
-        {
-          "required": true,
-          "message": "内容必填"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "edit": {
-      "type": "select",
-      "options": [
-        {
-          "value": "string",
-          "label": "字符串"
-        },
-        {
-          "value": "boolean",
-          "label": "布尔值"
-        },
-        {
-          "value": "array",
-          "label": "数组"
-        },
-        {
-          "value": "object",
-          "label": "对象"
-        },
-        {
-          "value": "time",
-          "label": "时间"
-        },
-        {
-          "value": "image",
-          "label": "图片"
-        }
-      ],
-      "rules": [
-        {
-          "required": true,
-          "message": "字段类型值"
-        }
-      ],
-      "colProps": { "span": 24 }
-    },
-    "view": {
-      "type": "select",
-      "options": [
-        {
-          "value": "string",
-          "label": "字符串"
-        },
-        {
-          "value": "boolean",
-          "label": "布尔值"
-        },
-        {
-          "value": "array",
-          "label": "数组"
-        },
-        {
-          "value": "object",
-          "label": "对象"
-        },
-        {
-          "value": "time",
-          "label": "时间"
-        },
-        {
-          "value": "image",
-          "label": "图片"
-        }
-      ]
     }
   },
   {

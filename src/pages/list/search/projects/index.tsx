@@ -16,27 +16,18 @@ const { Paragraph } = Typography;
 const Projects: FC = () => {
   const path: string = location.pathname.replace('/antdpro-demo', '');
   const [templateData, setTemplateData] = useState<any>([]);
-  const [type, setType] = useState<any>({});
+  const [type, setType] = useState<any>({ type: [''] });
   const [lists, setLists] = useState<any>([]);
   const getData = async (params: any) => {
     let data: any = [];
-    const result = await list(
-      'data/1',
-      {
-        current: 1,
-      },
-      params,
-    );
+    const result = await list('data/1', {}, params);
     data = result.data;
     setLists(data);
   };
   const getTemplateData = async () => {
     const { data } = await list(
       'field/1',
-      {
-        current: 1,
-        pageSize: 20,
-      },
+      {},
       { type: path.split('/')[path.split('/').length - 1] },
     );
     setTemplateData(data);
@@ -51,7 +42,7 @@ const Projects: FC = () => {
       type.type = type.type[0];
     }
     getData(type);
-  }, [JSON.stringify(type)]);
+  }, []);
 
   const formItemLayout = {
     wrapperCol: {

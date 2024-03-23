@@ -243,11 +243,11 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
               },
               {
                 path: '/list/list',
-                name: '列表',
+                name: '列表页面',
                 component: './list/list',
                 routes: result.data.map((i: any, index: number) => ({
                   name: i.name,
-                  path: i.type,
+                  path: i.type + '&menu=' + i.remark,
                   key: index,
                 })),
               },
@@ -256,7 +256,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
           {
             path: '/profile',
             name: 'profile',
-            icon: 'profile',
             routes: [
               {
                 name: 'basic',

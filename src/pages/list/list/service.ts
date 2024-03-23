@@ -13,6 +13,25 @@ export async function getTemplate(key: string, type: string) {
     },
   });
 }
+export async function requestPageList(
+  params: {
+    current?: number;
+    pageSize?: number;
+  },
+  options?: Record<string, any>,
+) {
+  return request<{
+    data: TableListItem[];
+    total?: number;
+    success?: boolean;
+  }>('/api/list/page/1', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
 export async function requestList(
   params: {
     current?: number;
@@ -48,7 +67,7 @@ export async function requestTabs(
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/list/tab/1', {
+  }>('/api/list/tab' + location.search.slice(1).split('&')[2].replace('menu=', '/'), {
     method: 'GET',
     params: {
       ...params,
