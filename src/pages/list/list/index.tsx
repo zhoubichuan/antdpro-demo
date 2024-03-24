@@ -14,7 +14,7 @@ import CreatePart from './CreatePart';
 import TablePart from './TablePart';
 const TableList: React.FC = () => {
   const { pathname, query }: any = useLocation();
-  const { page, tab, dataId, menu }: any = query;
+  const { page, tab, dataId, menu, realyPage }: any = query;
   const [createManyModalVisible, handleManyModalVisible] = useState<boolean>(false);
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
@@ -60,7 +60,7 @@ const TableList: React.FC = () => {
     }
     setTemplateData(template);
     // tabs展示内容
-    if (['page'].includes(page)) {
+    if (['page', 'template', 'backend'].includes(page)) {
       setTabs([]);
     } else if (['tab'].includes(page)) {
       const tabsData: any = await requestPageList({});
@@ -94,7 +94,17 @@ const TableList: React.FC = () => {
         if (actionRef.current) {
           actionRef.current.reload();
         }
-        history.push(pathname + '?page=' + page + '&tab=' + key + '&menu=' + menu);
+        history.push(
+          pathname +
+            '?page=' +
+            page +
+            '&tab=' +
+            key +
+            '&menu=' +
+            menu +
+            '&realyPage=' +
+            realyPage || page,
+        );
       }}
       header={{
         title: false,

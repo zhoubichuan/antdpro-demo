@@ -8,6 +8,7 @@ import { requestList, removeList, importList, exportList, addList } from './serv
 import styles from './index.less';
 import type { TableListItem, TableListPagination } from './data';
 import moment from 'moment';
+import { history, useLocation, Link } from 'umi';
 import classNames from 'classnames';
 
 export type TablePartProps = {
@@ -21,6 +22,8 @@ export type TablePartProps = {
   options: string[];
 };
 const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
+  const { pathname, query }: any = useLocation();
+  const { page, tab, dataId, menu }: any = query;
   const actionRef = useRef<ActionType>();
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const [isFullScreen, setFullScreen] = useState<boolean>(false);
@@ -268,6 +271,24 @@ const TablePart: React.FC<TablePartProps> = forwardRef((props, ref) => {
         },
       }}
       toolBarRender={() => [
+        page !== 'template' && (
+          <Link
+            type="text"
+            to={
+              pathname + '?page=template' + '&tab=' + tab + '&menu=' + menu + '&realyPage=' + page
+            }
+          >
+            前端模板
+          </Link>
+        ),
+        page !== 'backend' && (
+          <Link
+            type="text"
+            to={pathname + '?page=backend' + '&tab=' + tab + '&menu=' + menu + '&realyPage=' + page}
+          >
+            后端模板
+          </Link>
+        ),
         <Button
           type="primary"
           key="primary"

@@ -1,6 +1,14 @@
 import { request } from 'umi';
-
 import type { TableListItem } from './data';
+const getParams = () =>
+  location.search
+    .slice(1)
+    .split('&')
+    .reduce((p: any, n: any) => {
+      const [name, value] = n.split('=');
+      p[name] = value;
+      return p;
+    }, {});
 export async function getTemplate(key: string, type: string) {
   return request<{
     data: TableListItem[];
@@ -43,18 +51,13 @@ export async function requestList(
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>(
-    '/api/list' +
-      location.search.slice(1).split('&')[0].replace('page=', '/') +
-      location.search.slice(1).split('&')[1].replace('tab=', '/'),
-    {
-      method: 'GET',
-      params: {
-        ...params,
-      },
-      ...(options || {}),
+  }>('/api/list/' + getParams().page + '/' + getParams().tab, {
+    method: 'GET',
+    params: {
+      ...params,
     },
-  );
+    ...(options || {}),
+  });
 }
 export async function requestTabs(
   params: {
@@ -67,7 +70,7 @@ export async function requestTabs(
     data: TableListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/list/tab' + location.search.slice(1).split('&')[2].replace('menu=', '/'), {
+  }>('/api/list/tab/' + getParams().menu, {
     method: 'GET',
     params: {
       ...params,
@@ -76,46 +79,28 @@ export async function requestTabs(
   });
 }
 export async function updateList(options?: Record<string, any>) {
-  return request<TableListItem>(
-    '/api/list' +
-      location.search.slice(1).split('&')[0].replace('page=', '/') +
-      location.search.slice(1).split('&')[1].replace('tab=', '/'),
-    {
-      method: 'PUT',
-      data: { ...(options || {}) },
-    },
-  );
+  return request<TableListItem>('/api/list/' + getParams().page + '/' + getParams().tab, {
+    method: 'PUT',
+    data: { ...(options || {}) },
+  });
 }
 
 export async function addList(options?: Record<string, any>) {
-  return request<TableListItem>(
-    '/api/list' +
-      location.search.slice(1).split('&')[0].replace('page=', '/') +
-      location.search.slice(1).split('&')[1].replace('tab=', '/'),
-    {
-      method: 'POST',
-      data: { ...(options || {}) },
-    },
-  );
+  return request<TableListItem>('/api/list/' + getParams().page + '/' + getParams().tab, {
+    method: 'POST',
+    data: { ...(options || {}) },
+  });
 }
 
 export async function removeList(options?: Record<string, any>) {
-  return request<Record<string, any>>(
-    '/api/list' +
-      location.search.slice(1).split('&')[0].replace('page=', '/') +
-      location.search.slice(1).split('&')[1].replace('tab=', '/'),
-    {
-      method: 'DELETE',
-      data: { ...(options || {}) },
-    },
-  );
+  return request<Record<string, any>>('/api/list' + getParams().page + '/' + getParams().tab, {
+    method: 'DELETE',
+    data: { ...(options || {}) },
+  });
 }
 export async function importList(options?: Record<string, any>) {
   return request<TableListItem>(
-    '/api/list' +
-      location.search.slice(1).split('&')[0].replace('page=', '/') +
-      location.search.slice(1).split('&')[1].replace('tab=', '/') +
-      '/import',
+    '/api/list/' + getParams().page + '/' + getParams().tab + '/import',
     {
       method: 'POST',
       data: options,
@@ -124,10 +109,7 @@ export async function importList(options?: Record<string, any>) {
 }
 export async function exportList(options?: Record<string, any>) {
   return request<TableListItem>(
-    '/api/list' +
-      location.search.slice(1).split('&')[0].replace('page=', '/') +
-      location.search.slice(1).split('&')[1].replace('tab=', '/') +
-      '/export',
+    '/api/list/' + getParams().page + '/' + getParams().tab + '/export',
     {
       method: 'POST',
       responseType: 'blob',
