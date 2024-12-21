@@ -90,6 +90,8 @@ const Register: FC = () => {
             account: params.email,
           },
         });
+      } else {
+        message.error(data.message);
       }
     },
   });
