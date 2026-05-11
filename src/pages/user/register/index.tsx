@@ -82,7 +82,7 @@ const Register: FC = () => {
   const { loading: submitting, run: register } = useRequest<{ data: StateType }>(fakeRegister, {
     manual: true,
     onSuccess: (data, params) => {
-      if (data.status === 'success') {
+      if (data.code === 200) {
         message.success('注册成功！');
         history.push({
           pathname: '/user/register-result',
