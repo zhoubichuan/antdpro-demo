@@ -1,23 +1,23 @@
 export default {
   dev: {
     '/api/': {
-      target: '//localhost:7001',
+      target: 'http://localhost:7001',
       changeOrigin: true,
-      pathRewrite: { '^/': '/' },
+      pathRewrite: { '^/api/': '/api/' },
     },
   },
   sit: {
     '/api/': {
-      target: '//zhoubichuan.com/antdpro-express',
+      target: 'http://zhoubichuan.com',
       changeOrigin: true,
-      pathRewrite: { '^/': '/' },
+      pathRewrite: { '^/api/': '/api/' },
     },
   },
   uat: {
     '/api/': {
-      target: '//zhoubichuan.com/antdpro-express',
+      target: 'http://zhoubichuan.com',
       changeOrigin: true,
-      pathRewrite: { '^/': '/' },
+      pathRewrite: { '^/api/': '/api/' },
     },
   },
 };
